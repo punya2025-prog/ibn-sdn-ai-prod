@@ -1,0 +1,66 @@
+---
+access1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.41
+access2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.42
+access3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.43
+access4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.44
+campus-core:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.31
+dist1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.32
+dist2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.33
+leaf1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.21
+leaf2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.22
+leaf3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.23
+leaf4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.24
+spine1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.11
+spine2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.201.0.12

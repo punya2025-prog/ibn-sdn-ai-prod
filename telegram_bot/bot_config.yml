@@ -1,0 +1,29 @@
+# bot_config.yml — IBN Telegram Bot configuration
+# Steps to get a token:
+#   1. Open Telegram → search @BotFather
+#   2. Send /newbot
+#   3. Choose a name (e.g. "IBN Network Bot") and username (e.g. ibn_noc_bot)
+#   4. Copy the token below
+
+bot_token:   "YOUR_BOT_TOKEN_FROM_BOTFATHER"
+gateway_url: "http://localhost:8000"
+
+# Webhook mode (production): requires a public HTTPS URL
+# Leave webhook_url empty for polling mode (development)
+webhook_url:  ""        # e.g. https://ibn.yourdomain.com
+webhook_port: 8443
+ssl_cert:     ""        # path to fullchain.pem
+ssl_key:      ""        # path to privkey.pem
+
+# NOC broadcast: chat IDs to receive Zabbix-originated alerts
+# Find your chat_id: message @userinfobot
+broadcast_chat_ids:
+  - 123456789     # NOC engineer 1
+  - 987654321     # NOC engineer 2
+  # - -1001234567890  # Group chat (negative ID)
+
+# Allowed Telegram usernames (leave empty to allow all)
+allowed_users: []
+# allowed_users:
+#   - your_username
+#   - noc_engineer

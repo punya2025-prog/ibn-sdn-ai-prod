@@ -1,0 +1,50 @@
+# watcher_config.yml
+# IBN Email IMAP Watcher — Channel 2 configuration
+# Copy this file and edit credentials before running.
+
+# ── IMAP server ───────────────────────────────────────────────────────────────
+imap_host: imap.gmail.com       # Gmail
+# imap_host: outlook.office365.com   # Microsoft 365
+# imap_host: 192.168.1.10            # On-prem Exchange / Postfix
+imap_port: 993
+imap_ssl:  true
+username:  noc@yourdomain.com
+password:  your_app_password_here   # Gmail: Settings → Security → App Passwords
+
+# ── Mailbox ───────────────────────────────────────────────────────────────────
+mailbox:   INBOX
+# For Gmail labels:  [Gmail]/Starred   or create a label: IBN-Intents
+
+# ── Polling ───────────────────────────────────────────────────────────────────
+poll_interval_s: 30     # check every 30 seconds
+use_idle:        false  # set true if IMAP server supports IDLE (real-time push)
+
+# ── Gateway ───────────────────────────────────────────────────────────────────
+gateway_url: http://localhost:8000
+simulate:    true
+deploy:      false   # set true only after testing in simulation mode
+
+# ── Email filters ─────────────────────────────────────────────────────────────
+# Only accepted senders. Leave empty [] to accept all.
+allowed_senders:
+  - noc@yourdomain.com
+  - netops@yourdomain.com
+  - servicedesk@yourdomain.com
+
+# At least one keyword must appear in subject or body (case-insensitive)
+trigger_keywords:
+  - "network intent"
+  - "block"
+  - "allow access"
+  - "isolate"
+  - "qos"
+  - "urgent network"
+  - "firewall rule"
+  - "vlan"
+  - "failover"
+  - "bandwidth limit"
+  - "IBN:"            # prefix convention: "IBN: block IoT from prod"
+
+# ── State ─────────────────────────────────────────────────────────────────────
+seen_file: /tmp/ibn_seen_emails.json
+max_body_chars: 2000

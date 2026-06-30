@@ -1,0 +1,92 @@
+! Startup-config last modified at Wed May 13 06:13:22 2026 by admin
+! device: campus-access4 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$THnynjWeSQW0rZwr$toWBC6ZUCgkTGzOh483IdqaiNpcohw2iRkQ3UylW/J4HtGGf9D.c3DSHOqpHmlm5Hsi8cZcSIzDR8YMEjtru2/
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-access4
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 1000,1100,1200,1300
+!
+interface Ethernet1
+   description Uplink to dist2
+   switchport trunk allowed vlan 1000,1100,1200,1300
+   switchport mode trunk
+!
+interface Ethernet2
+   description Printer
+   switchport access vlan 1000
+!
+interface Ethernet3
+   description CCTV camera
+   switchport access vlan 1100
+!
+interface Ethernet4
+   description Billing server
+   switchport access vlan 1200
+!
+interface Ethernet5
+   description Management server
+   switchport access vlan 1300
+!
+interface Ethernet510
+!
+interface Management0
+   ip address 10.200.0.44/24
+!
+ip access-list IBN-2B06F793
+   10 deny ip host 10.10.3.7 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-517D55BE
+   10 deny ip 10.10.3.0/24 10.10.0.0/16
+   20 permit ip any any
+!
+ip access-list IBN-6071BA1E
+   10 deny ip host 10.10.3.6 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-76C2FD60
+   10 deny ip host 10.10.3.5 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-83D0249C
+   10 deny ip host 10.10.3.5 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-C518735F
+!
+ip access-list IBN-DF35E789
+   10 deny ip any any
+   20 permit ip any any
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

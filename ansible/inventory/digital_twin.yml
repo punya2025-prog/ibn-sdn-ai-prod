@@ -1,0 +1,104 @@
+# ansible/inventory/digital_twin.yml
+# Arista cEOS Digital Twin — Ansible inventory
+# Used by all IBN playbooks as the fourth deployment method.
+
+all:
+  vars:
+    ansible_user:         admin
+    ansible_password:     admin
+    ansible_network_os:   eos
+    ansible_connection:   network_cli
+    ansible_become:       true
+    ansible_become_method: enable
+    # ODL controller address (for flow verification)
+    odl_host:    172.20.0.100
+    odl_port:    8181
+    odl_user:    admin
+    odl_pass:    admin
+    # Batfish
+    batfish_host: localhost
+    # Gateway
+    gateway_url:  http://localhost:8000
+
+  children:
+    spine:
+      hosts:
+        dc-spine1:
+          ansible_host: 172.20.0.11
+          ibn_node_id:  "openflow:1"
+          role:         spine
+        dc-spine2:
+          ansible_host: 172.20.0.12
+          ibn_node_id:  "openflow:2"
+          role:         spine
+
+    leaf:
+      hosts:
+        dc-leaf1:
+          ansible_host: 172.20.0.21
+          ibn_node_id:  "openflow:3"
+          role:         leaf
+          vlans:        [100, 200, 400, 500]
+        dc-leaf2:
+          ansible_host: 172.20.0.22
+          ibn_node_id:  "openflow:4"
+          role:         leaf
+          vlans:        [300, 600, 700, 800]
+        dc-leaf3:
+          ansible_host: 172.20.0.23
+          ibn_node_id:  "openflow:5"
+          role:         leaf
+          vlans:        [900, 1000, 1100, 1200]
+        dc-leaf4:
+          ansible_host: 172.20.0.24
+          ibn_node_id:  "openflow:6"
+          role:         leaf
+          vlans:        [1300, 400, 600]
+
+    campus_core:
+      hosts:
+        campus-core1:
+          ansible_host: 172.20.0.31
+          ibn_node_id:  "openflow:7"
+          role:         core
+
+    campus_distribution:
+      hosts:
+        campus-dist1:
+          ansible_host: 172.20.0.32
+          ibn_node_id:  "openflow:8"
+          role:         distribution
+        campus-dist2:
+          ansible_host: 172.20.0.33
+          ibn_node_id:  "openflow:9"
+          role:         distribution
+
+    campus_access:
+      hosts:
+        campus-access1:
+          ansible_host: 172.20.0.41
+          ibn_node_id:  "openflow:10"
+          role:         access
+        campus-access2:
+          ansible_host: 172.20.0.42
+          ibn_node_id:  "openflow:11"
+          role:         access
+        campus-access3:
+          ansible_host: 172.20.0.43
+          ibn_node_id:  "openflow:12"
+          role:         access
+        campus-access4:
+          ansible_host: 172.20.0.44
+          ibn_node_id:  "openflow:13"
+          role:         access
+
+    fabric:
+      children:
+        spine:
+        leaf:
+
+    campus:
+      children:
+        campus_core:
+        campus_distribution:
+        campus_access:

@@ -1,0 +1,62 @@
+! Startup-config last modified at Tue May 12 19:12:40 2026 by admin
+! device: campus-dist1 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$VjWHk/tjWYL5xfYg$FfX7WpgcsOPFE./9jbiiZWaDfiDiwdteB4ghsXA55POBhctEhsdHpUTQYYWNI.KZYZABxSCFPoZf2VZe39h.F.
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-dist1
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan-id 100,200,300,400,500,800 priority 4096
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 100,200,300,400,500,800
+!
+interface Ethernet1
+   description To campus-core
+   switchport mode trunk
+!
+interface Ethernet2
+   description To campus-access1
+   switchport trunk allowed vlan 100,200,400
+   switchport mode trunk
+!
+interface Ethernet3
+   description To campus-access2
+   switchport trunk allowed vlan 300,500,800
+   switchport mode trunk
+!
+interface Ethernet510
+!
+interface Management0
+   ip address 10.200.0.32/24
+!
+ip access-list IBN-C518735F
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IBN Operator Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f14;--bg2:#13151c;--bg3:#1a1d26;--bg4:#21242f;
+  --border:#252a38;--border2:#2e3446;
+  --text:#c5cad8;--text2:#6b7489;--text3:#3d4255;
+  --accent:#00d4ff;--green:#10b981;--amber:#f59e0b;
+  --red:#ef4444;--purple:#7c3aed;--blue:#378ADD;--coral:#f97316;
+  --mono:"JetBrains Mono",monospace;--display:"Syne",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--mono);font-size:12px;overflow:hidden}
+
+.shell{display:grid;grid-template-rows:44px 1fr;height:100vh}
+.topbar{display:flex;align-items:center;gap:12px;padding:0 16px;
+        background:var(--bg2);border-bottom:1px solid var(--border);z-index:10}
+.logo{font-family:var(--display);font-size:15px;font-weight:800;color:var(--accent);letter-spacing:.05em}
+.logo span{color:var(--text2)}
+.gw-url{font-size:11px;color:var(--text3);font-family:var(--mono)}
+.gw-url input{background:transparent;border:none;color:var(--text2);font-family:var(--mono);
+              font-size:11px;width:220px;outline:none;padding:2px 4px}
+.gw-url input:focus{color:var(--accent)}
+.top-pills{display:flex;gap:6px;margin-left:auto}
+.pill{display:flex;align-items:center;gap:5px;font-size:10px;padding:3px 9px;
+      border-radius:10px;border:1px solid}
+.pill.online{color:var(--green);background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2)}
+.pill.offline{color:var(--red);background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
+.pill.warn{color:var(--amber);background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2)}
+.dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+.dot.pulse{animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.main{display:grid;grid-template-columns:1fr 1fr 380px;overflow:visible;height:calc(100vh - 44px)}
+
+/* ── Panel base ── */
+.panel{display:flex;flex-direction:column;border-right:1px solid var(--border);overflow:hidden;height:100%}
+.panel:last-child{border-right:none}
+.ph{display:flex;align-items:center;gap:8px;padding:8px 14px;
+    background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0}
+.ph-title{font-size:12px;font-weight:600;color:var(--text);letter-spacing:.04em}
+.ph-badge{margin-left:auto;font-size:10px;padding:2px 7px;border-radius:8px;
+          background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+.ph-btn{font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border2);
+        background:transparent;color:var(--text2);cursor:pointer;font-family:var(--mono);
+        transition:all .15s;margin-left:4px}
+.ph-btn:hover{background:var(--bg3);color:var(--text)}
+.ph-btn.active{background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);color:var(--accent)}
+.pb{flex:1;overflow-y:scroll;padding:0;min-height:0}
+.pb::-webkit-scrollbar{width:8px;display:block}.pb::-webkit-scrollbar-track{background:var(--bg2)}.pb::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;min-height:40px}.pb::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* ── Panel 1: Event generator ── */
+.ev-section{padding:10px 14px;border-bottom:1px solid var(--border)}
+.ev-section-title{font-size:10px;color:var(--text3);letter-spacing:.1em;
+                  text-transform:uppercase;margin-bottom:8px}
+.ev-row{display:flex;gap:6px;margin-bottom:6px;align-items:center}
+.ev-label{font-size:11px;color:var(--text2);min-width:64px}
+.ev-select,.ev-input{flex:1;background:var(--bg3);border:1px solid var(--border2);
+                     border-radius:4px;padding:5px 8px;color:var(--text);font-family:var(--mono);
+                     font-size:11px;outline:none}
+.ev-select:focus,.ev-input:focus{border-color:rgba(0,212,255,.4)}
+.ev-btn{width:100%;padding:7px;border-radius:4px;border:1px solid var(--border2);
+        background:var(--bg3);color:var(--text);font-family:var(--mono);font-size:11px;
+        cursor:pointer;transition:all .15s;text-align:center;font-weight:600}
+.ev-btn:hover{background:var(--bg4);border-color:var(--accent);color:var(--accent)}
+.ev-btn.running{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:var(--red)}
+.ev-btn.primary{background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.3);color:var(--accent)}
+.ev-btn.primary:hover{background:rgba(0,212,255,.15)}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px}
+.sc-btn{padding:6px 8px;border-radius:4px;border:1px solid var(--border2);
+        background:var(--bg3);color:var(--text2);font-family:var(--mono);
+        font-size:10px;cursor:pointer;transition:all .15s;text-align:center}
+.sc-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sc-btn.link_down:hover{border-color:var(--red)}
+.sc-btn.bgp_storm:hover{border-color:var(--amber)}
+.sc-btn.errdisable:hover{border-color:var(--purple)}
+.sc-btn.compliance_breach:hover{border-color:var(--coral)}
+.sc-btn.hardware_fault:hover{border-color:var(--text2)}
+.slider-row{display:flex;gap:8px;align-items:center}
+.slider-row input[type=range]{flex:1;accent-color:var(--accent)}
+.slider-val{font-size:11px;color:var(--accent);min-width:28px;text-align:right}
+
+/* ── Panel 2: NOC event log ── */
+.log-entry{display:flex;align-items:flex-start;gap:8px;padding:5px 14px;
+           border-bottom:1px solid rgba(37,42,56,.5);transition:background .1s}
+.log-entry:hover{background:var(--bg3)}
+.log-entry.new{animation:flash .5s ease-out}
+@keyframes flash{from{background:rgba(0,212,255,.06)}to{background:transparent}}
+.sev-badge{font-size:9px;font-weight:600;padding:2px 5px;border-radius:3px;
+           min-width:36px;text-align:center;flex-shrink:0;margin-top:1px}
+.sev-badge.crit{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.sev-badge.warn{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.2)}
+.sev-badge.info{background:rgba(107,114,137,.1);color:var(--text2);border:1px solid var(--border)}
+.sev-badge.ok{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2)}
+.log-host{color:var(--text2);min-width:78px;flex-shrink:0;font-size:10px;margin-top:1px}
+.log-msg{color:var(--text);flex:1;line-height:1.4;font-size:11px}
+.log-msg .hl{color:var(--red);font-weight:600}
+.log-msg .hl-warn{color:var(--amber)}
+.log-msg .hl-ok{color:var(--green)}
+.log-time{color:var(--text3);font-size:10px;flex-shrink:0;margin-top:1px}
+.log-label{font-size:9px;padding:1px 5px;border-radius:8px;
+           background:var(--bg4);color:var(--text2);border:1px solid var(--border);
+           flex-shrink:0;margin-top:1px}
+
+/* ── Panel 3: AI Chat ── */
+.chat-msgs{flex:1;overflow-y:scroll;padding:10px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.chat-msgs::-webkit-scrollbar{width:8px;display:block}.chat-msgs::-webkit-scrollbar-track{background:var(--bg2)}.chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;min-height:40px}.chat-msgs::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+.msg{display:flex;flex-direction:column;gap:3px;max-width:92%}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start}
+.bubble{padding:8px 12px;border-radius:10px;font-size:11px;line-height:1.55;
+        border:1px solid var(--border)}
+.msg.user .bubble{background:var(--bg3);border-radius:10px 10px 2px 10px}
+.msg.ai .bubble{background:var(--bg2);border-radius:10px 10px 10px 2px}
+.msg-time{font-size:9px;color:var(--text3);padding:0 3px}
+.pred-card{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;
+           padding:8px 12px;margin-top:5px;min-width:220px}
+.pred-item{display:flex;justify-content:space-between;align-items:center;
+           padding:2px 0;border-bottom:1px solid rgba(37,42,56,.5);font-size:10px}
+.pred-item:last-child{border-bottom:none}
+.pred-k{color:var(--text2)}
+.pred-v{font-weight:600;color:var(--text)}
+.pred-v.danger{color:var(--red)}
+.pred-v.warn{color:var(--amber)}
+.pred-v.ok{color:var(--green)}
+.risk-bar{height:4px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
+.risk-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.typing-dots{display:flex;gap:3px;padding:8px 12px}
+.typing-dots span{width:5px;height:5px;border-radius:50%;background:var(--text3);
+                  animation:tb .9s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes tb{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}}
+.quick-row{display:flex;flex-wrap:wrap;gap:4px;padding:6px 10px;
+           border-top:1px solid var(--border);background:var(--bg2)}
+.qbtn{font-size:10px;padding:3px 9px;border-radius:10px;border:1px solid var(--border2);
+      background:transparent;color:var(--text2);cursor:pointer;font-family:var(--mono);
+      transition:all .12s}
+.qbtn:hover{background:var(--bg3);color:var(--text);border-color:var(--accent)}
+.chat-input-row{display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--border);
+                background:var(--bg2)}
+.chat-ta{flex:1;resize:none;background:var(--bg3);border:1px solid var(--border2);
+         border-radius:6px;padding:6px 10px;color:var(--text);font-family:var(--mono);
+         font-size:11px;min-height:32px;max-height:80px;outline:none;line-height:1.4}
+.chat-ta:focus{border-color:rgba(0,212,255,.4)}
+.send-btn{width:32px;height:32px;border-radius:6px;border:1px solid var(--border2);
+          background:var(--bg3);color:var(--text2);cursor:pointer;font-size:14px;
+          display:flex;align-items:center;justify-content:center;flex-shrink:0;
+          transition:all .15s}
+.send-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Approval cards in chat */
+.appr-card{background:var(--bg3);border:1px solid rgba(245,158,11,.3);border-radius:6px;
+           padding:8px 12px;margin-top:5px}
+.appr-title{font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px}
+.appr-score{font-size:10px;color:var(--amber)}
+.appr-btns{display:flex;gap:5px;margin-top:6px}
+.ab{font-size:10px;padding:3px 10px;border-radius:4px;border:1px solid;
+    cursor:pointer;font-family:var(--mono);transition:all .15s}
+.ab.approve{color:var(--green);border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.06)}
+.ab.approve:hover{background:rgba(16,185,129,.15)}
+.ab.reject{color:var(--text2);border-color:var(--border2);background:transparent}
+.ab.reject:hover{color:var(--red);border-color:rgba(239,68,68,.3)}
+
+/* Status bar */
+
+.scroll-ctrl{display:flex;gap:3px;margin-left:4px}
+.scbtn{width:22px;height:22px;border-radius:4px;border:1px solid var(--border2);background:transparent;
+       color:var(--text2);cursor:pointer;font-size:11px;display:flex;align-items:center;
+       justify-content:center;transition:all .15s;line-height:1}
+.scbtn:hover{background:var(--bg3);color:var(--text);border-color:var(--accent)}
+.scroll-indicator{position:absolute;bottom:6px;right:10px;width:20px;height:20px;
+                  border-radius:50%;background:var(--accent);color:var(--bg);
+                  font-size:11px;display:none;align-items:center;justify-content:center;
+                  cursor:pointer;z-index:5;border:none;font-weight:700}
+.scroll-indicator.visible{display:flex}
+.panel-wrap{position:relative;flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.statusbar{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:4px 16px;
+           background:var(--bg2);border-top:1px solid var(--border);font-size:10px;
+           color:var(--text3);flex-shrink:0}
+.sb-item{display:flex;align-items:center;gap:4px}
+.sb-item.ok{color:var(--green)}
+.sb-item.warn{color:var(--amber)}
+.sb-item.danger{color:var(--red)}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="logo">IBN<span>Console</span></div>
+  <div class="gw-url">
+    Gateway: <input type="text" id="gw-input" value="http://192.168.20.15:8000"
+      onchange="GW=this.value;checkGateway()">
+  </div>
+  <div class="top-pills">
+    <div class="pill online" id="gw-pill"><div class="dot pulse"></div><span id="gw-txt">Connecting…</span></div>
+    <div class="pill warn" id="appr-pill"><div class="dot"></div><span id="appr-txt">0 pending</span></div>
+  </div>
+</div>
+
+<!-- Three panels -->
+<div class="main">
+
+  <!-- ── Panel 1: Event Generator ── -->
+  <div class="panel">
+    <div class="ph">
+      <span style="font-size:14px;color:var(--text2)">&#9889;</span>
+      <span class="ph-title">Event generator</span>
+      <button class="ph-btn" id="auto-btn" onclick="toggleAuto()">Auto off</button>
+      <span class="ph-badge" id="gen-count">0 sent</span>
+    </div>
+    <div class="pb">
+
+      <!-- Manual event -->
+      <div class="ev-section">
+        <div class="ev-section-title">Manual event</div>
+        <div class="ev-row">
+          <span class="ev-label">Host</span>
+          <select class="ev-select" id="ev-host">
+            <option>dc-spine1</option><option>dc-spine2</option>
+            <option selected>dc-leaf2</option><option>dc-leaf3</option>
+            <option>dc-leaf4</option><option>campus-core1</option>
+            <option>campus-dist1</option><option>campus-access1</option>
+          </select>
+        </div>
+        <div class="ev-row">
+          <span class="ev-label">Severity</span>
+          <select class="ev-select" id="ev-sev">
+            <option value="crit">CRITICAL</option>
+            <option value="warn" selected>WARNING</option>
+            <option value="info">INFO</option>
+          </select>
+        </div>
+        <div class="ev-row">
+          <span class="ev-label">Type</span>
+          <select class="ev-select" id="ev-type">
+            <option value="interface_down">Interface down</option>
+            <option value="err_disabled">Err-disabled</option>
+            <option value="bgp_down">BGP down</option>
+            <option value="stp_change">STP change</option>
+            <option value="cpu_stress">CPU stress</option>
+            <option value="sec_violation">Security violation</option>
+            <option value="hardware_fault">Hardware fault</option>
+            <option value="lacp_fault">LACP fault</option>
+            <option value="tunnel_fault">Tunnel fault</option>
+          </select>
+        </div>
+        <div class="ev-row">
+          <span class="ev-label">Message</span>
+          <input class="ev-input" id="ev-msg" value="%LINEPROTO-5-UPDOWN: Ethernet1 changed state to down">
+        </div>
+        <button class="ev-btn primary" onclick="sendManualEvent()">&#9654; Send event</button>
+      </div>
+
+      <!-- Scenarios -->
+      <div class="ev-section">
+        <div class="ev-section-title">Fault scenarios</div>
+        <div class="scenario-grid">
+          <button class="sc-btn link_down"         onclick="runScenario('link_down')">&#8600; Link down</button>
+          <button class="sc-btn errdisable"        onclick="runScenario('errdisable')">&#128274; Err-disable</button>
+          <button class="sc-btn bgp_storm"         onclick="runScenario('bgp_storm')">&#9928; BGP storm</button>
+          <button class="sc-btn compliance_breach" onclick="runScenario('compliance_breach')">&#9888; Compliance</button>
+          <button class="sc-btn hardware_fault"    onclick="runScenario('hardware_fault')">&#128421; Hardware</button>
+          <button class="sc-btn"                   onclick="runScenario('custom')">&#8635; Random burst</button>
+        </div>
+        <div style="margin-top:8px">
+          <div class="ev-section-title">Scenario speed</div>
+          <div class="slider-row">
+            <span style="font-size:10px;color:var(--text2)">Slow</span>
+            <input type="range" id="sc-delay" min="500" max="3000" value="1200" step="100">
+            <span style="font-size:10px;color:var(--text2)">Fast</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulation trigger -->
+      <div class="ev-section">
+        <div class="ev-section-title">Simulation trigger</div>
+        <div class="ev-row">
+          <span class="ev-label">Intent</span>
+          <input class="ev-input" id="sim-text" value="block IoT VLAN 300 from corporate">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+          <button class="ev-btn" onclick="triggerSimulate()">&#9654; Simulate</button>
+          <button class="ev-btn primary" onclick="triggerDeploy()">&#9650; Simulate+Deploy</button>
+        </div>
+      </div>
+
+      <!-- Auto random -->
+      <div class="ev-section">
+        <div class="ev-section-title">Auto random events</div>
+        <div class="slider-row">
+          <span style="font-size:10px;color:var(--text2)">Rate</span>
+          <input type="range" id="auto-rate" min="1" max="10" value="2" step="1"
+                 oninput="document.getElementById('rate-val').textContent=this.value+'/s'">
+          <span class="slider-val" id="rate-val">2/s</span>
+        </div>
+        <button class="ev-btn running" id="auto-run-btn" onclick="toggleAuto()" style="margin-top:6px">
+          Start auto-generator
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Panel 2: NOC Log ── -->
+  <div class="panel">
+    <div class="ph">
+      <span style="font-size:14px;color:var(--text2)">&#128202;</span>
+      <span class="ph-title">NOC event log</span>
+      <button class="ph-btn" onclick="clearLog()">Clear</button>
+      <div class="scroll-ctrl">
+        <button class="scbtn" onclick="scrollLog('top')" title="Scroll to top">&#8679;</button>
+        <button class="scbtn" onclick="scrollLog('bottom')" title="Scroll to bottom">&#8681;</button>
+        <button class="scbtn" id="log-pause-btn" onclick="toggleLogPause()" title="Pause auto-scroll">&#9646;&#9646;</button>
+      </div>
+      <button class="ph-btn active" id="filter-btn" onclick="toggleFilter()">All</button>
+      <span class="ph-badge" id="log-badge">0</span>
+    </div>
+    <div class="panel-wrap">
+      <div class="pb" id="log-panel" onscroll="onLogScroll()"></div>
+      <button class="scroll-indicator" id="log-scroll-btn" onclick="scrollLog('bottom')" title="Scroll to bottom">&#8681;</button>
+    </div>
+  </div>
+
+  <!-- ── Panel 3: AI Chat ── -->
+  <div class="panel">
+    <div class="ph">
+      <span style="font-size:14px;color:var(--accent)">&#11088;</span>
+      <span class="ph-title">AI assistant</span>
+      <span class="ph-badge" id="chat-badge">IBN AI</span>
+      <div class="scroll-ctrl">
+        <button class="scbtn" onclick="scrollChat('top')" title="Scroll to top">&#8679;</button>
+        <button class="scbtn" onclick="scrollChat('bottom')" title="Scroll to bottom">&#8681;</button>
+      </div>
+    </div>
+    <div class="chat-msgs" id="chat-msgs">
+      <div class="msg ai">
+        <div class="bubble">
+          IBN AI ready. I can:<br>
+          &#8226; Predict faults from events<br>
+          &#8226; Analyse link-down blast radius<br>
+          &#8226; Submit and simulate intents<br>
+          &#8226; Review pending approvals<br><br>
+          Run a scenario on the left to see live analysis.
+        </div>
+        <div class="msg-time" id="init-time"></div>
+      </div>
+    </div>
+    <div class="quick-row">
+      <button class="qbtn" onclick="chatQuick('predict fault dc-leaf2 stp_change stp_change interface_down bgp_down')">Predict &#8599;</button>
+      <button class="qbtn" onclick="chatQuick('analyse link down dc-leaf2 to dc-spine1')">Link-down &#8599;</button>
+      <button class="qbtn" onclick="chatQuick('show topology summary')">Topology &#8599;</button>
+      <button class="qbtn" onclick="chatQuick('show pending approvals')">Approvals &#8599;</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-ta" id="chat-ta" placeholder="Ask about faults, intents…" rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
+      <button class="send-btn" onclick="sendChat()">&#10148;</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let GW = 'http://192.168.20.15:8000';
+let logStore = [];
+let filterSev = 'all';
+let autoRunning = false;
+let autoTimer = null;
+let genCount = 0;
+let scenarioRunning = false;
+let approvals = [];
+
+const HOSTS = ['dc-spine1','dc-spine2','dc-leaf1','dc-leaf2','dc-leaf3','dc-leaf4',
+               'campus-core1','campus-dist1','campus-dist2','campus-access1',
+               'campus-access2','campus-access3','campus-access4'];
+
+const EVENTS = {
+  crit: [
+    {label:'err_disabled',   msg:'%ETH-4-ERRDISABLE: Interface Ethernet3 disabled due to port-security'},
+    {label:'interface_down', msg:'%LINEPROTO-5-UPDOWN: Ethernet1 changed state to down'},
+    {label:'bgp_down',       msg:'%BGP-5-ADJCHANGE: neighbor 10.0.0.1 Down Hold Timer Expired'},
+    {label:'lacp_fault',     msg:'%LACP-5-BUNDLEDOWN: Port-Channel1 is down — min-links not met'},
+    {label:'hardware_fault', msg:'%FAN-4-FANDOWN: Fan 1 has failed — thermal risk increasing'},
+  ],
+  warn: [
+    {label:'stp_change',    msg:'%STP-6-TOPOLOGY_CHANGE: VLAN 300 topology change notification received'},
+    {label:'cpu_stress',    msg:'%CPUHOG-4: CPU utilization 87% exceeds threshold'},
+    {label:'sec_violation', msg:'%SEC-6-IPACCESSLOGP: list IBN deny tcp 10.10.3.5 -> 10.10.0.1'},
+    {label:'tunnel_fault',  msg:'%TUNNEL-4: VXLAN tunnel 10003 packet drop rate 12%'},
+    {label:'bgp_down',      msg:'%BGP-4-ADJCHANGE: neighbor 10.0.0.3 passive session reset'},
+  ],
+  info: [
+    {label:null, msg:'%BGP-5-ADJCHANGE: neighbor 10.0.0.5 Up'},
+    {label:null, msg:'%LINEPROTO-5-UPDOWN: Ethernet2 changed state to up'},
+    {label:null, msg:'%CONFIG-6-SAVE: Running config saved to flash by admin'},
+    {label:null, msg:'%GNMI-6-SUBSCRIPTION: gNMI subscription from 10.200.0.1 established'},
+  ],
+};
+
+const SCENARIOS = {
+  link_down:[
+    {host:'dc-leaf2',severity:'warn',label:'stp_change',   msg:'%STP-6-TOPOLOGY_CHANGE: VLAN 300 topology change'},
+    {host:'dc-leaf2',severity:'warn',label:'stp_change',   msg:'%STP-6-TOPOLOGY_CHANGE: VLAN 600 topology change'},
+    {host:'dc-leaf2',severity:'crit',label:'interface_down',msg:'%LINEPROTO-5-UPDOWN: Ethernet1 changed state to down'},
+    {host:'dc-spine1',severity:'warn',label:'bgp_down',    msg:'%BGP-5-ADJCHANGE: neighbor 10.0.0.3 Down'},
+    {host:'dc-leaf3',severity:'warn',label:'interface_down',msg:'%LINEPROTO-5-UPDOWN: Ethernet1 changed state to down'},
+  ],
+  errdisable:[
+    {host:'dc-leaf2',severity:'warn',label:'sec_violation',msg:'%SEC-6-IPACCESSLOGP: deny tcp 10.10.3.5 -> 10.10.0.1'},
+    {host:'dc-leaf2',severity:'warn',label:'sec_violation',msg:'%SEC-6-IPACCESSLOGP: deny tcp 10.10.3.6 -> 10.10.0.1'},
+    {host:'dc-leaf2',severity:'warn',label:'sec_violation',msg:'%SEC-6-IPACCESSLOGP: deny tcp 10.10.3.7 -> 10.10.0.1'},
+    {host:'dc-leaf2',severity:'crit',label:'err_disabled', msg:'%ETH-4-ERRDISABLE: Ethernet3 disabled due to port-security'},
+  ],
+  bgp_storm:[
+    {host:'dc-spine1',severity:'warn',label:'cpu_stress',   msg:'%CPUHOG-4: CPU utilization 87%'},
+    {host:'dc-spine1',severity:'warn',label:'cpu_stress',   msg:'%CPUHOG-4: CPU utilization 91%'},
+    {host:'dc-spine1',severity:'crit',label:'bgp_down',     msg:'%BGP-5-ADJCHANGE: neighbor 10.0.0.1 Down Hold Timer Expired'},
+    {host:'dc-spine1',severity:'crit',label:'bgp_down',     msg:'%BGP-5-ADJCHANGE: neighbor 10.0.0.3 Down Hold Timer Expired'},
+    {host:'dc-leaf1', severity:'crit',label:'interface_down',msg:'%LINEPROTO-5-UPDOWN: Vlan100 changed state to down'},
+  ],
+  compliance_breach:[
+    {host:'campus-access4',severity:'warn',label:'sec_violation',msg:'%SEC-6-IPACCESSLOGP: deny tcp 10.10.12.5 -> 10.10.5.1 (billing->dev)'},
+    {host:'campus-access4',severity:'warn',label:'sec_violation',msg:'%SEC-6-IPACCESSLOGP: deny tcp 10.10.5.3 -> 10.10.12.1 (dev->billing)'},
+    {host:'campus-dist2',  severity:'warn',label:'stp_change',   msg:'%STP-6-TOPOLOGY_CHANGE: VLAN 1200 topology change (PCI zone)'},
+  ],
+  hardware_fault:[
+    {host:'dc-leaf3',severity:'warn',label:'hardware_fault',msg:'%FAN-4-FANDOWN: Fan 1 has failed — thermal risk'},
+    {host:'dc-leaf3',severity:'warn',label:'cpu_stress',    msg:'%CPUHOG-4: CPU utilization 78% due to thermal throttle'},
+    {host:'dc-leaf3',severity:'crit',label:'interface_down',msg:'%LINEPROTO-5-UPDOWN: Ethernet1 changed state to down'},
+    {host:'dc-leaf3',severity:'crit',label:'interface_down',msg:'%LINEPROTO-5-UPDOWN: Ethernet2 changed state to down'},
+  ],
+};
+
+function nowStr(){
+  const d=new Date();
+  return [d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>n.toString().padStart(2,'0')).join(':');
+}
+document.getElementById('init-time').textContent = nowStr();
+
+function sevClass(s){
+  s=(s||'').toLowerCase();
+  if(s==='crit'||s==='critical'||s==='2'||s===2||s==='3'||s===3) return 'crit';
+  if(s==='warn'||s==='warning'||s==='4'||s===4) return 'warn';
+  if(s==='ok'||s==='pass') return 'ok';
+  return 'info';
+}
+
+function highlight(msg){
+  return msg
+    .replace(/(ERRDISABLE|err-disable|DOWN|failed|Expired)/gi,'<span class="hl">$1</span>')
+    .replace(/(TOPOLOGY_CHANGE|WARNING|CPUHOG|deny)/gi,'<span class="hl-warn">$1</span>')
+    .replace(/(Up|saved|established)/gi,'<span class="hl-ok">$1</span>');
+}
+
+function addLog(entry){
+  entry.time = nowStr();
+  logStore.unshift(entry);
+  document.getElementById('log-badge').textContent = logStore.length;
+  renderLog();
+}
+
+function renderLog(){
+  const panel = document.getElementById('log-panel');
+  const wasAtBottom=panel.scrollHeight-panel.scrollTop-panel.clientHeight<60;
+  const items = filterSev==='all' ? logStore : logStore.filter(e=>sevClass(e.severity)===filterSev);
+  const prevScroll=panel.scrollTop;
+  panel.innerHTML = items.slice(0,200).map((e,i)=>`
+    <div class="log-entry${i===0&&filterSev==='all'?' new':''}">
+      <span class="sev-badge ${sevClass(e.severity)}">${(e.severity||'info').toUpperCase().slice(0,4)}</span>
+      <span class="log-host">${(e.host||'?').slice(0,12)}</span>
+      <span class="log-msg">${highlight((e.msg||'').slice(0,80))}</span>
+      ${e.label?`<span class="log-label">${e.label}</span>`:''}
+      <span class="log-time">${e.time||''}</span>
+    </div>`).join('') || '<div style="padding:20px;text-align:center;color:var(--text3)">No events yet — run a scenario</div>';
+  if(!logPaused && wasAtBottom) panel.scrollTop=panel.scrollHeight;
+  else if(logPaused) panel.scrollTop=prevScroll;
+  onLogScroll();
+}
+
+function clearLog(){ logStore=[]; renderLog(); document.getElementById('log-badge').textContent=0; }
+
+function toggleFilter(){
+  const order=['all','crit','warn','info','ok'];
+  const idx=order.indexOf(filterSev);
+  filterSev=order[(idx+1)%order.length];
+  document.getElementById('filter-btn').textContent=filterSev.charAt(0).toUpperCase()+filterSev.slice(1);
+  renderLog();
+}
+
+async function postEvent(payload){
+  try{
+    const r=await fetch(`${GW}/api/pipeline/event`,{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    return r.ok ? await r.json() : null;
+  }catch(e){ return null; }
+}
+
+async function sendManualEvent(){
+  const host=document.getElementById('ev-host').value;
+  const sev =document.getElementById('ev-sev').value;
+  const type=document.getElementById('ev-type').value;
+  const msg =document.getElementById('ev-msg').value;
+  const entry={host,severity:sev,label:type,msg,type:'syslog'};
+  addLog(entry);
+  genCount++;
+  document.getElementById('gen-count').textContent=genCount+' sent';
+  const result=await postEvent(entry);
+  if(result&&result.decision){
+    addChatMsg('ai',`Event sent to pipeline.<br><b>Decision:</b> ${result.decision} <b>Score:</b> ${result.score?.final_score?.toFixed?.(2)||'?'}`);
+  }
+}
+
+async function runScenario(name){
+  if(scenarioRunning) return;
+  let events=SCENARIOS[name];
+  if(!events){
+    events=Array.from({length:5},()=>{
+      const sev=Math.random()<0.3?'crit':Math.random()<0.5?'warn':'info';
+      const pool=EVENTS[sev];
+      const e=pool[Math.floor(Math.random()*pool.length)];
+      return {host:HOSTS[Math.floor(Math.random()*HOSTS.length)],severity:sev,...e};
+    });
+  }
+  scenarioRunning=true;
+  const delay=4000-parseInt(document.getElementById('sc-delay').value);
+  addChatMsg('ai',`Running scenario: <b>${name}</b> (${events.length} events)`);
+  for(const ev of events){
+    addLog(ev);
+    genCount++;
+    document.getElementById('gen-count').textContent=genCount+' sent';
+    await postEvent({...ev,type:'syslog'});
+    await new Promise(r=>setTimeout(r,delay));
+  }
+  scenarioRunning=false;
+  const predEvents=events.map(e=>({label:e.label||'unknown',severity:{crit:2,warn:4,info:6}[e.severity]||4}));
+  const host=events[events.length-1].host;
+  await runPrediction(host,predEvents);
+}
+
+async function runPrediction(host,events){
+  try{
+    const r=await fetch(`${GW}/api/predict`,{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({host,events})});
+    const d=await r.json();
+    const prob=d.fault_probability||0;
+    const pct=Math.round(prob*100);
+    const pc=prob>=0.7?'danger':prob>=0.4?'warn':'ok';
+    const rca=d.rca||{};
+    addChatMsg('ai',`<b>ML prediction for ${host}</b>
+      <div class="pred-card">
+        <div class="pred-item"><span class="pred-k">Probability</span><span class="pred-v ${pc}">${pct}%</span></div>
+        <div class="pred-item"><span class="pred-k">Predicted fault</span><span class="pred-v">${d.predicted_fault||'none'}</span></div>
+        <div class="pred-item"><span class="pred-k">Method</span><span class="pred-v">${d.method||'?'}</span></div>
+        ${rca.cause?`<div class="pred-item"><span class="pred-k">Root cause</span><span class="pred-v">${rca.cause}</span></div>`:''}
+        <div class="risk-bar"><div class="risk-fill" style="width:${pct}%;background:${prob>=0.7?'var(--red)':prob>=0.4?'var(--amber)':'var(--green)'}"></div></div>
+      </div>`);
+  }catch(e){
+    addChatMsg('ai','Prediction failed — gateway may be offline. Check localhost:8000');
+  }
+}
+
+async function triggerSimulate(){
+  const text=document.getElementById('sim-text').value.trim();
+  if(!text) return;
+  addChatMsg('user',text);
+  addChatTyping();
+  try{
+    const r=await fetch(`${GW}/api/channel/0/prompt`,{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text,simulate:true,deploy:false})});
+    const d=await r.json();
+    removeChatTyping();
+    const i=d.intent||{};
+    const s=d.simulation||{};
+    const vc=s.verdict==='PASS'?'ok':s.verdict==='FAIL'?'danger':'warn';
+    addChatMsg('ai',`<b>Intent simulated</b>
+      <div class="pred-card">
+        <div class="pred-item"><span class="pred-k">Category</span><span class="pred-v">${i.category||'?'}</span></div>
+        <div class="pred-item"><span class="pred-k">Action</span><span class="pred-v">${i.action||'?'}</span></div>
+        <div class="pred-item"><span class="pred-k">Priority</span><span class="pred-v">${i.priority||'?'}</span></div>
+        <div class="pred-item"><span class="pred-k">Simulation</span><span class="pred-v ${vc}">${s.verdict||'?'}</span></div>
+        <div class="pred-item"><span class="pred-k">Status</span><span class="pred-v">${d.status||'?'}</span></div>
+      </div>
+      ${s.verdict==='PASS'?`<div style="margin-top:6px;font-size:10px;color:var(--green)">&#10003; Ready to deploy — use Simulate+Deploy or the eAPI endpoint.</div>`:''}`);
+  }catch(e){
+    removeChatTyping();
+    addChatMsg('ai','Gateway unreachable. Start with: <code>python3.12 main.py</code>');
+  }
+}
+
+async function triggerDeploy(){
+  const text=document.getElementById('sim-text').value.trim();
+  if(!text) return;
+  addChatMsg('user','Simulate + deploy: '+text);
+  addChatTyping();
+  try{
+    const r1=await fetch(`${GW}/api/channel/0/prompt`,{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text,simulate:true,deploy:false})});
+    const d1=await r1.json();
+    if((d1.simulation||{}).verdict!=='PASS'){
+      removeChatTyping();
+      addChatMsg('ai','Simulation did not PASS — deployment blocked.');
+      return;
+    }
+    const r2=await fetch(`${GW}/api/eapi/deploy/${d1.intent_id}`,{method:'POST'});
+    const d2=await r2.json();
+    removeChatTyping();
+    addChatMsg('ai',`<b>Deployed via eAPI</b>
+      <div class="pred-card">
+        <div class="pred-item"><span class="pred-k">Switches</span><span class="pred-v ok">${d2.flows_pushed||0} updated</span></div>
+        <div class="pred-item"><span class="pred-k">Status</span><span class="pred-v ok">${d2.status||'?'}</span></div>
+        <div class="pred-item"><span class="pred-k">Method</span><span class="pred-v">${d2.method||'?'}</span></div>
+      </div>`);
+    addLog({host:'NOC',severity:'ok',msg:`Deployed: ${text.slice(0,60)}`,label:'deployed'});
+  }catch(e){
+    removeChatTyping();
+    addChatMsg('ai','Deploy failed: '+e.message);
+  }
+}
+
+function toggleAuto(){
+  autoRunning=!autoRunning;
+  const btn=document.getElementById('auto-run-btn');
+  const hdr=document.getElementById('auto-btn');
+  if(autoRunning){
+    btn.textContent='&#9646;&#9646; Stop auto-generator';
+    hdr.textContent='Auto ON'; hdr.className='ph-btn active';
+    runAutoLoop();
+  } else {
+    btn.textContent='Start auto-generator';
+    hdr.textContent='Auto off'; hdr.className='ph-btn';
+    if(autoTimer) clearTimeout(autoTimer);
+  }
+}
+
+async function runAutoLoop(){
+  if(!autoRunning) return;
+  const rate=parseInt(document.getElementById('auto-rate').value)||2;
+  const sev=Math.random()<0.15?'crit':Math.random()<0.4?'warn':'info';
+  const pool=EVENTS[sev];
+  const e=pool[Math.floor(Math.random()*pool.length)];
+  const host=HOSTS[Math.floor(Math.random()*HOSTS.length)];
+  const entry={host,severity:sev,...e};
+  addLog(entry);
+  genCount++;
+  document.getElementById('gen-count').textContent=genCount+' sent';
+  await postEvent({...entry,type:'syslog'});
+  if(autoRunning) autoTimer=setTimeout(runAutoLoop,1000/rate);
+}
+
+async function checkGateway(){
+  GW=document.getElementById('gw-input').value;
+  try{
+    const r=await fetch(`${GW}/health`,{signal:AbortSignal.timeout(3000)});
+    if(r.ok){
+      const pill=document.getElementById('gw-pill');
+      pill.className='pill online';
+      document.getElementById('gw-txt').textContent='Gateway online';
+      fetchApprovals();
+    }
+  }catch(e){
+    const pill=document.getElementById('gw-pill');
+    pill.className='pill offline';
+    document.getElementById('gw-txt').textContent='Gateway offline';
+  }
+}
+
+async function fetchApprovals(){
+  try{
+    const r=await fetch(`${GW}/api/pipeline/approvals`);
+    const d=await r.json();
+    approvals=d.items||[];
+    const cnt=approvals.length;
+    const pill=document.getElementById('appr-pill');
+    pill.className=cnt>0?'pill warn':'pill online';
+    document.getElementById('appr-txt').textContent=cnt>0?`${cnt} pending approval${cnt>1?'s':''}`:'No approvals';
+  }catch(e){}
+}
+
+function addChatMsg(role,html){
+  const msgs=document.getElementById('chat-msgs');
+  const div=document.createElement('div');
+  div.className='msg '+role;
+  div.innerHTML=`<div class="bubble">${html}</div><div class="msg-time">${nowStr()}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addChatTyping(){
+  const msgs=document.getElementById('chat-msgs');
+  const div=document.createElement('div');
+  div.className='msg ai';div.id='typing';
+  div.innerHTML='<div class="bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function removeChatTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+
+async function sendChat(){
+  
+let logPaused = false;
+
+function scrollLog(dir){
+  const p=document.getElementById('log-panel');
+  if(dir==='top') p.scrollTop=0;
+  else p.scrollTop=p.scrollHeight;
+}
+function scrollChat(dir){
+  const p=document.getElementById('chat-msgs');
+  if(dir==='top') p.scrollTop=0;
+  else p.scrollTop=p.scrollHeight;
+}
+function toggleLogPause(){
+  logPaused=!logPaused;
+  const btn=document.getElementById('log-pause-btn');
+  btn.innerHTML=logPaused?'&#9654;':'&#9646;&#9646;';
+  btn.title=logPaused?'Resume auto-scroll':'Pause auto-scroll';
+  btn.style.color=logPaused?'var(--amber)':'var(--text2)';
+}
+function onLogScroll(){
+  const p=document.getElementById('log-panel');
+  const ind=document.getElementById('log-scroll-btn');
+  const atBottom=p.scrollHeight-p.scrollTop-p.clientHeight<40;
+  ind.classList.toggle('visible',!atBottom&&logStore.length>10);
+}
+
+const ta=document.getElementById('chat-ta');
+  const text=ta.value.trim();
+  if(!text) return;
+  ta.value='';ta.style.height='auto';
+  addChatMsg('user',text.replace(/</g,'&lt;'));
+  await processChatMessage(text);
+}
+
+function chatQuick(text){addChatMsg('user',text.replace(/</g,'&lt;'));processChatMessage(text);}
+
+async function processChatMessage(text){
+  const t=text.toLowerCase();
+  addChatTyping();
+  try{
+    if(t.includes('predict')||t.includes('fault')||t.includes('stp')||t.includes('interface_down')){
+      const words=text.match(/\b(stp_change|interface_down|bgp_down|cpu_stress|sec_violation|err_disabled|lacp_fault)\b/gi)||[];
+      const host=text.match(/dc-[\w-]+|leaf\d|spine\d/i)?.[0]||'dc-leaf2';
+      const events=words.length>0
+        ?words.map(l=>({label:l.toLowerCase(),severity:l.includes('bgp')||l.includes('err')?2:4}))
+        :[{label:'stp_change',severity:4},{label:'interface_down',severity:3},{label:'bgp_down',severity:2}];
+      removeChatTyping();
+      await runPrediction(host,events);
+    }
+    else if(t.includes('link')&&(t.includes('down')||t.includes('anal'))){
+      const src=text.match(/dc-[\w-]+|leaf\d|spine\d/i)?.[0]||'dc-leaf2';
+      const peer=text.match(/(dc-[\w-]+|leaf\d|spine\d)/gi)?.[1]||'dc-spine1';
+      const r=await fetch(`${GW}/api/pipeline/analyse/link-down`,{method:'POST',
+        headers:{'Content-Type':'application/json'},body:JSON.stringify({source:src,peer:peer,interface:'Ethernet1'})});
+      const d=await r.json();
+      const ta=d.topology_analysis||{};
+      const ll=d.llm_analysis||{};
+      removeChatTyping();
+      addChatMsg('ai',`<b>Link-down analysis: ${src} &#8596; ${peer}</b>
+        <div class="pred-card">
+          <div class="pred-item"><span class="pred-k">Severity</span><span class="pred-v ${ta.impact_severity==='critical'||ta.impact_severity==='high'?'danger':'warn'}">${ta.impact_severity||'?'}</span></div>
+          <div class="pred-item"><span class="pred-k">VLANs affected</span><span class="pred-v">${(ta.affected_vlans||[]).slice(0,5).join(', ')||'none'}</span></div>
+          <div class="pred-item"><span class="pred-k">Zones</span><span class="pred-v">${(ta.affected_zones||[]).join(', ')||'?'}</span></div>
+          <div class="pred-item"><span class="pred-k">Redundancy</span><span class="pred-v ${ta.has_redundancy?'ok':'danger'}">${ta.has_redundancy?'Available':'None'}</span></div>
+          <div class="pred-item"><span class="pred-k">Root cause</span><span class="pred-v">${ll.root_cause||'analysing…'}</span></div>
+        </div>
+        ${(ta.remediation_steps||[]).length?`<div style="margin-top:5px;font-size:10px;color:var(--text2)">${ta.remediation_steps[0]}</div>`:''}`);
+    }
+    else if(t.includes('topology')||t.includes('nodes')){
+      const r=await fetch(`${GW}/api/pipeline/topology/summary`);
+      const d=await r.json();
+      removeChatTyping();
+      addChatMsg('ai',`<b>Topology summary</b>
+        <div class="pred-card">
+          <div class="pred-item"><span class="pred-k">Nodes</span><span class="pred-v">${d.nodes}</span></div>
+          <div class="pred-item"><span class="pred-k">Links</span><span class="pred-v">${d.edges}</span></div>
+          <div class="pred-item"><span class="pred-k">Connected</span><span class="pred-v ${d.is_connected?'ok':'danger'}">${d.is_connected?'Yes':'No'}</span></div>
+          <div class="pred-item"><span class="pred-k">Links down</span><span class="pred-v ${(d.links_down||[]).length>0?'danger':'ok'}">${(d.links_down||[]).length}</span></div>
+        </div>`);
+    }
+    else if(t.includes('approv')||t.includes('pending')){
+      await fetchApprovals();
+      removeChatTyping();
+      if(!approvals.length){
+        addChatMsg('ai','No pending approvals at this time.');
+      } else {
+        approvals.forEach(a=>{
+          addChatMsg('ai',`<div class="appr-card">
+            <div class="appr-title">${a.intent_summary||a.intent_id}</div>
+            <div class="appr-score">Score: ${a.score?a.score.toFixed(2):'?'} &nbsp;&#8212;&nbsp; ${(a.breakdown||{}).reason||''}</div>
+            <div class="appr-btns">
+              <button class="ab approve" onclick="doApprove('${a.intent_id}')">&#10003; Approve</button>
+              <button class="ab reject"  onclick="doReject('${a.intent_id}')">&#215; Reject</button>
+            </div>
+          </div>`);
+        });
+      }
+    }
+    else{
+      const r=await fetch(`${GW}/api/channel/0/prompt`,{method:'POST',
+        headers:{'Content-Type':'application/json'},body:JSON.stringify({text,simulate:true})});
+      const d=await r.json();
+      const i=d.intent||{};
+      const s=d.simulation||{};
+      const vc=s.verdict==='PASS'?'ok':s.verdict==='FAIL'?'danger':'warn';
+      removeChatTyping();
+      addChatMsg('ai',`<b>Intent: ${i.category||'?'} / ${i.action||'?'}</b>
+        <div class="pred-card">
+          <div class="pred-item"><span class="pred-k">Priority</span><span class="pred-v">${i.priority}</span></div>
+          <div class="pred-item"><span class="pred-k">Simulation</span><span class="pred-v ${vc}">${s.verdict||'?'}</span></div>
+          <div class="pred-item"><span class="pred-k">Status</span><span class="pred-v">${d.status}</span></div>
+        </div>`);
+    }
+  }catch(e){
+    removeChatTyping();
+    addChatMsg('ai','Gateway error: '+e.message+'<br><code style="font-size:10px">cd ~/ibn-sdn-ai && python3.12 main.py</code>');
+  }
+}
+
+async function doApprove(id){
+  try{
+    await fetch(`${GW}/api/pipeline/approvals/${id}/approve`,{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({operator:'noc-operator',method:'eapi'})});
+    addLog({host:'NOC',severity:'ok',msg:`Intent ${id.slice(0,12)}… approved and deployed`,label:'approved'});
+    addChatMsg('ai',`Intent <code>${id.slice(0,12)}…</code> approved and deployed via eAPI.`);
+    fetchApprovals();
+  }catch(e){}
+}
+async function doReject(id){
+  try{
+    await fetch(`${GW}/api/pipeline/approvals/${id}/reject`,{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({reason:'Rejected by NOC operator'})});
+    addLog({host:'NOC',severity:'warn',msg:`Intent ${id.slice(0,12)}… rejected by operator`,label:'rejected'});
+    addChatMsg('ai',`Intent rejected.`);
+    fetchApprovals();
+  }catch(e){}
+}
+
+
+let logPaused = false;
+
+function scrollLog(dir){
+  const p=document.getElementById('log-panel');
+  if(dir==='top') p.scrollTop=0;
+  else p.scrollTop=p.scrollHeight;
+}
+function scrollChat(dir){
+  const p=document.getElementById('chat-msgs');
+  if(dir==='top') p.scrollTop=0;
+  else p.scrollTop=p.scrollHeight;
+}
+function toggleLogPause(){
+  logPaused=!logPaused;
+  const btn=document.getElementById('log-pause-btn');
+  btn.innerHTML=logPaused?'&#9654;':'&#9646;&#9646;';
+  btn.title=logPaused?'Resume auto-scroll':'Pause auto-scroll';
+  btn.style.color=logPaused?'var(--amber)':'var(--text2)';
+}
+function onLogScroll(){
+  const p=document.getElementById('log-panel');
+  const ind=document.getElementById('log-scroll-btn');
+  const atBottom=p.scrollHeight-p.scrollTop-p.clientHeight<40;
+  ind.classList.toggle('visible',!atBottom&&logStore.length>10);
+}
+
+const ta=document.getElementById('chat-ta');
+ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,80)+'px'});
+
+checkGateway();
+setInterval(checkGateway,20000);
+setInterval(fetchApprovals,15000);
+</script>
+</body>
+</html>

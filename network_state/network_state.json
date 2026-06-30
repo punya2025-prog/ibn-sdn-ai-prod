@@ -1,0 +1,5680 @@
+{
+  "generated": "2026-05-13T09:07:59.990593",
+  "source": "netbox_seed.py (offline mode)",
+  "switch_list": [
+    {
+      "hostname": "dc-spine1",
+      "mgmt_ip": "10.201.0.11",
+      "role": "spine",
+      "vlans": []
+    },
+    {
+      "hostname": "dc-spine2",
+      "mgmt_ip": "10.201.0.12",
+      "role": "spine",
+      "vlans": []
+    },
+    {
+      "hostname": "dc-leaf1",
+      "mgmt_ip": "10.201.0.21",
+      "role": "leaf",
+      "vlans": [
+        100,
+        200,
+        400,
+        500
+      ]
+    },
+    {
+      "hostname": "dc-leaf2",
+      "mgmt_ip": "10.201.0.22",
+      "role": "leaf",
+      "vlans": [
+        300,
+        600,
+        700,
+        800
+      ]
+    },
+    {
+      "hostname": "dc-leaf3",
+      "mgmt_ip": "10.201.0.23",
+      "role": "leaf",
+      "vlans": [
+        800,
+        900,
+        1100,
+        1200
+      ]
+    },
+    {
+      "hostname": "dc-leaf4",
+      "mgmt_ip": "10.201.0.24",
+      "role": "leaf",
+      "vlans": [
+        400,
+        600,
+        1300
+      ]
+    },
+    {
+      "hostname": "campus-core1",
+      "mgmt_ip": "10.201.0.31",
+      "role": "core",
+      "vlans": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900
+      ]
+    },
+    {
+      "hostname": "campus-dist1",
+      "mgmt_ip": "10.201.0.32",
+      "role": "distribution",
+      "vlans": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        800,
+        1800,
+        1900
+      ]
+    },
+    {
+      "hostname": "campus-dist2",
+      "mgmt_ip": "10.201.0.33",
+      "role": "distribution",
+      "vlans": [
+        600,
+        700,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700
+      ]
+    },
+    {
+      "hostname": "campus-access1",
+      "mgmt_ip": "10.201.0.41",
+      "role": "access",
+      "vlans": [
+        100,
+        200,
+        800,
+        1000,
+        1100,
+        1800,
+        1900,
+        400
+      ]
+    },
+    {
+      "hostname": "campus-access2",
+      "mgmt_ip": "10.201.0.42",
+      "role": "access",
+      "vlans": [
+        300,
+        500,
+        800,
+        1100,
+        1800
+      ]
+    },
+    {
+      "hostname": "campus-access3",
+      "mgmt_ip": "10.201.0.43",
+      "role": "access",
+      "vlans": [
+        600,
+        700,
+        900,
+        1100,
+        1800,
+        800
+      ]
+    },
+    {
+      "hostname": "campus-access4",
+      "mgmt_ip": "10.201.0.44",
+      "role": "access",
+      "vlans": [
+        1200,
+        1400,
+        1500,
+        1600,
+        1700,
+        1300,
+        1100,
+        1800
+      ]
+    }
+  ],
+  "arp_table": [
+    {
+      "ip": "10.10.1.1",
+      "mac": "00:0c:29:39:0c:8c",
+      "hostname": "fin-ws-access1-01",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet1",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.2",
+      "mac": "00:0c:29:7d:72:47",
+      "hostname": "fin-ws-access1-02",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet2",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.3",
+      "mac": "00:0c:29:34:2c:d8",
+      "hostname": "fin-ws-access1-03",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet3",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.4",
+      "mac": "00:0c:29:10:0f:2f",
+      "hostname": "fin-ws-access1-04",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet4",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.5",
+      "mac": "00:0c:29:6f:77:0d",
+      "hostname": "fin-ws-access1-05",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet5",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.6",
+      "mac": "00:0c:29:65:d6:70",
+      "hostname": "fin-ws-access1-06",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet6",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.7",
+      "mac": "00:0c:29:e5:8e:03",
+      "hostname": "fin-ws-access1-07",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet7",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.8",
+      "mac": "00:0c:29:51:d8:ae",
+      "hostname": "fin-ws-access1-08",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet8",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.9",
+      "mac": "00:0c:29:8e:4f:6e",
+      "hostname": "fin-ws-access1-09",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet9",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.10",
+      "mac": "00:0c:29:ac:34:2f",
+      "hostname": "fin-ws-access1-10",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet10",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.11",
+      "mac": "00:0c:29:c2:31:b7",
+      "hostname": "fin-ws-access1-11",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet11",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.1.12",
+      "mac": "00:0c:29:b0:87:16",
+      "hostname": "fin-ws-access1-12",
+      "vlan": 100,
+      "switch": "campus-access1",
+      "port": "Ethernet12",
+      "zone": "finance",
+      "label": "Finance-WS"
+    },
+    {
+      "ip": "10.10.2.1",
+      "mac": "00:0c:29:eb:3f:c1",
+      "hostname": "hr-ws-access1-01",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet13",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.2",
+      "mac": "00:0c:29:28:96:b9",
+      "hostname": "hr-ws-access1-02",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet14",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.3",
+      "mac": "00:0c:29:62:23:17",
+      "hostname": "hr-ws-access1-03",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet15",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.4",
+      "mac": "00:0c:29:74:94:28",
+      "hostname": "hr-ws-access1-04",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet16",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.5",
+      "mac": "00:0c:29:77:33:c2",
+      "hostname": "hr-ws-access1-05",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet17",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.6",
+      "mac": "00:0c:29:8e:e8:ba",
+      "hostname": "hr-ws-access1-06",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet18",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.7",
+      "mac": "00:0c:29:53:bd:b5",
+      "hostname": "hr-ws-access1-07",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet19",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.2.8",
+      "mac": "00:0c:29:6b:88:24",
+      "hostname": "hr-ws-access1-08",
+      "vlan": 200,
+      "switch": "campus-access1",
+      "port": "Ethernet20",
+      "zone": "hr",
+      "label": "HR-WS"
+    },
+    {
+      "ip": "10.10.18.1",
+      "mac": "00:18:0a:57:7d:53",
+      "hostname": "wifi-ap-corp-access1-01",
+      "vlan": 1800,
+      "switch": "campus-access1",
+      "port": "Ethernet21",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.2",
+      "mac": "00:18:0a:ec:c2:8a",
+      "hostname": "wifi-ap-corp-access1-02",
+      "vlan": 1800,
+      "switch": "campus-access1",
+      "port": "Ethernet22",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.3",
+      "mac": "00:18:0a:70:a6:1c",
+      "hostname": "wifi-ap-corp-access1-03",
+      "vlan": 1800,
+      "switch": "campus-access1",
+      "port": "Ethernet23",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.4",
+      "mac": "00:18:0a:75:10:a1",
+      "hostname": "wifi-ap-corp-access1-04",
+      "vlan": 1800,
+      "switch": "campus-access1",
+      "port": "Ethernet24",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.19.1",
+      "mac": "00:18:0a:cd:89:21",
+      "hostname": "wifi-ap-guest-access1-01",
+      "vlan": 1900,
+      "switch": "campus-access1",
+      "port": "Ethernet25",
+      "zone": "wifi-guest",
+      "label": "WiFi-AP-Guest"
+    },
+    {
+      "ip": "10.10.19.2",
+      "mac": "00:18:0a:6c:a1:6c",
+      "hostname": "wifi-ap-guest-access1-02",
+      "vlan": 1900,
+      "switch": "campus-access1",
+      "port": "Ethernet26",
+      "zone": "wifi-guest",
+      "label": "WiFi-AP-Guest"
+    },
+    {
+      "ip": "10.10.19.3",
+      "mac": "00:18:0a:ff:ca:ea",
+      "hostname": "wifi-ap-guest-access1-03",
+      "vlan": 1900,
+      "switch": "campus-access1",
+      "port": "Ethernet27",
+      "zone": "wifi-guest",
+      "label": "WiFi-AP-Guest"
+    },
+    {
+      "ip": "10.10.19.4",
+      "mac": "00:18:0a:49:87:47",
+      "hostname": "wifi-ap-guest-access1-04",
+      "vlan": 1900,
+      "switch": "campus-access1",
+      "port": "Ethernet28",
+      "zone": "wifi-guest",
+      "label": "WiFi-AP-Guest"
+    },
+    {
+      "ip": "10.10.8.1",
+      "mac": "00:0e:08:7e:86:db",
+      "hostname": "ip-phone-access1-01",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet29",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.2",
+      "mac": "00:0e:08:cc:b9:70",
+      "hostname": "ip-phone-access1-02",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet30",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.3",
+      "mac": "00:0e:08:46:fc:2e",
+      "hostname": "ip-phone-access1-03",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet31",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.4",
+      "mac": "00:0e:08:18:38:4e",
+      "hostname": "ip-phone-access1-04",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet32",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.5",
+      "mac": "00:0e:08:51:d8:20",
+      "hostname": "ip-phone-access1-05",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet33",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.6",
+      "mac": "00:0e:08:c5:c3:ef",
+      "hostname": "ip-phone-access1-06",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet34",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.7",
+      "mac": "00:0e:08:80:05:3a",
+      "hostname": "ip-phone-access1-07",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet35",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.8",
+      "mac": "00:0e:08:88:ae:39",
+      "hostname": "ip-phone-access1-08",
+      "vlan": 800,
+      "switch": "campus-access1",
+      "port": "Ethernet36",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.11.1",
+      "mac": "00:12:f2:96:de:50",
+      "hostname": "cctv-cam-access1-01",
+      "vlan": 1100,
+      "switch": "campus-access1",
+      "port": "Ethernet37",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.2",
+      "mac": "00:12:f2:e8:01:86",
+      "hostname": "cctv-cam-access1-02",
+      "vlan": 1100,
+      "switch": "campus-access1",
+      "port": "Ethernet38",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.3",
+      "mac": "00:12:f2:5b:36:98",
+      "hostname": "cctv-cam-access1-03",
+      "vlan": 1100,
+      "switch": "campus-access1",
+      "port": "Ethernet39",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.4",
+      "mac": "00:12:f2:65:4e:bf",
+      "hostname": "cctv-cam-access1-04",
+      "vlan": 1100,
+      "switch": "campus-access1",
+      "port": "Ethernet40",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.10.1",
+      "mac": "00:00:85:52:00:a5",
+      "hostname": "printer-access1-01",
+      "vlan": 1000,
+      "switch": "campus-access1",
+      "port": "Ethernet41",
+      "zone": "print",
+      "label": "Printer"
+    },
+    {
+      "ip": "10.10.10.2",
+      "mac": "00:00:85:fa:09:39",
+      "hostname": "printer-access1-02",
+      "vlan": 1000,
+      "switch": "campus-access1",
+      "port": "Ethernet42",
+      "zone": "print",
+      "label": "Printer"
+    },
+    {
+      "ip": "10.10.10.3",
+      "mac": "00:00:85:b9:9d:7a",
+      "hostname": "printer-access1-03",
+      "vlan": 1000,
+      "switch": "campus-access1",
+      "port": "Ethernet43",
+      "zone": "print",
+      "label": "Printer"
+    },
+    {
+      "ip": "10.10.10.4",
+      "mac": "00:00:85:1d:7b:28",
+      "hostname": "printer-access1-04",
+      "vlan": 1000,
+      "switch": "campus-access1",
+      "port": "Ethernet44",
+      "zone": "print",
+      "label": "Printer"
+    },
+    {
+      "ip": "10.10.4.1",
+      "mac": "fc:ec:da:2b:f8:23",
+      "hostname": "guest-kiosk-access1-01",
+      "vlan": 400,
+      "switch": "campus-access1",
+      "port": "Ethernet45",
+      "zone": "guest",
+      "label": "Guest-Kiosk"
+    },
+    {
+      "ip": "10.10.4.2",
+      "mac": "fc:ec:da:40:41:f3",
+      "hostname": "guest-kiosk-access1-02",
+      "vlan": 400,
+      "switch": "campus-access1",
+      "port": "Ethernet46",
+      "zone": "guest",
+      "label": "Guest-Kiosk"
+    },
+    {
+      "ip": "10.10.4.3",
+      "mac": "fc:ec:da:54:87:d8",
+      "hostname": "guest-kiosk-access1-03",
+      "vlan": 400,
+      "switch": "campus-access1",
+      "port": "Ethernet47",
+      "zone": "guest",
+      "label": "Guest-Kiosk"
+    },
+    {
+      "ip": "10.10.4.4",
+      "mac": "fc:ec:da:6c:66:9f",
+      "hostname": "guest-kiosk-access1-04",
+      "vlan": 400,
+      "switch": "campus-access1",
+      "port": "Ethernet48",
+      "zone": "guest",
+      "label": "Guest-Kiosk"
+    },
+    {
+      "ip": "10.10.3.1",
+      "mac": "00:17:88:cc:bf:e0",
+      "hostname": "iot-sensor-access2-01",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet1",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.2",
+      "mac": "00:17:88:e7:3d:7e",
+      "hostname": "iot-sensor-access2-02",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet2",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.3",
+      "mac": "00:17:88:73:20:ad",
+      "hostname": "iot-sensor-access2-03",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet3",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.4",
+      "mac": "00:17:88:0a:75:70",
+      "hostname": "iot-sensor-access2-04",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet4",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.5",
+      "mac": "00:17:88:03:24:1e",
+      "hostname": "iot-sensor-access2-05",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet5",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.6",
+      "mac": "00:17:88:75:22:10",
+      "hostname": "iot-sensor-access2-06",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet6",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.7",
+      "mac": "00:17:88:a9:24:79",
+      "hostname": "iot-sensor-access2-07",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet7",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.8",
+      "mac": "00:17:88:8e:f8:6d",
+      "hostname": "iot-sensor-access2-08",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet8",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.9",
+      "mac": "00:17:88:43:f2:7c",
+      "hostname": "iot-sensor-access2-09",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet9",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.10",
+      "mac": "00:17:88:f2:d0:61",
+      "hostname": "iot-sensor-access2-10",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet10",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.11",
+      "mac": "00:17:88:30:31:dc",
+      "hostname": "iot-sensor-access2-11",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet11",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.3.12",
+      "mac": "00:17:88:b5:d8:d2",
+      "hostname": "iot-sensor-access2-12",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet12",
+      "zone": "iot",
+      "label": "IoT-Sensor"
+    },
+    {
+      "ip": "10.10.5.1",
+      "mac": "00:0c:29:ef:1b:32",
+      "hostname": "dev-ws-access2-01",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet13",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.2",
+      "mac": "00:0c:29:1f:ce:ad",
+      "hostname": "dev-ws-access2-02",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet14",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.3",
+      "mac": "00:0c:29:37:7f:62",
+      "hostname": "dev-ws-access2-03",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet15",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.4",
+      "mac": "00:0c:29:61:e5:47",
+      "hostname": "dev-ws-access2-04",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet16",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.5",
+      "mac": "00:0c:29:d8:5d:8e",
+      "hostname": "dev-ws-access2-05",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet17",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.6",
+      "mac": "00:0c:29:ec:7f:26",
+      "hostname": "dev-ws-access2-06",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet18",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.7",
+      "mac": "00:0c:29:e2:32:19",
+      "hostname": "dev-ws-access2-07",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet19",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.5.8",
+      "mac": "00:0c:29:07:2f:79",
+      "hostname": "dev-ws-access2-08",
+      "vlan": 500,
+      "switch": "campus-access2",
+      "port": "Ethernet20",
+      "zone": "dev",
+      "label": "Dev-WS"
+    },
+    {
+      "ip": "10.10.18.5",
+      "mac": "00:18:0a:55:d0:f8",
+      "hostname": "wifi-ap-corp-access2-05",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet21",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.6",
+      "mac": "00:18:0a:f6:6d:cd",
+      "hostname": "wifi-ap-corp-access2-06",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet22",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.7",
+      "mac": "00:18:0a:1e:54:c2",
+      "hostname": "wifi-ap-corp-access2-07",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet23",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.8",
+      "mac": "00:18:0a:01:c7:87",
+      "hostname": "wifi-ap-corp-access2-08",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet24",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.9",
+      "mac": "00:18:0a:e8:92:d8",
+      "hostname": "wifi-ap-corp-access2-09",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet25",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.10",
+      "mac": "00:18:0a:f9:4f:61",
+      "hostname": "wifi-ap-corp-access2-10",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet26",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.11",
+      "mac": "00:18:0a:97:6f:1d",
+      "hostname": "wifi-ap-corp-access2-11",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet27",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.12",
+      "mac": "00:18:0a:1f:a0:1d",
+      "hostname": "wifi-ap-corp-access2-12",
+      "vlan": 1800,
+      "switch": "campus-access2",
+      "port": "Ethernet28",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.8.9",
+      "mac": "00:0e:08:19:f4:50",
+      "hostname": "ip-phone-access2-09",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet29",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.10",
+      "mac": "00:0e:08:1d:29:5f",
+      "hostname": "ip-phone-access2-10",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet30",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.11",
+      "mac": "00:0e:08:23:22:78",
+      "hostname": "ip-phone-access2-11",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet31",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.12",
+      "mac": "00:0e:08:ce:3d:7e",
+      "hostname": "ip-phone-access2-12",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet32",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.13",
+      "mac": "00:0e:08:14:29:d6",
+      "hostname": "ip-phone-access2-13",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet33",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.14",
+      "mac": "00:0e:08:a1:85:68",
+      "hostname": "ip-phone-access2-14",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet34",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.15",
+      "mac": "00:0e:08:a0:7a:87",
+      "hostname": "ip-phone-access2-15",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet35",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.16",
+      "mac": "00:0e:08:ca:43:99",
+      "hostname": "ip-phone-access2-16",
+      "vlan": 800,
+      "switch": "campus-access2",
+      "port": "Ethernet36",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.11.5",
+      "mac": "00:12:f2:ea:a1:25",
+      "hostname": "cctv-cam-access2-05",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet37",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.6",
+      "mac": "00:12:f2:04:ea:33",
+      "hostname": "cctv-cam-access2-06",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet38",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.7",
+      "mac": "00:12:f2:25:6d:87",
+      "hostname": "cctv-cam-access2-07",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet39",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.8",
+      "mac": "00:12:f2:43:b2:23",
+      "hostname": "cctv-cam-access2-08",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet40",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.9",
+      "mac": "00:12:f2:7d:bd:91",
+      "hostname": "cctv-cam-access2-09",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet41",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.10",
+      "mac": "00:12:f2:50:e0:9a",
+      "hostname": "cctv-cam-access2-10",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet42",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.11",
+      "mac": "00:12:f2:04:99:35",
+      "hostname": "cctv-cam-access2-11",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet43",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.12",
+      "mac": "00:12:f2:44:87:3b",
+      "hostname": "cctv-cam-access2-12",
+      "vlan": 1100,
+      "switch": "campus-access2",
+      "port": "Ethernet44",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.3.13",
+      "mac": "00:17:88:36:4f:8b",
+      "hostname": "badge-rdr-access2-13",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet45",
+      "zone": "iot",
+      "label": "Badge-Reader"
+    },
+    {
+      "ip": "10.10.3.14",
+      "mac": "00:17:88:90:6b:af",
+      "hostname": "badge-rdr-access2-14",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet46",
+      "zone": "iot",
+      "label": "Badge-Reader"
+    },
+    {
+      "ip": "10.10.3.15",
+      "mac": "00:17:88:68:87:fa",
+      "hostname": "badge-rdr-access2-15",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet47",
+      "zone": "iot",
+      "label": "Badge-Reader"
+    },
+    {
+      "ip": "10.10.3.16",
+      "mac": "00:17:88:80:1a:2f",
+      "hostname": "badge-rdr-access2-16",
+      "vlan": 300,
+      "switch": "campus-access2",
+      "port": "Ethernet48",
+      "zone": "iot",
+      "label": "Badge-Reader"
+    },
+    {
+      "ip": "10.10.6.1",
+      "mac": "00:0c:29:d8:8d:16",
+      "hostname": "prod-ws-access3-01",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet1",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.2",
+      "mac": "00:0c:29:01:aa:42",
+      "hostname": "prod-ws-access3-02",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet2",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.3",
+      "mac": "00:0c:29:86:52:e2",
+      "hostname": "prod-ws-access3-03",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet3",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.4",
+      "mac": "00:0c:29:da:04:39",
+      "hostname": "prod-ws-access3-04",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet4",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.5",
+      "mac": "00:0c:29:26:4c:12",
+      "hostname": "prod-ws-access3-05",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet5",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.6",
+      "mac": "00:0c:29:bd:4b:dc",
+      "hostname": "prod-ws-access3-06",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet6",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.7",
+      "mac": "00:0c:29:41:15:9d",
+      "hostname": "prod-ws-access3-07",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet7",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.8",
+      "mac": "00:0c:29:ba:14:b7",
+      "hostname": "prod-ws-access3-08",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet8",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.9",
+      "mac": "00:0c:29:6b:7f:34",
+      "hostname": "prod-ws-access3-09",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet9",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.10",
+      "mac": "00:0c:29:b5:d0:4f",
+      "hostname": "prod-ws-access3-10",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet10",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.11",
+      "mac": "00:0c:29:79:53:5a",
+      "hostname": "prod-ws-access3-11",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet11",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.6.12",
+      "mac": "00:0c:29:d3:0c:5b",
+      "hostname": "prod-ws-access3-12",
+      "vlan": 600,
+      "switch": "campus-access3",
+      "port": "Ethernet12",
+      "zone": "prod",
+      "label": "Prod-WS"
+    },
+    {
+      "ip": "10.10.7.1",
+      "mac": "00:20:d8:aa:d2:7f",
+      "hostname": "scada-plc-access3-01",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet13",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.2",
+      "mac": "00:20:d8:88:51:37",
+      "hostname": "scada-plc-access3-02",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet14",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.3",
+      "mac": "00:20:d8:c3:13:f0",
+      "hostname": "scada-plc-access3-03",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet15",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.4",
+      "mac": "00:20:d8:71:66:eb",
+      "hostname": "scada-plc-access3-04",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet16",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.5",
+      "mac": "00:20:d8:b3:9c:74",
+      "hostname": "scada-plc-access3-05",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet17",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.6",
+      "mac": "00:20:d8:72:0c:62",
+      "hostname": "scada-plc-access3-06",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet18",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.7",
+      "mac": "00:20:d8:cc:a8:8e",
+      "hostname": "scada-plc-access3-07",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet19",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.7.8",
+      "mac": "00:20:d8:23:8e:b3",
+      "hostname": "scada-plc-access3-08",
+      "vlan": 700,
+      "switch": "campus-access3",
+      "port": "Ethernet20",
+      "zone": "scada",
+      "label": "SCADA-PLC"
+    },
+    {
+      "ip": "10.10.9.1",
+      "mac": "00:50:56:cc:a9:0e",
+      "hostname": "ucm-srv-access3-01",
+      "vlan": 900,
+      "switch": "campus-access3",
+      "port": "Ethernet21",
+      "zone": "ucm",
+      "label": "UCM-Server"
+    },
+    {
+      "ip": "10.10.9.2",
+      "mac": "00:50:56:3b:85:5b",
+      "hostname": "ucm-srv-access3-02",
+      "vlan": 900,
+      "switch": "campus-access3",
+      "port": "Ethernet22",
+      "zone": "ucm",
+      "label": "UCM-Server"
+    },
+    {
+      "ip": "10.10.9.3",
+      "mac": "00:50:56:87:13:37",
+      "hostname": "ucm-srv-access3-03",
+      "vlan": 900,
+      "switch": "campus-access3",
+      "port": "Ethernet23",
+      "zone": "ucm",
+      "label": "UCM-Server"
+    },
+    {
+      "ip": "10.10.9.4",
+      "mac": "00:50:56:de:b0:a0",
+      "hostname": "ucm-srv-access3-04",
+      "vlan": 900,
+      "switch": "campus-access3",
+      "port": "Ethernet24",
+      "zone": "ucm",
+      "label": "UCM-Server"
+    },
+    {
+      "ip": "10.10.11.13",
+      "mac": "00:12:f2:df:3b:c5",
+      "hostname": "cctv-out-access3-13",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet25",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.14",
+      "mac": "00:12:f2:61:82:16",
+      "hostname": "cctv-out-access3-14",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet26",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.15",
+      "mac": "00:12:f2:df:00:64",
+      "hostname": "cctv-out-access3-15",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet27",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.16",
+      "mac": "00:12:f2:ba:dc:23",
+      "hostname": "cctv-out-access3-16",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet28",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.17",
+      "mac": "00:12:f2:a9:a0:3f",
+      "hostname": "cctv-out-access3-17",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet29",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.18",
+      "mac": "00:12:f2:99:9e:d1",
+      "hostname": "cctv-out-access3-18",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet30",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.19",
+      "mac": "00:12:f2:a7:ce:97",
+      "hostname": "cctv-out-access3-19",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet31",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.11.20",
+      "mac": "00:12:f2:41:62:d7",
+      "hostname": "cctv-out-access3-20",
+      "vlan": 1100,
+      "switch": "campus-access3",
+      "port": "Ethernet32",
+      "zone": "cctv",
+      "label": "CCTV-Outdoor"
+    },
+    {
+      "ip": "10.10.18.13",
+      "mac": "00:18:0a:c2:59:9a",
+      "hostname": "wifi-ap-corp-access3-13",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet33",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.14",
+      "mac": "00:18:0a:cf:00:9b",
+      "hostname": "wifi-ap-corp-access3-14",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet34",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.15",
+      "mac": "00:18:0a:92:6b:dc",
+      "hostname": "wifi-ap-corp-access3-15",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet35",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.16",
+      "mac": "00:18:0a:a4:ee:e2",
+      "hostname": "wifi-ap-corp-access3-16",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet36",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.17",
+      "mac": "00:18:0a:e2:6d:f2",
+      "hostname": "wifi-ap-corp-access3-17",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet37",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.18",
+      "mac": "00:18:0a:56:2b:91",
+      "hostname": "wifi-ap-corp-access3-18",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet38",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.19",
+      "mac": "00:18:0a:ab:2f:78",
+      "hostname": "wifi-ap-corp-access3-19",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet39",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.20",
+      "mac": "00:18:0a:9e:73:65",
+      "hostname": "wifi-ap-corp-access3-20",
+      "vlan": 1800,
+      "switch": "campus-access3",
+      "port": "Ethernet40",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.8.17",
+      "mac": "00:0e:08:4b:0c:17",
+      "hostname": "ip-phone-access3-17",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet41",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.18",
+      "mac": "00:0e:08:7d:f3:25",
+      "hostname": "ip-phone-access3-18",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet42",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.19",
+      "mac": "00:0e:08:e9:d4:63",
+      "hostname": "ip-phone-access3-19",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet43",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.20",
+      "mac": "00:0e:08:c4:fd:cc",
+      "hostname": "ip-phone-access3-20",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet44",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.21",
+      "mac": "00:0e:08:7c:4b:02",
+      "hostname": "ip-phone-access3-21",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet45",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.22",
+      "mac": "00:0e:08:36:d9:70",
+      "hostname": "ip-phone-access3-22",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet46",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.23",
+      "mac": "00:0e:08:5a:ed:19",
+      "hostname": "ip-phone-access3-23",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet47",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.8.24",
+      "mac": "00:0e:08:7f:3e:e9",
+      "hostname": "ip-phone-access3-24",
+      "vlan": 800,
+      "switch": "campus-access3",
+      "port": "Ethernet48",
+      "zone": "voip",
+      "label": "IP-Phone"
+    },
+    {
+      "ip": "10.10.12.1",
+      "mac": "00:50:56:44:ed:a2",
+      "hostname": "billing-srv-access4-01",
+      "vlan": 1200,
+      "switch": "campus-access4",
+      "port": "Ethernet1",
+      "zone": "billing",
+      "label": "Billing-Server"
+    },
+    {
+      "ip": "10.10.12.2",
+      "mac": "00:50:56:e2:da:e4",
+      "hostname": "billing-srv-access4-02",
+      "vlan": 1200,
+      "switch": "campus-access4",
+      "port": "Ethernet2",
+      "zone": "billing",
+      "label": "Billing-Server"
+    },
+    {
+      "ip": "10.10.12.3",
+      "mac": "00:50:56:51:f3:e6",
+      "hostname": "billing-srv-access4-03",
+      "vlan": 1200,
+      "switch": "campus-access4",
+      "port": "Ethernet3",
+      "zone": "billing",
+      "label": "Billing-Server"
+    },
+    {
+      "ip": "10.10.12.4",
+      "mac": "00:50:56:84:7e:8d",
+      "hostname": "billing-srv-access4-04",
+      "vlan": 1200,
+      "switch": "campus-access4",
+      "port": "Ethernet4",
+      "zone": "billing",
+      "label": "Billing-Server"
+    },
+    {
+      "ip": "10.10.14.1",
+      "mac": "00:50:56:f8:7a:8c",
+      "hostname": "db-srv-access4-01",
+      "vlan": 1400,
+      "switch": "campus-access4",
+      "port": "Ethernet5",
+      "zone": "database",
+      "label": "DB-Server"
+    },
+    {
+      "ip": "10.10.14.2",
+      "mac": "00:50:56:e1:27:92",
+      "hostname": "db-srv-access4-02",
+      "vlan": 1400,
+      "switch": "campus-access4",
+      "port": "Ethernet6",
+      "zone": "database",
+      "label": "DB-Server"
+    },
+    {
+      "ip": "10.10.14.3",
+      "mac": "00:50:56:78:8b:ab",
+      "hostname": "db-srv-access4-03",
+      "vlan": 1400,
+      "switch": "campus-access4",
+      "port": "Ethernet7",
+      "zone": "database",
+      "label": "DB-Server"
+    },
+    {
+      "ip": "10.10.14.4",
+      "mac": "00:50:56:a3:29:46",
+      "hostname": "db-srv-access4-04",
+      "vlan": 1400,
+      "switch": "campus-access4",
+      "port": "Ethernet8",
+      "zone": "database",
+      "label": "DB-Server"
+    },
+    {
+      "ip": "10.10.15.1",
+      "mac": "00:50:56:4d:76:c4",
+      "hostname": "app-srv-access4-01",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet9",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.2",
+      "mac": "00:50:56:4e:6d:20",
+      "hostname": "app-srv-access4-02",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet10",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.3",
+      "mac": "00:50:56:d4:d0:a9",
+      "hostname": "app-srv-access4-03",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet11",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.4",
+      "mac": "00:50:56:ee:d4:1f",
+      "hostname": "app-srv-access4-04",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet12",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.5",
+      "mac": "00:50:56:69:d7:c7",
+      "hostname": "app-srv-access4-05",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet13",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.6",
+      "mac": "00:50:56:0a:c2:f4",
+      "hostname": "app-srv-access4-06",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet14",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.7",
+      "mac": "00:50:56:03:b4:98",
+      "hostname": "app-srv-access4-07",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet15",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.15.8",
+      "mac": "00:50:56:c7:d6:70",
+      "hostname": "app-srv-access4-08",
+      "vlan": 1500,
+      "switch": "campus-access4",
+      "port": "Ethernet16",
+      "zone": "app",
+      "label": "App-Server"
+    },
+    {
+      "ip": "10.10.16.1",
+      "mac": "00:50:56:f9:70:8b",
+      "hostname": "storage-srv-access4-01",
+      "vlan": 1600,
+      "switch": "campus-access4",
+      "port": "Ethernet17",
+      "zone": "storage",
+      "label": "Storage-Server"
+    },
+    {
+      "ip": "10.10.16.2",
+      "mac": "00:50:56:df:f8:0e",
+      "hostname": "storage-srv-access4-02",
+      "vlan": 1600,
+      "switch": "campus-access4",
+      "port": "Ethernet18",
+      "zone": "storage",
+      "label": "Storage-Server"
+    },
+    {
+      "ip": "10.10.16.3",
+      "mac": "00:50:56:c7:ac:cf",
+      "hostname": "storage-srv-access4-03",
+      "vlan": 1600,
+      "switch": "campus-access4",
+      "port": "Ethernet19",
+      "zone": "storage",
+      "label": "Storage-Server"
+    },
+    {
+      "ip": "10.10.16.4",
+      "mac": "00:50:56:54:ef:41",
+      "hostname": "storage-srv-access4-04",
+      "vlan": 1600,
+      "switch": "campus-access4",
+      "port": "Ethernet20",
+      "zone": "storage",
+      "label": "Storage-Server"
+    },
+    {
+      "ip": "10.10.17.1",
+      "mac": "00:50:56:0d:c9:0d",
+      "hostname": "backup-srv-access4-01",
+      "vlan": 1700,
+      "switch": "campus-access4",
+      "port": "Ethernet21",
+      "zone": "backup",
+      "label": "Backup-Server"
+    },
+    {
+      "ip": "10.10.17.2",
+      "mac": "00:50:56:2a:db:45",
+      "hostname": "backup-srv-access4-02",
+      "vlan": 1700,
+      "switch": "campus-access4",
+      "port": "Ethernet22",
+      "zone": "backup",
+      "label": "Backup-Server"
+    },
+    {
+      "ip": "10.10.17.3",
+      "mac": "00:50:56:ec:5d:19",
+      "hostname": "backup-srv-access4-03",
+      "vlan": 1700,
+      "switch": "campus-access4",
+      "port": "Ethernet23",
+      "zone": "backup",
+      "label": "Backup-Server"
+    },
+    {
+      "ip": "10.10.17.4",
+      "mac": "00:50:56:85:c2:a7",
+      "hostname": "backup-srv-access4-04",
+      "vlan": 1700,
+      "switch": "campus-access4",
+      "port": "Ethernet24",
+      "zone": "backup",
+      "label": "Backup-Server"
+    },
+    {
+      "ip": "10.10.13.1",
+      "mac": "00:50:56:6c:e8:a7",
+      "hostname": "mgmt-srv-access4-01",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet25",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.2",
+      "mac": "00:50:56:ac:c2:8e",
+      "hostname": "mgmt-srv-access4-02",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet26",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.3",
+      "mac": "00:50:56:d7:81:29",
+      "hostname": "mgmt-srv-access4-03",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet27",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.4",
+      "mac": "00:50:56:f0:09:1a",
+      "hostname": "mgmt-srv-access4-04",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet28",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.5",
+      "mac": "00:50:56:b3:72:23",
+      "hostname": "mgmt-srv-access4-05",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet29",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.6",
+      "mac": "00:50:56:14:0f:7e",
+      "hostname": "mgmt-srv-access4-06",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet30",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.7",
+      "mac": "00:50:56:66:0a:4e",
+      "hostname": "mgmt-srv-access4-07",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet31",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.13.8",
+      "mac": "00:50:56:7a:40:f2",
+      "hostname": "mgmt-srv-access4-08",
+      "vlan": 1300,
+      "switch": "campus-access4",
+      "port": "Ethernet32",
+      "zone": "mgmt",
+      "label": "Mgmt-Server"
+    },
+    {
+      "ip": "10.10.11.21",
+      "mac": "00:12:f2:3a:6f:ee",
+      "hostname": "cctv-cam-access4-21",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet33",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.22",
+      "mac": "00:12:f2:83:bc:55",
+      "hostname": "cctv-cam-access4-22",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet34",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.23",
+      "mac": "00:12:f2:3a:53:9f",
+      "hostname": "cctv-cam-access4-23",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet35",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.24",
+      "mac": "00:12:f2:37:0d:9f",
+      "hostname": "cctv-cam-access4-24",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet36",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.25",
+      "mac": "00:12:f2:c0:cb:65",
+      "hostname": "cctv-cam-access4-25",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet37",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.26",
+      "mac": "00:12:f2:26:7c:34",
+      "hostname": "cctv-cam-access4-26",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet38",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.27",
+      "mac": "00:12:f2:9a:3d:15",
+      "hostname": "cctv-cam-access4-27",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet39",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.11.28",
+      "mac": "00:12:f2:b1:db:bd",
+      "hostname": "cctv-cam-access4-28",
+      "vlan": 1100,
+      "switch": "campus-access4",
+      "port": "Ethernet40",
+      "zone": "cctv",
+      "label": "CCTV-Camera"
+    },
+    {
+      "ip": "10.10.18.21",
+      "mac": "00:18:0a:23:ae:06",
+      "hostname": "wifi-ap-corp-access4-21",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet41",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.22",
+      "mac": "00:18:0a:d7:fa:36",
+      "hostname": "wifi-ap-corp-access4-22",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet42",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.23",
+      "mac": "00:18:0a:dd:b9:eb",
+      "hostname": "wifi-ap-corp-access4-23",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet43",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.24",
+      "mac": "00:18:0a:4e:de:5a",
+      "hostname": "wifi-ap-corp-access4-24",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet44",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.25",
+      "mac": "00:18:0a:8a:f7:ee",
+      "hostname": "wifi-ap-corp-access4-25",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet45",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.26",
+      "mac": "00:18:0a:df:89:a5",
+      "hostname": "wifi-ap-corp-access4-26",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet46",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.27",
+      "mac": "00:18:0a:7d:2c:8e",
+      "hostname": "wifi-ap-corp-access4-27",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet47",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    },
+    {
+      "ip": "10.10.18.28",
+      "mac": "00:18:0a:e6:7c:ed",
+      "hostname": "wifi-ap-corp-access4-28",
+      "vlan": 1800,
+      "switch": "campus-access4",
+      "port": "Ethernet48",
+      "zone": "wifi",
+      "label": "WiFi-AP-Corp"
+    }
+  ],
+  "mac_tables": {
+    "campus-access1": [
+      {
+        "mac": "00:0c:29:39:0c:8c",
+        "port": "Ethernet1",
+        "vlan": 100,
+        "ip": "10.10.1.1",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-01"
+      },
+      {
+        "mac": "00:0c:29:7d:72:47",
+        "port": "Ethernet2",
+        "vlan": 100,
+        "ip": "10.10.1.2",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-02"
+      },
+      {
+        "mac": "00:0c:29:34:2c:d8",
+        "port": "Ethernet3",
+        "vlan": 100,
+        "ip": "10.10.1.3",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-03"
+      },
+      {
+        "mac": "00:0c:29:10:0f:2f",
+        "port": "Ethernet4",
+        "vlan": 100,
+        "ip": "10.10.1.4",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-04"
+      },
+      {
+        "mac": "00:0c:29:6f:77:0d",
+        "port": "Ethernet5",
+        "vlan": 100,
+        "ip": "10.10.1.5",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-05"
+      },
+      {
+        "mac": "00:0c:29:65:d6:70",
+        "port": "Ethernet6",
+        "vlan": 100,
+        "ip": "10.10.1.6",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-06"
+      },
+      {
+        "mac": "00:0c:29:e5:8e:03",
+        "port": "Ethernet7",
+        "vlan": 100,
+        "ip": "10.10.1.7",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-07"
+      },
+      {
+        "mac": "00:0c:29:51:d8:ae",
+        "port": "Ethernet8",
+        "vlan": 100,
+        "ip": "10.10.1.8",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-08"
+      },
+      {
+        "mac": "00:0c:29:8e:4f:6e",
+        "port": "Ethernet9",
+        "vlan": 100,
+        "ip": "10.10.1.9",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-09"
+      },
+      {
+        "mac": "00:0c:29:ac:34:2f",
+        "port": "Ethernet10",
+        "vlan": 100,
+        "ip": "10.10.1.10",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-10"
+      },
+      {
+        "mac": "00:0c:29:c2:31:b7",
+        "port": "Ethernet11",
+        "vlan": 100,
+        "ip": "10.10.1.11",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-11"
+      },
+      {
+        "mac": "00:0c:29:b0:87:16",
+        "port": "Ethernet12",
+        "vlan": 100,
+        "ip": "10.10.1.12",
+        "label": "Finance-WS",
+        "device": "fin-ws-access1-12"
+      },
+      {
+        "mac": "00:0c:29:eb:3f:c1",
+        "port": "Ethernet13",
+        "vlan": 200,
+        "ip": "10.10.2.1",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-01"
+      },
+      {
+        "mac": "00:0c:29:28:96:b9",
+        "port": "Ethernet14",
+        "vlan": 200,
+        "ip": "10.10.2.2",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-02"
+      },
+      {
+        "mac": "00:0c:29:62:23:17",
+        "port": "Ethernet15",
+        "vlan": 200,
+        "ip": "10.10.2.3",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-03"
+      },
+      {
+        "mac": "00:0c:29:74:94:28",
+        "port": "Ethernet16",
+        "vlan": 200,
+        "ip": "10.10.2.4",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-04"
+      },
+      {
+        "mac": "00:0c:29:77:33:c2",
+        "port": "Ethernet17",
+        "vlan": 200,
+        "ip": "10.10.2.5",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-05"
+      },
+      {
+        "mac": "00:0c:29:8e:e8:ba",
+        "port": "Ethernet18",
+        "vlan": 200,
+        "ip": "10.10.2.6",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-06"
+      },
+      {
+        "mac": "00:0c:29:53:bd:b5",
+        "port": "Ethernet19",
+        "vlan": 200,
+        "ip": "10.10.2.7",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-07"
+      },
+      {
+        "mac": "00:0c:29:6b:88:24",
+        "port": "Ethernet20",
+        "vlan": 200,
+        "ip": "10.10.2.8",
+        "label": "HR-WS",
+        "device": "hr-ws-access1-08"
+      },
+      {
+        "mac": "00:18:0a:57:7d:53",
+        "port": "Ethernet21",
+        "vlan": 1800,
+        "ip": "10.10.18.1",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access1-01"
+      },
+      {
+        "mac": "00:18:0a:ec:c2:8a",
+        "port": "Ethernet22",
+        "vlan": 1800,
+        "ip": "10.10.18.2",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access1-02"
+      },
+      {
+        "mac": "00:18:0a:70:a6:1c",
+        "port": "Ethernet23",
+        "vlan": 1800,
+        "ip": "10.10.18.3",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access1-03"
+      },
+      {
+        "mac": "00:18:0a:75:10:a1",
+        "port": "Ethernet24",
+        "vlan": 1800,
+        "ip": "10.10.18.4",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access1-04"
+      },
+      {
+        "mac": "00:18:0a:cd:89:21",
+        "port": "Ethernet25",
+        "vlan": 1900,
+        "ip": "10.10.19.1",
+        "label": "WiFi-AP-Guest",
+        "device": "wifi-ap-guest-access1-01"
+      },
+      {
+        "mac": "00:18:0a:6c:a1:6c",
+        "port": "Ethernet26",
+        "vlan": 1900,
+        "ip": "10.10.19.2",
+        "label": "WiFi-AP-Guest",
+        "device": "wifi-ap-guest-access1-02"
+      },
+      {
+        "mac": "00:18:0a:ff:ca:ea",
+        "port": "Ethernet27",
+        "vlan": 1900,
+        "ip": "10.10.19.3",
+        "label": "WiFi-AP-Guest",
+        "device": "wifi-ap-guest-access1-03"
+      },
+      {
+        "mac": "00:18:0a:49:87:47",
+        "port": "Ethernet28",
+        "vlan": 1900,
+        "ip": "10.10.19.4",
+        "label": "WiFi-AP-Guest",
+        "device": "wifi-ap-guest-access1-04"
+      },
+      {
+        "mac": "00:0e:08:7e:86:db",
+        "port": "Ethernet29",
+        "vlan": 800,
+        "ip": "10.10.8.1",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-01"
+      },
+      {
+        "mac": "00:0e:08:cc:b9:70",
+        "port": "Ethernet30",
+        "vlan": 800,
+        "ip": "10.10.8.2",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-02"
+      },
+      {
+        "mac": "00:0e:08:46:fc:2e",
+        "port": "Ethernet31",
+        "vlan": 800,
+        "ip": "10.10.8.3",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-03"
+      },
+      {
+        "mac": "00:0e:08:18:38:4e",
+        "port": "Ethernet32",
+        "vlan": 800,
+        "ip": "10.10.8.4",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-04"
+      },
+      {
+        "mac": "00:0e:08:51:d8:20",
+        "port": "Ethernet33",
+        "vlan": 800,
+        "ip": "10.10.8.5",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-05"
+      },
+      {
+        "mac": "00:0e:08:c5:c3:ef",
+        "port": "Ethernet34",
+        "vlan": 800,
+        "ip": "10.10.8.6",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-06"
+      },
+      {
+        "mac": "00:0e:08:80:05:3a",
+        "port": "Ethernet35",
+        "vlan": 800,
+        "ip": "10.10.8.7",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-07"
+      },
+      {
+        "mac": "00:0e:08:88:ae:39",
+        "port": "Ethernet36",
+        "vlan": 800,
+        "ip": "10.10.8.8",
+        "label": "IP-Phone",
+        "device": "ip-phone-access1-08"
+      },
+      {
+        "mac": "00:12:f2:96:de:50",
+        "port": "Ethernet37",
+        "vlan": 1100,
+        "ip": "10.10.11.1",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access1-01"
+      },
+      {
+        "mac": "00:12:f2:e8:01:86",
+        "port": "Ethernet38",
+        "vlan": 1100,
+        "ip": "10.10.11.2",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access1-02"
+      },
+      {
+        "mac": "00:12:f2:5b:36:98",
+        "port": "Ethernet39",
+        "vlan": 1100,
+        "ip": "10.10.11.3",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access1-03"
+      },
+      {
+        "mac": "00:12:f2:65:4e:bf",
+        "port": "Ethernet40",
+        "vlan": 1100,
+        "ip": "10.10.11.4",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access1-04"
+      },
+      {
+        "mac": "00:00:85:52:00:a5",
+        "port": "Ethernet41",
+        "vlan": 1000,
+        "ip": "10.10.10.1",
+        "label": "Printer",
+        "device": "printer-access1-01"
+      },
+      {
+        "mac": "00:00:85:fa:09:39",
+        "port": "Ethernet42",
+        "vlan": 1000,
+        "ip": "10.10.10.2",
+        "label": "Printer",
+        "device": "printer-access1-02"
+      },
+      {
+        "mac": "00:00:85:b9:9d:7a",
+        "port": "Ethernet43",
+        "vlan": 1000,
+        "ip": "10.10.10.3",
+        "label": "Printer",
+        "device": "printer-access1-03"
+      },
+      {
+        "mac": "00:00:85:1d:7b:28",
+        "port": "Ethernet44",
+        "vlan": 1000,
+        "ip": "10.10.10.4",
+        "label": "Printer",
+        "device": "printer-access1-04"
+      },
+      {
+        "mac": "fc:ec:da:2b:f8:23",
+        "port": "Ethernet45",
+        "vlan": 400,
+        "ip": "10.10.4.1",
+        "label": "Guest-Kiosk",
+        "device": "guest-kiosk-access1-01"
+      },
+      {
+        "mac": "fc:ec:da:40:41:f3",
+        "port": "Ethernet46",
+        "vlan": 400,
+        "ip": "10.10.4.2",
+        "label": "Guest-Kiosk",
+        "device": "guest-kiosk-access1-02"
+      },
+      {
+        "mac": "fc:ec:da:54:87:d8",
+        "port": "Ethernet47",
+        "vlan": 400,
+        "ip": "10.10.4.3",
+        "label": "Guest-Kiosk",
+        "device": "guest-kiosk-access1-03"
+      },
+      {
+        "mac": "fc:ec:da:6c:66:9f",
+        "port": "Ethernet48",
+        "vlan": 400,
+        "ip": "10.10.4.4",
+        "label": "Guest-Kiosk",
+        "device": "guest-kiosk-access1-04"
+      }
+    ],
+    "campus-access2": [
+      {
+        "mac": "00:17:88:cc:bf:e0",
+        "port": "Ethernet1",
+        "vlan": 300,
+        "ip": "10.10.3.1",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-01"
+      },
+      {
+        "mac": "00:17:88:e7:3d:7e",
+        "port": "Ethernet2",
+        "vlan": 300,
+        "ip": "10.10.3.2",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-02"
+      },
+      {
+        "mac": "00:17:88:73:20:ad",
+        "port": "Ethernet3",
+        "vlan": 300,
+        "ip": "10.10.3.3",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-03"
+      },
+      {
+        "mac": "00:17:88:0a:75:70",
+        "port": "Ethernet4",
+        "vlan": 300,
+        "ip": "10.10.3.4",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-04"
+      },
+      {
+        "mac": "00:17:88:03:24:1e",
+        "port": "Ethernet5",
+        "vlan": 300,
+        "ip": "10.10.3.5",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-05"
+      },
+      {
+        "mac": "00:17:88:75:22:10",
+        "port": "Ethernet6",
+        "vlan": 300,
+        "ip": "10.10.3.6",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-06"
+      },
+      {
+        "mac": "00:17:88:a9:24:79",
+        "port": "Ethernet7",
+        "vlan": 300,
+        "ip": "10.10.3.7",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-07"
+      },
+      {
+        "mac": "00:17:88:8e:f8:6d",
+        "port": "Ethernet8",
+        "vlan": 300,
+        "ip": "10.10.3.8",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-08"
+      },
+      {
+        "mac": "00:17:88:43:f2:7c",
+        "port": "Ethernet9",
+        "vlan": 300,
+        "ip": "10.10.3.9",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-09"
+      },
+      {
+        "mac": "00:17:88:f2:d0:61",
+        "port": "Ethernet10",
+        "vlan": 300,
+        "ip": "10.10.3.10",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-10"
+      },
+      {
+        "mac": "00:17:88:30:31:dc",
+        "port": "Ethernet11",
+        "vlan": 300,
+        "ip": "10.10.3.11",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-11"
+      },
+      {
+        "mac": "00:17:88:b5:d8:d2",
+        "port": "Ethernet12",
+        "vlan": 300,
+        "ip": "10.10.3.12",
+        "label": "IoT-Sensor",
+        "device": "iot-sensor-access2-12"
+      },
+      {
+        "mac": "00:0c:29:ef:1b:32",
+        "port": "Ethernet13",
+        "vlan": 500,
+        "ip": "10.10.5.1",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-01"
+      },
+      {
+        "mac": "00:0c:29:1f:ce:ad",
+        "port": "Ethernet14",
+        "vlan": 500,
+        "ip": "10.10.5.2",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-02"
+      },
+      {
+        "mac": "00:0c:29:37:7f:62",
+        "port": "Ethernet15",
+        "vlan": 500,
+        "ip": "10.10.5.3",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-03"
+      },
+      {
+        "mac": "00:0c:29:61:e5:47",
+        "port": "Ethernet16",
+        "vlan": 500,
+        "ip": "10.10.5.4",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-04"
+      },
+      {
+        "mac": "00:0c:29:d8:5d:8e",
+        "port": "Ethernet17",
+        "vlan": 500,
+        "ip": "10.10.5.5",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-05"
+      },
+      {
+        "mac": "00:0c:29:ec:7f:26",
+        "port": "Ethernet18",
+        "vlan": 500,
+        "ip": "10.10.5.6",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-06"
+      },
+      {
+        "mac": "00:0c:29:e2:32:19",
+        "port": "Ethernet19",
+        "vlan": 500,
+        "ip": "10.10.5.7",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-07"
+      },
+      {
+        "mac": "00:0c:29:07:2f:79",
+        "port": "Ethernet20",
+        "vlan": 500,
+        "ip": "10.10.5.8",
+        "label": "Dev-WS",
+        "device": "dev-ws-access2-08"
+      },
+      {
+        "mac": "00:18:0a:55:d0:f8",
+        "port": "Ethernet21",
+        "vlan": 1800,
+        "ip": "10.10.18.5",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-05"
+      },
+      {
+        "mac": "00:18:0a:f6:6d:cd",
+        "port": "Ethernet22",
+        "vlan": 1800,
+        "ip": "10.10.18.6",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-06"
+      },
+      {
+        "mac": "00:18:0a:1e:54:c2",
+        "port": "Ethernet23",
+        "vlan": 1800,
+        "ip": "10.10.18.7",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-07"
+      },
+      {
+        "mac": "00:18:0a:01:c7:87",
+        "port": "Ethernet24",
+        "vlan": 1800,
+        "ip": "10.10.18.8",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-08"
+      },
+      {
+        "mac": "00:18:0a:e8:92:d8",
+        "port": "Ethernet25",
+        "vlan": 1800,
+        "ip": "10.10.18.9",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-09"
+      },
+      {
+        "mac": "00:18:0a:f9:4f:61",
+        "port": "Ethernet26",
+        "vlan": 1800,
+        "ip": "10.10.18.10",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-10"
+      },
+      {
+        "mac": "00:18:0a:97:6f:1d",
+        "port": "Ethernet27",
+        "vlan": 1800,
+        "ip": "10.10.18.11",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-11"
+      },
+      {
+        "mac": "00:18:0a:1f:a0:1d",
+        "port": "Ethernet28",
+        "vlan": 1800,
+        "ip": "10.10.18.12",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access2-12"
+      },
+      {
+        "mac": "00:0e:08:19:f4:50",
+        "port": "Ethernet29",
+        "vlan": 800,
+        "ip": "10.10.8.9",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-09"
+      },
+      {
+        "mac": "00:0e:08:1d:29:5f",
+        "port": "Ethernet30",
+        "vlan": 800,
+        "ip": "10.10.8.10",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-10"
+      },
+      {
+        "mac": "00:0e:08:23:22:78",
+        "port": "Ethernet31",
+        "vlan": 800,
+        "ip": "10.10.8.11",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-11"
+      },
+      {
+        "mac": "00:0e:08:ce:3d:7e",
+        "port": "Ethernet32",
+        "vlan": 800,
+        "ip": "10.10.8.12",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-12"
+      },
+      {
+        "mac": "00:0e:08:14:29:d6",
+        "port": "Ethernet33",
+        "vlan": 800,
+        "ip": "10.10.8.13",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-13"
+      },
+      {
+        "mac": "00:0e:08:a1:85:68",
+        "port": "Ethernet34",
+        "vlan": 800,
+        "ip": "10.10.8.14",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-14"
+      },
+      {
+        "mac": "00:0e:08:a0:7a:87",
+        "port": "Ethernet35",
+        "vlan": 800,
+        "ip": "10.10.8.15",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-15"
+      },
+      {
+        "mac": "00:0e:08:ca:43:99",
+        "port": "Ethernet36",
+        "vlan": 800,
+        "ip": "10.10.8.16",
+        "label": "IP-Phone",
+        "device": "ip-phone-access2-16"
+      },
+      {
+        "mac": "00:12:f2:ea:a1:25",
+        "port": "Ethernet37",
+        "vlan": 1100,
+        "ip": "10.10.11.5",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-05"
+      },
+      {
+        "mac": "00:12:f2:04:ea:33",
+        "port": "Ethernet38",
+        "vlan": 1100,
+        "ip": "10.10.11.6",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-06"
+      },
+      {
+        "mac": "00:12:f2:25:6d:87",
+        "port": "Ethernet39",
+        "vlan": 1100,
+        "ip": "10.10.11.7",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-07"
+      },
+      {
+        "mac": "00:12:f2:43:b2:23",
+        "port": "Ethernet40",
+        "vlan": 1100,
+        "ip": "10.10.11.8",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-08"
+      },
+      {
+        "mac": "00:12:f2:7d:bd:91",
+        "port": "Ethernet41",
+        "vlan": 1100,
+        "ip": "10.10.11.9",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-09"
+      },
+      {
+        "mac": "00:12:f2:50:e0:9a",
+        "port": "Ethernet42",
+        "vlan": 1100,
+        "ip": "10.10.11.10",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-10"
+      },
+      {
+        "mac": "00:12:f2:04:99:35",
+        "port": "Ethernet43",
+        "vlan": 1100,
+        "ip": "10.10.11.11",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-11"
+      },
+      {
+        "mac": "00:12:f2:44:87:3b",
+        "port": "Ethernet44",
+        "vlan": 1100,
+        "ip": "10.10.11.12",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access2-12"
+      },
+      {
+        "mac": "00:17:88:36:4f:8b",
+        "port": "Ethernet45",
+        "vlan": 300,
+        "ip": "10.10.3.13",
+        "label": "Badge-Reader",
+        "device": "badge-rdr-access2-13"
+      },
+      {
+        "mac": "00:17:88:90:6b:af",
+        "port": "Ethernet46",
+        "vlan": 300,
+        "ip": "10.10.3.14",
+        "label": "Badge-Reader",
+        "device": "badge-rdr-access2-14"
+      },
+      {
+        "mac": "00:17:88:68:87:fa",
+        "port": "Ethernet47",
+        "vlan": 300,
+        "ip": "10.10.3.15",
+        "label": "Badge-Reader",
+        "device": "badge-rdr-access2-15"
+      },
+      {
+        "mac": "00:17:88:80:1a:2f",
+        "port": "Ethernet48",
+        "vlan": 300,
+        "ip": "10.10.3.16",
+        "label": "Badge-Reader",
+        "device": "badge-rdr-access2-16"
+      }
+    ],
+    "campus-access3": [
+      {
+        "mac": "00:0c:29:d8:8d:16",
+        "port": "Ethernet1",
+        "vlan": 600,
+        "ip": "10.10.6.1",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-01"
+      },
+      {
+        "mac": "00:0c:29:01:aa:42",
+        "port": "Ethernet2",
+        "vlan": 600,
+        "ip": "10.10.6.2",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-02"
+      },
+      {
+        "mac": "00:0c:29:86:52:e2",
+        "port": "Ethernet3",
+        "vlan": 600,
+        "ip": "10.10.6.3",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-03"
+      },
+      {
+        "mac": "00:0c:29:da:04:39",
+        "port": "Ethernet4",
+        "vlan": 600,
+        "ip": "10.10.6.4",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-04"
+      },
+      {
+        "mac": "00:0c:29:26:4c:12",
+        "port": "Ethernet5",
+        "vlan": 600,
+        "ip": "10.10.6.5",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-05"
+      },
+      {
+        "mac": "00:0c:29:bd:4b:dc",
+        "port": "Ethernet6",
+        "vlan": 600,
+        "ip": "10.10.6.6",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-06"
+      },
+      {
+        "mac": "00:0c:29:41:15:9d",
+        "port": "Ethernet7",
+        "vlan": 600,
+        "ip": "10.10.6.7",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-07"
+      },
+      {
+        "mac": "00:0c:29:ba:14:b7",
+        "port": "Ethernet8",
+        "vlan": 600,
+        "ip": "10.10.6.8",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-08"
+      },
+      {
+        "mac": "00:0c:29:6b:7f:34",
+        "port": "Ethernet9",
+        "vlan": 600,
+        "ip": "10.10.6.9",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-09"
+      },
+      {
+        "mac": "00:0c:29:b5:d0:4f",
+        "port": "Ethernet10",
+        "vlan": 600,
+        "ip": "10.10.6.10",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-10"
+      },
+      {
+        "mac": "00:0c:29:79:53:5a",
+        "port": "Ethernet11",
+        "vlan": 600,
+        "ip": "10.10.6.11",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-11"
+      },
+      {
+        "mac": "00:0c:29:d3:0c:5b",
+        "port": "Ethernet12",
+        "vlan": 600,
+        "ip": "10.10.6.12",
+        "label": "Prod-WS",
+        "device": "prod-ws-access3-12"
+      },
+      {
+        "mac": "00:20:d8:aa:d2:7f",
+        "port": "Ethernet13",
+        "vlan": 700,
+        "ip": "10.10.7.1",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-01"
+      },
+      {
+        "mac": "00:20:d8:88:51:37",
+        "port": "Ethernet14",
+        "vlan": 700,
+        "ip": "10.10.7.2",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-02"
+      },
+      {
+        "mac": "00:20:d8:c3:13:f0",
+        "port": "Ethernet15",
+        "vlan": 700,
+        "ip": "10.10.7.3",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-03"
+      },
+      {
+        "mac": "00:20:d8:71:66:eb",
+        "port": "Ethernet16",
+        "vlan": 700,
+        "ip": "10.10.7.4",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-04"
+      },
+      {
+        "mac": "00:20:d8:b3:9c:74",
+        "port": "Ethernet17",
+        "vlan": 700,
+        "ip": "10.10.7.5",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-05"
+      },
+      {
+        "mac": "00:20:d8:72:0c:62",
+        "port": "Ethernet18",
+        "vlan": 700,
+        "ip": "10.10.7.6",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-06"
+      },
+      {
+        "mac": "00:20:d8:cc:a8:8e",
+        "port": "Ethernet19",
+        "vlan": 700,
+        "ip": "10.10.7.7",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-07"
+      },
+      {
+        "mac": "00:20:d8:23:8e:b3",
+        "port": "Ethernet20",
+        "vlan": 700,
+        "ip": "10.10.7.8",
+        "label": "SCADA-PLC",
+        "device": "scada-plc-access3-08"
+      },
+      {
+        "mac": "00:50:56:cc:a9:0e",
+        "port": "Ethernet21",
+        "vlan": 900,
+        "ip": "10.10.9.1",
+        "label": "UCM-Server",
+        "device": "ucm-srv-access3-01"
+      },
+      {
+        "mac": "00:50:56:3b:85:5b",
+        "port": "Ethernet22",
+        "vlan": 900,
+        "ip": "10.10.9.2",
+        "label": "UCM-Server",
+        "device": "ucm-srv-access3-02"
+      },
+      {
+        "mac": "00:50:56:87:13:37",
+        "port": "Ethernet23",
+        "vlan": 900,
+        "ip": "10.10.9.3",
+        "label": "UCM-Server",
+        "device": "ucm-srv-access3-03"
+      },
+      {
+        "mac": "00:50:56:de:b0:a0",
+        "port": "Ethernet24",
+        "vlan": 900,
+        "ip": "10.10.9.4",
+        "label": "UCM-Server",
+        "device": "ucm-srv-access3-04"
+      },
+      {
+        "mac": "00:12:f2:df:3b:c5",
+        "port": "Ethernet25",
+        "vlan": 1100,
+        "ip": "10.10.11.13",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-13"
+      },
+      {
+        "mac": "00:12:f2:61:82:16",
+        "port": "Ethernet26",
+        "vlan": 1100,
+        "ip": "10.10.11.14",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-14"
+      },
+      {
+        "mac": "00:12:f2:df:00:64",
+        "port": "Ethernet27",
+        "vlan": 1100,
+        "ip": "10.10.11.15",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-15"
+      },
+      {
+        "mac": "00:12:f2:ba:dc:23",
+        "port": "Ethernet28",
+        "vlan": 1100,
+        "ip": "10.10.11.16",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-16"
+      },
+      {
+        "mac": "00:12:f2:a9:a0:3f",
+        "port": "Ethernet29",
+        "vlan": 1100,
+        "ip": "10.10.11.17",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-17"
+      },
+      {
+        "mac": "00:12:f2:99:9e:d1",
+        "port": "Ethernet30",
+        "vlan": 1100,
+        "ip": "10.10.11.18",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-18"
+      },
+      {
+        "mac": "00:12:f2:a7:ce:97",
+        "port": "Ethernet31",
+        "vlan": 1100,
+        "ip": "10.10.11.19",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-19"
+      },
+      {
+        "mac": "00:12:f2:41:62:d7",
+        "port": "Ethernet32",
+        "vlan": 1100,
+        "ip": "10.10.11.20",
+        "label": "CCTV-Outdoor",
+        "device": "cctv-out-access3-20"
+      },
+      {
+        "mac": "00:18:0a:c2:59:9a",
+        "port": "Ethernet33",
+        "vlan": 1800,
+        "ip": "10.10.18.13",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-13"
+      },
+      {
+        "mac": "00:18:0a:cf:00:9b",
+        "port": "Ethernet34",
+        "vlan": 1800,
+        "ip": "10.10.18.14",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-14"
+      },
+      {
+        "mac": "00:18:0a:92:6b:dc",
+        "port": "Ethernet35",
+        "vlan": 1800,
+        "ip": "10.10.18.15",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-15"
+      },
+      {
+        "mac": "00:18:0a:a4:ee:e2",
+        "port": "Ethernet36",
+        "vlan": 1800,
+        "ip": "10.10.18.16",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-16"
+      },
+      {
+        "mac": "00:18:0a:e2:6d:f2",
+        "port": "Ethernet37",
+        "vlan": 1800,
+        "ip": "10.10.18.17",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-17"
+      },
+      {
+        "mac": "00:18:0a:56:2b:91",
+        "port": "Ethernet38",
+        "vlan": 1800,
+        "ip": "10.10.18.18",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-18"
+      },
+      {
+        "mac": "00:18:0a:ab:2f:78",
+        "port": "Ethernet39",
+        "vlan": 1800,
+        "ip": "10.10.18.19",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-19"
+      },
+      {
+        "mac": "00:18:0a:9e:73:65",
+        "port": "Ethernet40",
+        "vlan": 1800,
+        "ip": "10.10.18.20",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access3-20"
+      },
+      {
+        "mac": "00:0e:08:4b:0c:17",
+        "port": "Ethernet41",
+        "vlan": 800,
+        "ip": "10.10.8.17",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-17"
+      },
+      {
+        "mac": "00:0e:08:7d:f3:25",
+        "port": "Ethernet42",
+        "vlan": 800,
+        "ip": "10.10.8.18",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-18"
+      },
+      {
+        "mac": "00:0e:08:e9:d4:63",
+        "port": "Ethernet43",
+        "vlan": 800,
+        "ip": "10.10.8.19",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-19"
+      },
+      {
+        "mac": "00:0e:08:c4:fd:cc",
+        "port": "Ethernet44",
+        "vlan": 800,
+        "ip": "10.10.8.20",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-20"
+      },
+      {
+        "mac": "00:0e:08:7c:4b:02",
+        "port": "Ethernet45",
+        "vlan": 800,
+        "ip": "10.10.8.21",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-21"
+      },
+      {
+        "mac": "00:0e:08:36:d9:70",
+        "port": "Ethernet46",
+        "vlan": 800,
+        "ip": "10.10.8.22",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-22"
+      },
+      {
+        "mac": "00:0e:08:5a:ed:19",
+        "port": "Ethernet47",
+        "vlan": 800,
+        "ip": "10.10.8.23",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-23"
+      },
+      {
+        "mac": "00:0e:08:7f:3e:e9",
+        "port": "Ethernet48",
+        "vlan": 800,
+        "ip": "10.10.8.24",
+        "label": "IP-Phone",
+        "device": "ip-phone-access3-24"
+      }
+    ],
+    "campus-access4": [
+      {
+        "mac": "00:50:56:44:ed:a2",
+        "port": "Ethernet1",
+        "vlan": 1200,
+        "ip": "10.10.12.1",
+        "label": "Billing-Server",
+        "device": "billing-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:e2:da:e4",
+        "port": "Ethernet2",
+        "vlan": 1200,
+        "ip": "10.10.12.2",
+        "label": "Billing-Server",
+        "device": "billing-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:51:f3:e6",
+        "port": "Ethernet3",
+        "vlan": 1200,
+        "ip": "10.10.12.3",
+        "label": "Billing-Server",
+        "device": "billing-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:84:7e:8d",
+        "port": "Ethernet4",
+        "vlan": 1200,
+        "ip": "10.10.12.4",
+        "label": "Billing-Server",
+        "device": "billing-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:f8:7a:8c",
+        "port": "Ethernet5",
+        "vlan": 1400,
+        "ip": "10.10.14.1",
+        "label": "DB-Server",
+        "device": "db-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:e1:27:92",
+        "port": "Ethernet6",
+        "vlan": 1400,
+        "ip": "10.10.14.2",
+        "label": "DB-Server",
+        "device": "db-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:78:8b:ab",
+        "port": "Ethernet7",
+        "vlan": 1400,
+        "ip": "10.10.14.3",
+        "label": "DB-Server",
+        "device": "db-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:a3:29:46",
+        "port": "Ethernet8",
+        "vlan": 1400,
+        "ip": "10.10.14.4",
+        "label": "DB-Server",
+        "device": "db-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:4d:76:c4",
+        "port": "Ethernet9",
+        "vlan": 1500,
+        "ip": "10.10.15.1",
+        "label": "App-Server",
+        "device": "app-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:4e:6d:20",
+        "port": "Ethernet10",
+        "vlan": 1500,
+        "ip": "10.10.15.2",
+        "label": "App-Server",
+        "device": "app-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:d4:d0:a9",
+        "port": "Ethernet11",
+        "vlan": 1500,
+        "ip": "10.10.15.3",
+        "label": "App-Server",
+        "device": "app-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:ee:d4:1f",
+        "port": "Ethernet12",
+        "vlan": 1500,
+        "ip": "10.10.15.4",
+        "label": "App-Server",
+        "device": "app-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:69:d7:c7",
+        "port": "Ethernet13",
+        "vlan": 1500,
+        "ip": "10.10.15.5",
+        "label": "App-Server",
+        "device": "app-srv-access4-05"
+      },
+      {
+        "mac": "00:50:56:0a:c2:f4",
+        "port": "Ethernet14",
+        "vlan": 1500,
+        "ip": "10.10.15.6",
+        "label": "App-Server",
+        "device": "app-srv-access4-06"
+      },
+      {
+        "mac": "00:50:56:03:b4:98",
+        "port": "Ethernet15",
+        "vlan": 1500,
+        "ip": "10.10.15.7",
+        "label": "App-Server",
+        "device": "app-srv-access4-07"
+      },
+      {
+        "mac": "00:50:56:c7:d6:70",
+        "port": "Ethernet16",
+        "vlan": 1500,
+        "ip": "10.10.15.8",
+        "label": "App-Server",
+        "device": "app-srv-access4-08"
+      },
+      {
+        "mac": "00:50:56:f9:70:8b",
+        "port": "Ethernet17",
+        "vlan": 1600,
+        "ip": "10.10.16.1",
+        "label": "Storage-Server",
+        "device": "storage-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:df:f8:0e",
+        "port": "Ethernet18",
+        "vlan": 1600,
+        "ip": "10.10.16.2",
+        "label": "Storage-Server",
+        "device": "storage-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:c7:ac:cf",
+        "port": "Ethernet19",
+        "vlan": 1600,
+        "ip": "10.10.16.3",
+        "label": "Storage-Server",
+        "device": "storage-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:54:ef:41",
+        "port": "Ethernet20",
+        "vlan": 1600,
+        "ip": "10.10.16.4",
+        "label": "Storage-Server",
+        "device": "storage-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:0d:c9:0d",
+        "port": "Ethernet21",
+        "vlan": 1700,
+        "ip": "10.10.17.1",
+        "label": "Backup-Server",
+        "device": "backup-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:2a:db:45",
+        "port": "Ethernet22",
+        "vlan": 1700,
+        "ip": "10.10.17.2",
+        "label": "Backup-Server",
+        "device": "backup-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:ec:5d:19",
+        "port": "Ethernet23",
+        "vlan": 1700,
+        "ip": "10.10.17.3",
+        "label": "Backup-Server",
+        "device": "backup-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:85:c2:a7",
+        "port": "Ethernet24",
+        "vlan": 1700,
+        "ip": "10.10.17.4",
+        "label": "Backup-Server",
+        "device": "backup-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:6c:e8:a7",
+        "port": "Ethernet25",
+        "vlan": 1300,
+        "ip": "10.10.13.1",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-01"
+      },
+      {
+        "mac": "00:50:56:ac:c2:8e",
+        "port": "Ethernet26",
+        "vlan": 1300,
+        "ip": "10.10.13.2",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-02"
+      },
+      {
+        "mac": "00:50:56:d7:81:29",
+        "port": "Ethernet27",
+        "vlan": 1300,
+        "ip": "10.10.13.3",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-03"
+      },
+      {
+        "mac": "00:50:56:f0:09:1a",
+        "port": "Ethernet28",
+        "vlan": 1300,
+        "ip": "10.10.13.4",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-04"
+      },
+      {
+        "mac": "00:50:56:b3:72:23",
+        "port": "Ethernet29",
+        "vlan": 1300,
+        "ip": "10.10.13.5",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-05"
+      },
+      {
+        "mac": "00:50:56:14:0f:7e",
+        "port": "Ethernet30",
+        "vlan": 1300,
+        "ip": "10.10.13.6",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-06"
+      },
+      {
+        "mac": "00:50:56:66:0a:4e",
+        "port": "Ethernet31",
+        "vlan": 1300,
+        "ip": "10.10.13.7",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-07"
+      },
+      {
+        "mac": "00:50:56:7a:40:f2",
+        "port": "Ethernet32",
+        "vlan": 1300,
+        "ip": "10.10.13.8",
+        "label": "Mgmt-Server",
+        "device": "mgmt-srv-access4-08"
+      },
+      {
+        "mac": "00:12:f2:3a:6f:ee",
+        "port": "Ethernet33",
+        "vlan": 1100,
+        "ip": "10.10.11.21",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-21"
+      },
+      {
+        "mac": "00:12:f2:83:bc:55",
+        "port": "Ethernet34",
+        "vlan": 1100,
+        "ip": "10.10.11.22",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-22"
+      },
+      {
+        "mac": "00:12:f2:3a:53:9f",
+        "port": "Ethernet35",
+        "vlan": 1100,
+        "ip": "10.10.11.23",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-23"
+      },
+      {
+        "mac": "00:12:f2:37:0d:9f",
+        "port": "Ethernet36",
+        "vlan": 1100,
+        "ip": "10.10.11.24",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-24"
+      },
+      {
+        "mac": "00:12:f2:c0:cb:65",
+        "port": "Ethernet37",
+        "vlan": 1100,
+        "ip": "10.10.11.25",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-25"
+      },
+      {
+        "mac": "00:12:f2:26:7c:34",
+        "port": "Ethernet38",
+        "vlan": 1100,
+        "ip": "10.10.11.26",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-26"
+      },
+      {
+        "mac": "00:12:f2:9a:3d:15",
+        "port": "Ethernet39",
+        "vlan": 1100,
+        "ip": "10.10.11.27",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-27"
+      },
+      {
+        "mac": "00:12:f2:b1:db:bd",
+        "port": "Ethernet40",
+        "vlan": 1100,
+        "ip": "10.10.11.28",
+        "label": "CCTV-Camera",
+        "device": "cctv-cam-access4-28"
+      },
+      {
+        "mac": "00:18:0a:23:ae:06",
+        "port": "Ethernet41",
+        "vlan": 1800,
+        "ip": "10.10.18.21",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-21"
+      },
+      {
+        "mac": "00:18:0a:d7:fa:36",
+        "port": "Ethernet42",
+        "vlan": 1800,
+        "ip": "10.10.18.22",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-22"
+      },
+      {
+        "mac": "00:18:0a:dd:b9:eb",
+        "port": "Ethernet43",
+        "vlan": 1800,
+        "ip": "10.10.18.23",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-23"
+      },
+      {
+        "mac": "00:18:0a:4e:de:5a",
+        "port": "Ethernet44",
+        "vlan": 1800,
+        "ip": "10.10.18.24",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-24"
+      },
+      {
+        "mac": "00:18:0a:8a:f7:ee",
+        "port": "Ethernet45",
+        "vlan": 1800,
+        "ip": "10.10.18.25",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-25"
+      },
+      {
+        "mac": "00:18:0a:df:89:a5",
+        "port": "Ethernet46",
+        "vlan": 1800,
+        "ip": "10.10.18.26",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-26"
+      },
+      {
+        "mac": "00:18:0a:7d:2c:8e",
+        "port": "Ethernet47",
+        "vlan": 1800,
+        "ip": "10.10.18.27",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-27"
+      },
+      {
+        "mac": "00:18:0a:e6:7c:ed",
+        "port": "Ethernet48",
+        "vlan": 1800,
+        "ip": "10.10.18.28",
+        "label": "WiFi-AP-Corp",
+        "device": "wifi-ap-corp-access4-28"
+      }
+    ]
+  },
+  "vlan_directory": {
+    "100": {
+      "name": "Finance",
+      "zone": "finance",
+      "role": "user",
+      "subnet": "10.10.1.0/24",
+      "gateway": "10.10.1.1",
+      "devices": [
+        "fin-ws-access1-01",
+        "fin-ws-access1-02",
+        "fin-ws-access1-03",
+        "fin-ws-access1-04",
+        "fin-ws-access1-05",
+        "fin-ws-access1-06",
+        "fin-ws-access1-07",
+        "fin-ws-access1-08",
+        "fin-ws-access1-09",
+        "fin-ws-access1-10"
+      ]
+    },
+    "200": {
+      "name": "HR",
+      "zone": "hr",
+      "role": "user",
+      "subnet": "10.10.2.0/24",
+      "gateway": "10.10.2.1",
+      "devices": [
+        "hr-ws-access1-01",
+        "hr-ws-access1-02",
+        "hr-ws-access1-03",
+        "hr-ws-access1-04",
+        "hr-ws-access1-05",
+        "hr-ws-access1-06",
+        "hr-ws-access1-07",
+        "hr-ws-access1-08"
+      ]
+    },
+    "300": {
+      "name": "IoT",
+      "zone": "iot",
+      "role": "iot",
+      "subnet": "10.10.3.0/24",
+      "gateway": "10.10.3.1",
+      "devices": [
+        "iot-sensor-access2-01",
+        "iot-sensor-access2-02",
+        "iot-sensor-access2-03",
+        "iot-sensor-access2-04",
+        "iot-sensor-access2-05",
+        "iot-sensor-access2-06",
+        "iot-sensor-access2-07",
+        "iot-sensor-access2-08",
+        "iot-sensor-access2-09",
+        "iot-sensor-access2-10"
+      ]
+    },
+    "400": {
+      "name": "Guest",
+      "zone": "guest",
+      "role": "guest",
+      "subnet": "10.10.4.0/24",
+      "gateway": "10.10.4.1",
+      "devices": [
+        "guest-kiosk-access1-01",
+        "guest-kiosk-access1-02",
+        "guest-kiosk-access1-03",
+        "guest-kiosk-access1-04"
+      ]
+    },
+    "500": {
+      "name": "Dev",
+      "zone": "dev",
+      "role": "dev",
+      "subnet": "10.10.5.0/24",
+      "gateway": "10.10.5.1",
+      "devices": [
+        "dev-ws-access2-01",
+        "dev-ws-access2-02",
+        "dev-ws-access2-03",
+        "dev-ws-access2-04",
+        "dev-ws-access2-05",
+        "dev-ws-access2-06",
+        "dev-ws-access2-07",
+        "dev-ws-access2-08"
+      ]
+    },
+    "600": {
+      "name": "Production",
+      "zone": "prod",
+      "role": "server",
+      "subnet": "10.10.6.0/24",
+      "gateway": "10.10.6.1",
+      "devices": [
+        "prod-ws-access3-01",
+        "prod-ws-access3-02",
+        "prod-ws-access3-03",
+        "prod-ws-access3-04",
+        "prod-ws-access3-05",
+        "prod-ws-access3-06",
+        "prod-ws-access3-07",
+        "prod-ws-access3-08",
+        "prod-ws-access3-09",
+        "prod-ws-access3-10"
+      ]
+    },
+    "700": {
+      "name": "SCADA",
+      "zone": "scada",
+      "role": "ot",
+      "subnet": "10.10.7.0/24",
+      "gateway": "10.10.7.1",
+      "devices": [
+        "scada-plc-access3-01",
+        "scada-plc-access3-02",
+        "scada-plc-access3-03",
+        "scada-plc-access3-04",
+        "scada-plc-access3-05",
+        "scada-plc-access3-06",
+        "scada-plc-access3-07",
+        "scada-plc-access3-08"
+      ]
+    },
+    "800": {
+      "name": "VoIP",
+      "zone": "voip",
+      "role": "voice",
+      "subnet": "10.10.8.0/24",
+      "gateway": "10.10.8.1",
+      "devices": [
+        "ip-phone-access1-01",
+        "ip-phone-access1-02",
+        "ip-phone-access1-03",
+        "ip-phone-access1-04",
+        "ip-phone-access1-05",
+        "ip-phone-access1-06",
+        "ip-phone-access1-07",
+        "ip-phone-access1-08",
+        "ip-phone-access2-09",
+        "ip-phone-access2-10"
+      ]
+    },
+    "900": {
+      "name": "UCM",
+      "zone": "ucm",
+      "role": "infra",
+      "subnet": "10.10.9.0/24",
+      "gateway": "10.10.9.1",
+      "devices": [
+        "ucm-srv-access3-01",
+        "ucm-srv-access3-02",
+        "ucm-srv-access3-03",
+        "ucm-srv-access3-04"
+      ]
+    },
+    "1000": {
+      "name": "Print",
+      "zone": "print",
+      "role": "user",
+      "subnet": "10.10.10.0/24",
+      "gateway": "10.10.10.1",
+      "devices": [
+        "printer-access1-01",
+        "printer-access1-02",
+        "printer-access1-03",
+        "printer-access1-04"
+      ]
+    },
+    "1100": {
+      "name": "CCTV",
+      "zone": "cctv",
+      "role": "security",
+      "subnet": "10.10.11.0/24",
+      "gateway": "10.10.11.1",
+      "devices": [
+        "cctv-cam-access1-01",
+        "cctv-cam-access1-02",
+        "cctv-cam-access1-03",
+        "cctv-cam-access1-04",
+        "cctv-cam-access2-05",
+        "cctv-cam-access2-06",
+        "cctv-cam-access2-07",
+        "cctv-cam-access2-08",
+        "cctv-cam-access2-09",
+        "cctv-cam-access2-10"
+      ]
+    },
+    "1200": {
+      "name": "Billing",
+      "zone": "billing",
+      "role": "server",
+      "subnet": "10.10.12.0/24",
+      "gateway": "10.10.12.1",
+      "devices": [
+        "billing-srv-access4-01",
+        "billing-srv-access4-02",
+        "billing-srv-access4-03",
+        "billing-srv-access4-04"
+      ]
+    },
+    "1300": {
+      "name": "Management",
+      "zone": "mgmt",
+      "role": "infra",
+      "subnet": "10.10.13.0/24",
+      "gateway": "10.10.13.1",
+      "devices": [
+        "mgmt-srv-access4-01",
+        "mgmt-srv-access4-02",
+        "mgmt-srv-access4-03",
+        "mgmt-srv-access4-04",
+        "mgmt-srv-access4-05",
+        "mgmt-srv-access4-06",
+        "mgmt-srv-access4-07",
+        "mgmt-srv-access4-08"
+      ]
+    },
+    "1400": {
+      "name": "DB-Servers",
+      "zone": "database",
+      "role": "server",
+      "subnet": "10.10.14.0/24",
+      "gateway": "10.10.14.1",
+      "devices": [
+        "db-srv-access4-01",
+        "db-srv-access4-02",
+        "db-srv-access4-03",
+        "db-srv-access4-04"
+      ]
+    },
+    "1500": {
+      "name": "App-Servers",
+      "zone": "app",
+      "role": "server",
+      "subnet": "10.10.15.0/24",
+      "gateway": "10.10.15.1",
+      "devices": [
+        "app-srv-access4-01",
+        "app-srv-access4-02",
+        "app-srv-access4-03",
+        "app-srv-access4-04",
+        "app-srv-access4-05",
+        "app-srv-access4-06",
+        "app-srv-access4-07",
+        "app-srv-access4-08"
+      ]
+    },
+    "1600": {
+      "name": "Storage",
+      "zone": "storage",
+      "role": "infra",
+      "subnet": "10.10.16.0/24",
+      "gateway": "10.10.16.1",
+      "devices": [
+        "storage-srv-access4-01",
+        "storage-srv-access4-02",
+        "storage-srv-access4-03",
+        "storage-srv-access4-04"
+      ]
+    },
+    "1700": {
+      "name": "Backup",
+      "zone": "backup",
+      "role": "infra",
+      "subnet": "10.10.17.0/24",
+      "gateway": "10.10.17.1",
+      "devices": [
+        "backup-srv-access4-01",
+        "backup-srv-access4-02",
+        "backup-srv-access4-03",
+        "backup-srv-access4-04"
+      ]
+    },
+    "1800": {
+      "name": "WiFi-Corp",
+      "zone": "wifi",
+      "role": "wireless",
+      "subnet": "10.10.18.0/24",
+      "gateway": "10.10.18.1",
+      "devices": [
+        "wifi-ap-corp-access1-01",
+        "wifi-ap-corp-access1-02",
+        "wifi-ap-corp-access1-03",
+        "wifi-ap-corp-access1-04",
+        "wifi-ap-corp-access2-05",
+        "wifi-ap-corp-access2-06",
+        "wifi-ap-corp-access2-07",
+        "wifi-ap-corp-access2-08",
+        "wifi-ap-corp-access2-09",
+        "wifi-ap-corp-access2-10"
+      ]
+    },
+    "1900": {
+      "name": "WiFi-Guest",
+      "zone": "wifi-guest",
+      "role": "wireless",
+      "subnet": "10.10.19.0/24",
+      "gateway": "10.10.19.1",
+      "devices": [
+        "wifi-ap-guest-access1-01",
+        "wifi-ap-guest-access1-02",
+        "wifi-ap-guest-access1-03",
+        "wifi-ap-guest-access1-04"
+      ]
+    }
+  },
+  "port_labels": {
+    "campus-access1:Ethernet1": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-01",
+      "mac": "00:0c:29:39:0c:8c",
+      "ip": "10.10.1.1",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet2": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-02",
+      "mac": "00:0c:29:7d:72:47",
+      "ip": "10.10.1.2",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet3": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-03",
+      "mac": "00:0c:29:34:2c:d8",
+      "ip": "10.10.1.3",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet4": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-04",
+      "mac": "00:0c:29:10:0f:2f",
+      "ip": "10.10.1.4",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet5": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-05",
+      "mac": "00:0c:29:6f:77:0d",
+      "ip": "10.10.1.5",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet6": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-06",
+      "mac": "00:0c:29:65:d6:70",
+      "ip": "10.10.1.6",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet7": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-07",
+      "mac": "00:0c:29:e5:8e:03",
+      "ip": "10.10.1.7",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet8": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-08",
+      "mac": "00:0c:29:51:d8:ae",
+      "ip": "10.10.1.8",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet9": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-09",
+      "mac": "00:0c:29:8e:4f:6e",
+      "ip": "10.10.1.9",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet10": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-10",
+      "mac": "00:0c:29:ac:34:2f",
+      "ip": "10.10.1.10",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet11": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-11",
+      "mac": "00:0c:29:c2:31:b7",
+      "ip": "10.10.1.11",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet12": {
+      "label": "Finance-WS",
+      "device_type": "Workstation",
+      "device": "fin-ws-access1-12",
+      "mac": "00:0c:29:b0:87:16",
+      "ip": "10.10.1.12",
+      "vlan": 100,
+      "zone": "finance"
+    },
+    "campus-access1:Ethernet13": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-01",
+      "mac": "00:0c:29:eb:3f:c1",
+      "ip": "10.10.2.1",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet14": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-02",
+      "mac": "00:0c:29:28:96:b9",
+      "ip": "10.10.2.2",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet15": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-03",
+      "mac": "00:0c:29:62:23:17",
+      "ip": "10.10.2.3",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet16": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-04",
+      "mac": "00:0c:29:74:94:28",
+      "ip": "10.10.2.4",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet17": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-05",
+      "mac": "00:0c:29:77:33:c2",
+      "ip": "10.10.2.5",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet18": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-06",
+      "mac": "00:0c:29:8e:e8:ba",
+      "ip": "10.10.2.6",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet19": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-07",
+      "mac": "00:0c:29:53:bd:b5",
+      "ip": "10.10.2.7",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet20": {
+      "label": "HR-WS",
+      "device_type": "Workstation",
+      "device": "hr-ws-access1-08",
+      "mac": "00:0c:29:6b:88:24",
+      "ip": "10.10.2.8",
+      "vlan": 200,
+      "zone": "hr"
+    },
+    "campus-access1:Ethernet21": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access1-01",
+      "mac": "00:18:0a:57:7d:53",
+      "ip": "10.10.18.1",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access1:Ethernet22": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access1-02",
+      "mac": "00:18:0a:ec:c2:8a",
+      "ip": "10.10.18.2",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access1:Ethernet23": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access1-03",
+      "mac": "00:18:0a:70:a6:1c",
+      "ip": "10.10.18.3",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access1:Ethernet24": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access1-04",
+      "mac": "00:18:0a:75:10:a1",
+      "ip": "10.10.18.4",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access1:Ethernet25": {
+      "label": "WiFi-AP-Guest",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-guest-access1-01",
+      "mac": "00:18:0a:cd:89:21",
+      "ip": "10.10.19.1",
+      "vlan": 1900,
+      "zone": "wifi-guest"
+    },
+    "campus-access1:Ethernet26": {
+      "label": "WiFi-AP-Guest",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-guest-access1-02",
+      "mac": "00:18:0a:6c:a1:6c",
+      "ip": "10.10.19.2",
+      "vlan": 1900,
+      "zone": "wifi-guest"
+    },
+    "campus-access1:Ethernet27": {
+      "label": "WiFi-AP-Guest",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-guest-access1-03",
+      "mac": "00:18:0a:ff:ca:ea",
+      "ip": "10.10.19.3",
+      "vlan": 1900,
+      "zone": "wifi-guest"
+    },
+    "campus-access1:Ethernet28": {
+      "label": "WiFi-AP-Guest",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-guest-access1-04",
+      "mac": "00:18:0a:49:87:47",
+      "ip": "10.10.19.4",
+      "vlan": 1900,
+      "zone": "wifi-guest"
+    },
+    "campus-access1:Ethernet29": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-01",
+      "mac": "00:0e:08:7e:86:db",
+      "ip": "10.10.8.1",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet30": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-02",
+      "mac": "00:0e:08:cc:b9:70",
+      "ip": "10.10.8.2",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet31": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-03",
+      "mac": "00:0e:08:46:fc:2e",
+      "ip": "10.10.8.3",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet32": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-04",
+      "mac": "00:0e:08:18:38:4e",
+      "ip": "10.10.8.4",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet33": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-05",
+      "mac": "00:0e:08:51:d8:20",
+      "ip": "10.10.8.5",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet34": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-06",
+      "mac": "00:0e:08:c5:c3:ef",
+      "ip": "10.10.8.6",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet35": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-07",
+      "mac": "00:0e:08:80:05:3a",
+      "ip": "10.10.8.7",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet36": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access1-08",
+      "mac": "00:0e:08:88:ae:39",
+      "ip": "10.10.8.8",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access1:Ethernet37": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access1-01",
+      "mac": "00:12:f2:96:de:50",
+      "ip": "10.10.11.1",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access1:Ethernet38": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access1-02",
+      "mac": "00:12:f2:e8:01:86",
+      "ip": "10.10.11.2",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access1:Ethernet39": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access1-03",
+      "mac": "00:12:f2:5b:36:98",
+      "ip": "10.10.11.3",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access1:Ethernet40": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access1-04",
+      "mac": "00:12:f2:65:4e:bf",
+      "ip": "10.10.11.4",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access1:Ethernet41": {
+      "label": "Printer",
+      "device_type": "Printer",
+      "device": "printer-access1-01",
+      "mac": "00:00:85:52:00:a5",
+      "ip": "10.10.10.1",
+      "vlan": 1000,
+      "zone": "print"
+    },
+    "campus-access1:Ethernet42": {
+      "label": "Printer",
+      "device_type": "Printer",
+      "device": "printer-access1-02",
+      "mac": "00:00:85:fa:09:39",
+      "ip": "10.10.10.2",
+      "vlan": 1000,
+      "zone": "print"
+    },
+    "campus-access1:Ethernet43": {
+      "label": "Printer",
+      "device_type": "Printer",
+      "device": "printer-access1-03",
+      "mac": "00:00:85:b9:9d:7a",
+      "ip": "10.10.10.3",
+      "vlan": 1000,
+      "zone": "print"
+    },
+    "campus-access1:Ethernet44": {
+      "label": "Printer",
+      "device_type": "Printer",
+      "device": "printer-access1-04",
+      "mac": "00:00:85:1d:7b:28",
+      "ip": "10.10.10.4",
+      "vlan": 1000,
+      "zone": "print"
+    },
+    "campus-access1:Ethernet45": {
+      "label": "Guest-Kiosk",
+      "device_type": "Kiosk",
+      "device": "guest-kiosk-access1-01",
+      "mac": "fc:ec:da:2b:f8:23",
+      "ip": "10.10.4.1",
+      "vlan": 400,
+      "zone": "guest"
+    },
+    "campus-access1:Ethernet46": {
+      "label": "Guest-Kiosk",
+      "device_type": "Kiosk",
+      "device": "guest-kiosk-access1-02",
+      "mac": "fc:ec:da:40:41:f3",
+      "ip": "10.10.4.2",
+      "vlan": 400,
+      "zone": "guest"
+    },
+    "campus-access1:Ethernet47": {
+      "label": "Guest-Kiosk",
+      "device_type": "Kiosk",
+      "device": "guest-kiosk-access1-03",
+      "mac": "fc:ec:da:54:87:d8",
+      "ip": "10.10.4.3",
+      "vlan": 400,
+      "zone": "guest"
+    },
+    "campus-access1:Ethernet48": {
+      "label": "Guest-Kiosk",
+      "device_type": "Kiosk",
+      "device": "guest-kiosk-access1-04",
+      "mac": "fc:ec:da:6c:66:9f",
+      "ip": "10.10.4.4",
+      "vlan": 400,
+      "zone": "guest"
+    },
+    "campus-access2:Ethernet1": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-01",
+      "mac": "00:17:88:cc:bf:e0",
+      "ip": "10.10.3.1",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet2": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-02",
+      "mac": "00:17:88:e7:3d:7e",
+      "ip": "10.10.3.2",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet3": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-03",
+      "mac": "00:17:88:73:20:ad",
+      "ip": "10.10.3.3",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet4": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-04",
+      "mac": "00:17:88:0a:75:70",
+      "ip": "10.10.3.4",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet5": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-05",
+      "mac": "00:17:88:03:24:1e",
+      "ip": "10.10.3.5",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet6": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-06",
+      "mac": "00:17:88:75:22:10",
+      "ip": "10.10.3.6",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet7": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-07",
+      "mac": "00:17:88:a9:24:79",
+      "ip": "10.10.3.7",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet8": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-08",
+      "mac": "00:17:88:8e:f8:6d",
+      "ip": "10.10.3.8",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet9": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-09",
+      "mac": "00:17:88:43:f2:7c",
+      "ip": "10.10.3.9",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet10": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-10",
+      "mac": "00:17:88:f2:d0:61",
+      "ip": "10.10.3.10",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet11": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-11",
+      "mac": "00:17:88:30:31:dc",
+      "ip": "10.10.3.11",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet12": {
+      "label": "IoT-Sensor",
+      "device_type": "IoT-Sensor",
+      "device": "iot-sensor-access2-12",
+      "mac": "00:17:88:b5:d8:d2",
+      "ip": "10.10.3.12",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet13": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-01",
+      "mac": "00:0c:29:ef:1b:32",
+      "ip": "10.10.5.1",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet14": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-02",
+      "mac": "00:0c:29:1f:ce:ad",
+      "ip": "10.10.5.2",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet15": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-03",
+      "mac": "00:0c:29:37:7f:62",
+      "ip": "10.10.5.3",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet16": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-04",
+      "mac": "00:0c:29:61:e5:47",
+      "ip": "10.10.5.4",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet17": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-05",
+      "mac": "00:0c:29:d8:5d:8e",
+      "ip": "10.10.5.5",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet18": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-06",
+      "mac": "00:0c:29:ec:7f:26",
+      "ip": "10.10.5.6",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet19": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-07",
+      "mac": "00:0c:29:e2:32:19",
+      "ip": "10.10.5.7",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet20": {
+      "label": "Dev-WS",
+      "device_type": "Workstation",
+      "device": "dev-ws-access2-08",
+      "mac": "00:0c:29:07:2f:79",
+      "ip": "10.10.5.8",
+      "vlan": 500,
+      "zone": "dev"
+    },
+    "campus-access2:Ethernet21": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-05",
+      "mac": "00:18:0a:55:d0:f8",
+      "ip": "10.10.18.5",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet22": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-06",
+      "mac": "00:18:0a:f6:6d:cd",
+      "ip": "10.10.18.6",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet23": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-07",
+      "mac": "00:18:0a:1e:54:c2",
+      "ip": "10.10.18.7",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet24": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-08",
+      "mac": "00:18:0a:01:c7:87",
+      "ip": "10.10.18.8",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet25": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-09",
+      "mac": "00:18:0a:e8:92:d8",
+      "ip": "10.10.18.9",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet26": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-10",
+      "mac": "00:18:0a:f9:4f:61",
+      "ip": "10.10.18.10",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet27": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-11",
+      "mac": "00:18:0a:97:6f:1d",
+      "ip": "10.10.18.11",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet28": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access2-12",
+      "mac": "00:18:0a:1f:a0:1d",
+      "ip": "10.10.18.12",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access2:Ethernet29": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-09",
+      "mac": "00:0e:08:19:f4:50",
+      "ip": "10.10.8.9",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet30": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-10",
+      "mac": "00:0e:08:1d:29:5f",
+      "ip": "10.10.8.10",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet31": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-11",
+      "mac": "00:0e:08:23:22:78",
+      "ip": "10.10.8.11",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet32": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-12",
+      "mac": "00:0e:08:ce:3d:7e",
+      "ip": "10.10.8.12",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet33": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-13",
+      "mac": "00:0e:08:14:29:d6",
+      "ip": "10.10.8.13",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet34": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-14",
+      "mac": "00:0e:08:a1:85:68",
+      "ip": "10.10.8.14",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet35": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-15",
+      "mac": "00:0e:08:a0:7a:87",
+      "ip": "10.10.8.15",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet36": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access2-16",
+      "mac": "00:0e:08:ca:43:99",
+      "ip": "10.10.8.16",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access2:Ethernet37": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-05",
+      "mac": "00:12:f2:ea:a1:25",
+      "ip": "10.10.11.5",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet38": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-06",
+      "mac": "00:12:f2:04:ea:33",
+      "ip": "10.10.11.6",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet39": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-07",
+      "mac": "00:12:f2:25:6d:87",
+      "ip": "10.10.11.7",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet40": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-08",
+      "mac": "00:12:f2:43:b2:23",
+      "ip": "10.10.11.8",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet41": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-09",
+      "mac": "00:12:f2:7d:bd:91",
+      "ip": "10.10.11.9",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet42": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-10",
+      "mac": "00:12:f2:50:e0:9a",
+      "ip": "10.10.11.10",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet43": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-11",
+      "mac": "00:12:f2:04:99:35",
+      "ip": "10.10.11.11",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet44": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access2-12",
+      "mac": "00:12:f2:44:87:3b",
+      "ip": "10.10.11.12",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access2:Ethernet45": {
+      "label": "Badge-Reader",
+      "device_type": "IoT-Sensor",
+      "device": "badge-rdr-access2-13",
+      "mac": "00:17:88:36:4f:8b",
+      "ip": "10.10.3.13",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet46": {
+      "label": "Badge-Reader",
+      "device_type": "IoT-Sensor",
+      "device": "badge-rdr-access2-14",
+      "mac": "00:17:88:90:6b:af",
+      "ip": "10.10.3.14",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet47": {
+      "label": "Badge-Reader",
+      "device_type": "IoT-Sensor",
+      "device": "badge-rdr-access2-15",
+      "mac": "00:17:88:68:87:fa",
+      "ip": "10.10.3.15",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access2:Ethernet48": {
+      "label": "Badge-Reader",
+      "device_type": "IoT-Sensor",
+      "device": "badge-rdr-access2-16",
+      "mac": "00:17:88:80:1a:2f",
+      "ip": "10.10.3.16",
+      "vlan": 300,
+      "zone": "iot"
+    },
+    "campus-access3:Ethernet1": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-01",
+      "mac": "00:0c:29:d8:8d:16",
+      "ip": "10.10.6.1",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet2": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-02",
+      "mac": "00:0c:29:01:aa:42",
+      "ip": "10.10.6.2",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet3": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-03",
+      "mac": "00:0c:29:86:52:e2",
+      "ip": "10.10.6.3",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet4": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-04",
+      "mac": "00:0c:29:da:04:39",
+      "ip": "10.10.6.4",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet5": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-05",
+      "mac": "00:0c:29:26:4c:12",
+      "ip": "10.10.6.5",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet6": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-06",
+      "mac": "00:0c:29:bd:4b:dc",
+      "ip": "10.10.6.6",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet7": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-07",
+      "mac": "00:0c:29:41:15:9d",
+      "ip": "10.10.6.7",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet8": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-08",
+      "mac": "00:0c:29:ba:14:b7",
+      "ip": "10.10.6.8",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet9": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-09",
+      "mac": "00:0c:29:6b:7f:34",
+      "ip": "10.10.6.9",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet10": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-10",
+      "mac": "00:0c:29:b5:d0:4f",
+      "ip": "10.10.6.10",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet11": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-11",
+      "mac": "00:0c:29:79:53:5a",
+      "ip": "10.10.6.11",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet12": {
+      "label": "Prod-WS",
+      "device_type": "Workstation",
+      "device": "prod-ws-access3-12",
+      "mac": "00:0c:29:d3:0c:5b",
+      "ip": "10.10.6.12",
+      "vlan": 600,
+      "zone": "prod"
+    },
+    "campus-access3:Ethernet13": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-01",
+      "mac": "00:20:d8:aa:d2:7f",
+      "ip": "10.10.7.1",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet14": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-02",
+      "mac": "00:20:d8:88:51:37",
+      "ip": "10.10.7.2",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet15": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-03",
+      "mac": "00:20:d8:c3:13:f0",
+      "ip": "10.10.7.3",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet16": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-04",
+      "mac": "00:20:d8:71:66:eb",
+      "ip": "10.10.7.4",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet17": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-05",
+      "mac": "00:20:d8:b3:9c:74",
+      "ip": "10.10.7.5",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet18": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-06",
+      "mac": "00:20:d8:72:0c:62",
+      "ip": "10.10.7.6",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet19": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-07",
+      "mac": "00:20:d8:cc:a8:8e",
+      "ip": "10.10.7.7",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet20": {
+      "label": "SCADA-PLC",
+      "device_type": "PLC",
+      "device": "scada-plc-access3-08",
+      "mac": "00:20:d8:23:8e:b3",
+      "ip": "10.10.7.8",
+      "vlan": 700,
+      "zone": "scada"
+    },
+    "campus-access3:Ethernet21": {
+      "label": "UCM-Server",
+      "device_type": "Server",
+      "device": "ucm-srv-access3-01",
+      "mac": "00:50:56:cc:a9:0e",
+      "ip": "10.10.9.1",
+      "vlan": 900,
+      "zone": "ucm"
+    },
+    "campus-access3:Ethernet22": {
+      "label": "UCM-Server",
+      "device_type": "Server",
+      "device": "ucm-srv-access3-02",
+      "mac": "00:50:56:3b:85:5b",
+      "ip": "10.10.9.2",
+      "vlan": 900,
+      "zone": "ucm"
+    },
+    "campus-access3:Ethernet23": {
+      "label": "UCM-Server",
+      "device_type": "Server",
+      "device": "ucm-srv-access3-03",
+      "mac": "00:50:56:87:13:37",
+      "ip": "10.10.9.3",
+      "vlan": 900,
+      "zone": "ucm"
+    },
+    "campus-access3:Ethernet24": {
+      "label": "UCM-Server",
+      "device_type": "Server",
+      "device": "ucm-srv-access3-04",
+      "mac": "00:50:56:de:b0:a0",
+      "ip": "10.10.9.4",
+      "vlan": 900,
+      "zone": "ucm"
+    },
+    "campus-access3:Ethernet25": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-13",
+      "mac": "00:12:f2:df:3b:c5",
+      "ip": "10.10.11.13",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet26": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-14",
+      "mac": "00:12:f2:61:82:16",
+      "ip": "10.10.11.14",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet27": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-15",
+      "mac": "00:12:f2:df:00:64",
+      "ip": "10.10.11.15",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet28": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-16",
+      "mac": "00:12:f2:ba:dc:23",
+      "ip": "10.10.11.16",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet29": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-17",
+      "mac": "00:12:f2:a9:a0:3f",
+      "ip": "10.10.11.17",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet30": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-18",
+      "mac": "00:12:f2:99:9e:d1",
+      "ip": "10.10.11.18",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet31": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-19",
+      "mac": "00:12:f2:a7:ce:97",
+      "ip": "10.10.11.19",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet32": {
+      "label": "CCTV-Outdoor",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-out-access3-20",
+      "mac": "00:12:f2:41:62:d7",
+      "ip": "10.10.11.20",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access3:Ethernet33": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-13",
+      "mac": "00:18:0a:c2:59:9a",
+      "ip": "10.10.18.13",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet34": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-14",
+      "mac": "00:18:0a:cf:00:9b",
+      "ip": "10.10.18.14",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet35": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-15",
+      "mac": "00:18:0a:92:6b:dc",
+      "ip": "10.10.18.15",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet36": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-16",
+      "mac": "00:18:0a:a4:ee:e2",
+      "ip": "10.10.18.16",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet37": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-17",
+      "mac": "00:18:0a:e2:6d:f2",
+      "ip": "10.10.18.17",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet38": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-18",
+      "mac": "00:18:0a:56:2b:91",
+      "ip": "10.10.18.18",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet39": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-19",
+      "mac": "00:18:0a:ab:2f:78",
+      "ip": "10.10.18.19",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet40": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access3-20",
+      "mac": "00:18:0a:9e:73:65",
+      "ip": "10.10.18.20",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access3:Ethernet41": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-17",
+      "mac": "00:0e:08:4b:0c:17",
+      "ip": "10.10.8.17",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet42": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-18",
+      "mac": "00:0e:08:7d:f3:25",
+      "ip": "10.10.8.18",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet43": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-19",
+      "mac": "00:0e:08:e9:d4:63",
+      "ip": "10.10.8.19",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet44": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-20",
+      "mac": "00:0e:08:c4:fd:cc",
+      "ip": "10.10.8.20",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet45": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-21",
+      "mac": "00:0e:08:7c:4b:02",
+      "ip": "10.10.8.21",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet46": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-22",
+      "mac": "00:0e:08:36:d9:70",
+      "ip": "10.10.8.22",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet47": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-23",
+      "mac": "00:0e:08:5a:ed:19",
+      "ip": "10.10.8.23",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access3:Ethernet48": {
+      "label": "IP-Phone",
+      "device_type": "IP-Phone",
+      "device": "ip-phone-access3-24",
+      "mac": "00:0e:08:7f:3e:e9",
+      "ip": "10.10.8.24",
+      "vlan": 800,
+      "zone": "voip"
+    },
+    "campus-access4:Ethernet1": {
+      "label": "Billing-Server",
+      "device_type": "Server",
+      "device": "billing-srv-access4-01",
+      "mac": "00:50:56:44:ed:a2",
+      "ip": "10.10.12.1",
+      "vlan": 1200,
+      "zone": "billing"
+    },
+    "campus-access4:Ethernet2": {
+      "label": "Billing-Server",
+      "device_type": "Server",
+      "device": "billing-srv-access4-02",
+      "mac": "00:50:56:e2:da:e4",
+      "ip": "10.10.12.2",
+      "vlan": 1200,
+      "zone": "billing"
+    },
+    "campus-access4:Ethernet3": {
+      "label": "Billing-Server",
+      "device_type": "Server",
+      "device": "billing-srv-access4-03",
+      "mac": "00:50:56:51:f3:e6",
+      "ip": "10.10.12.3",
+      "vlan": 1200,
+      "zone": "billing"
+    },
+    "campus-access4:Ethernet4": {
+      "label": "Billing-Server",
+      "device_type": "Server",
+      "device": "billing-srv-access4-04",
+      "mac": "00:50:56:84:7e:8d",
+      "ip": "10.10.12.4",
+      "vlan": 1200,
+      "zone": "billing"
+    },
+    "campus-access4:Ethernet5": {
+      "label": "DB-Server",
+      "device_type": "Server",
+      "device": "db-srv-access4-01",
+      "mac": "00:50:56:f8:7a:8c",
+      "ip": "10.10.14.1",
+      "vlan": 1400,
+      "zone": "database"
+    },
+    "campus-access4:Ethernet6": {
+      "label": "DB-Server",
+      "device_type": "Server",
+      "device": "db-srv-access4-02",
+      "mac": "00:50:56:e1:27:92",
+      "ip": "10.10.14.2",
+      "vlan": 1400,
+      "zone": "database"
+    },
+    "campus-access4:Ethernet7": {
+      "label": "DB-Server",
+      "device_type": "Server",
+      "device": "db-srv-access4-03",
+      "mac": "00:50:56:78:8b:ab",
+      "ip": "10.10.14.3",
+      "vlan": 1400,
+      "zone": "database"
+    },
+    "campus-access4:Ethernet8": {
+      "label": "DB-Server",
+      "device_type": "Server",
+      "device": "db-srv-access4-04",
+      "mac": "00:50:56:a3:29:46",
+      "ip": "10.10.14.4",
+      "vlan": 1400,
+      "zone": "database"
+    },
+    "campus-access4:Ethernet9": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-01",
+      "mac": "00:50:56:4d:76:c4",
+      "ip": "10.10.15.1",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet10": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-02",
+      "mac": "00:50:56:4e:6d:20",
+      "ip": "10.10.15.2",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet11": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-03",
+      "mac": "00:50:56:d4:d0:a9",
+      "ip": "10.10.15.3",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet12": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-04",
+      "mac": "00:50:56:ee:d4:1f",
+      "ip": "10.10.15.4",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet13": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-05",
+      "mac": "00:50:56:69:d7:c7",
+      "ip": "10.10.15.5",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet14": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-06",
+      "mac": "00:50:56:0a:c2:f4",
+      "ip": "10.10.15.6",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet15": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-07",
+      "mac": "00:50:56:03:b4:98",
+      "ip": "10.10.15.7",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet16": {
+      "label": "App-Server",
+      "device_type": "Server",
+      "device": "app-srv-access4-08",
+      "mac": "00:50:56:c7:d6:70",
+      "ip": "10.10.15.8",
+      "vlan": 1500,
+      "zone": "app"
+    },
+    "campus-access4:Ethernet17": {
+      "label": "Storage-Server",
+      "device_type": "Server",
+      "device": "storage-srv-access4-01",
+      "mac": "00:50:56:f9:70:8b",
+      "ip": "10.10.16.1",
+      "vlan": 1600,
+      "zone": "storage"
+    },
+    "campus-access4:Ethernet18": {
+      "label": "Storage-Server",
+      "device_type": "Server",
+      "device": "storage-srv-access4-02",
+      "mac": "00:50:56:df:f8:0e",
+      "ip": "10.10.16.2",
+      "vlan": 1600,
+      "zone": "storage"
+    },
+    "campus-access4:Ethernet19": {
+      "label": "Storage-Server",
+      "device_type": "Server",
+      "device": "storage-srv-access4-03",
+      "mac": "00:50:56:c7:ac:cf",
+      "ip": "10.10.16.3",
+      "vlan": 1600,
+      "zone": "storage"
+    },
+    "campus-access4:Ethernet20": {
+      "label": "Storage-Server",
+      "device_type": "Server",
+      "device": "storage-srv-access4-04",
+      "mac": "00:50:56:54:ef:41",
+      "ip": "10.10.16.4",
+      "vlan": 1600,
+      "zone": "storage"
+    },
+    "campus-access4:Ethernet21": {
+      "label": "Backup-Server",
+      "device_type": "Server",
+      "device": "backup-srv-access4-01",
+      "mac": "00:50:56:0d:c9:0d",
+      "ip": "10.10.17.1",
+      "vlan": 1700,
+      "zone": "backup"
+    },
+    "campus-access4:Ethernet22": {
+      "label": "Backup-Server",
+      "device_type": "Server",
+      "device": "backup-srv-access4-02",
+      "mac": "00:50:56:2a:db:45",
+      "ip": "10.10.17.2",
+      "vlan": 1700,
+      "zone": "backup"
+    },
+    "campus-access4:Ethernet23": {
+      "label": "Backup-Server",
+      "device_type": "Server",
+      "device": "backup-srv-access4-03",
+      "mac": "00:50:56:ec:5d:19",
+      "ip": "10.10.17.3",
+      "vlan": 1700,
+      "zone": "backup"
+    },
+    "campus-access4:Ethernet24": {
+      "label": "Backup-Server",
+      "device_type": "Server",
+      "device": "backup-srv-access4-04",
+      "mac": "00:50:56:85:c2:a7",
+      "ip": "10.10.17.4",
+      "vlan": 1700,
+      "zone": "backup"
+    },
+    "campus-access4:Ethernet25": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-01",
+      "mac": "00:50:56:6c:e8:a7",
+      "ip": "10.10.13.1",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet26": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-02",
+      "mac": "00:50:56:ac:c2:8e",
+      "ip": "10.10.13.2",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet27": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-03",
+      "mac": "00:50:56:d7:81:29",
+      "ip": "10.10.13.3",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet28": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-04",
+      "mac": "00:50:56:f0:09:1a",
+      "ip": "10.10.13.4",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet29": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-05",
+      "mac": "00:50:56:b3:72:23",
+      "ip": "10.10.13.5",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet30": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-06",
+      "mac": "00:50:56:14:0f:7e",
+      "ip": "10.10.13.6",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet31": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-07",
+      "mac": "00:50:56:66:0a:4e",
+      "ip": "10.10.13.7",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet32": {
+      "label": "Mgmt-Server",
+      "device_type": "Server",
+      "device": "mgmt-srv-access4-08",
+      "mac": "00:50:56:7a:40:f2",
+      "ip": "10.10.13.8",
+      "vlan": 1300,
+      "zone": "mgmt"
+    },
+    "campus-access4:Ethernet33": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-21",
+      "mac": "00:12:f2:3a:6f:ee",
+      "ip": "10.10.11.21",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet34": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-22",
+      "mac": "00:12:f2:83:bc:55",
+      "ip": "10.10.11.22",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet35": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-23",
+      "mac": "00:12:f2:3a:53:9f",
+      "ip": "10.10.11.23",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet36": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-24",
+      "mac": "00:12:f2:37:0d:9f",
+      "ip": "10.10.11.24",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet37": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-25",
+      "mac": "00:12:f2:c0:cb:65",
+      "ip": "10.10.11.25",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet38": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-26",
+      "mac": "00:12:f2:26:7c:34",
+      "ip": "10.10.11.26",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet39": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-27",
+      "mac": "00:12:f2:9a:3d:15",
+      "ip": "10.10.11.27",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet40": {
+      "label": "CCTV-Camera",
+      "device_type": "CCTV-Camera",
+      "device": "cctv-cam-access4-28",
+      "mac": "00:12:f2:b1:db:bd",
+      "ip": "10.10.11.28",
+      "vlan": 1100,
+      "zone": "cctv"
+    },
+    "campus-access4:Ethernet41": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-21",
+      "mac": "00:18:0a:23:ae:06",
+      "ip": "10.10.18.21",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet42": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-22",
+      "mac": "00:18:0a:d7:fa:36",
+      "ip": "10.10.18.22",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet43": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-23",
+      "mac": "00:18:0a:dd:b9:eb",
+      "ip": "10.10.18.23",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet44": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-24",
+      "mac": "00:18:0a:4e:de:5a",
+      "ip": "10.10.18.24",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet45": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-25",
+      "mac": "00:18:0a:8a:f7:ee",
+      "ip": "10.10.18.25",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet46": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-26",
+      "mac": "00:18:0a:df:89:a5",
+      "ip": "10.10.18.26",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet47": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-27",
+      "mac": "00:18:0a:7d:2c:8e",
+      "ip": "10.10.18.27",
+      "vlan": 1800,
+      "zone": "wifi"
+    },
+    "campus-access4:Ethernet48": {
+      "label": "WiFi-AP-Corp",
+      "device_type": "WiFi-AP",
+      "device": "wifi-ap-corp-access4-28",
+      "mac": "00:18:0a:e6:7c:ed",
+      "ip": "10.10.18.28",
+      "vlan": 1800,
+      "zone": "wifi"
+    }
+  },
+  "device_count": 192,
+  "vlan_count": 19
+}

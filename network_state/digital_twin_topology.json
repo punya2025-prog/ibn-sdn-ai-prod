@@ -1,0 +1,283 @@
+{
+  "topology_name": "arista_ceos_digital_twin",
+  "description": "Combined spine-leaf (DC fabric) + campus topology for IBN research. All nodes are Arista cEOS. Designed for ContainerLab + ODL Oxygen.",
+  "version": "1.0",
+  "bgp_asn_fabric": 65000,
+  "bgp_asn_campus": 65001,
+  "loopback_base": "10.255.0.0/24",
+  "underlay_base": "10.0.0.0/24",
+  "overlay_vxlan_vni_range": "10000-10999",
+
+  "nodes": [
+    {
+      "node_id": "spine1",
+      "hostname": "dc-spine1",
+      "role": "spine",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..11/24",
+      "loopback0": "10.255.0.1/32",
+      "loopback1_vtep": "10.255.1.1/32",
+      "bgp_asn": 65000,
+      "bgp_router_id": "10.255.0.1",
+      "interfaces": [
+        {"name":"Ethernet1","peer":"leaf1","peer_intf":"Ethernet1","ip":"10.0.0.0/31","desc":"To leaf1"},
+        {"name":"Ethernet2","peer":"leaf2","peer_intf":"Ethernet1","ip":"10.0.0.2/31","desc":"To leaf2"},
+        {"name":"Ethernet3","peer":"leaf3","peer_intf":"Ethernet1","ip":"10.0.0.4/31","desc":"To leaf3"},
+        {"name":"Ethernet4","peer":"leaf4","peer_intf":"Ethernet1","ip":"10.0.0.6/31","desc":"To leaf4"},
+        {"name":"Management0","ip":"10.200.0..11/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "spine2",
+      "hostname": "dc-spine2",
+      "role": "spine",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..12/24",
+      "loopback0": "10.255.0.2/32",
+      "loopback1_vtep": "10.255.1.2/32",
+      "bgp_asn": 65000,
+      "bgp_router_id": "10.255.0.2",
+      "interfaces": [
+        {"name":"Ethernet1","peer":"leaf1","peer_intf":"Ethernet2","ip":"10.0.0.8/31","desc":"To leaf1"},
+        {"name":"Ethernet2","peer":"leaf2","peer_intf":"Ethernet2","ip":"10.0.0.10/31","desc":"To leaf2"},
+        {"name":"Ethernet3","peer":"leaf3","peer_intf":"Ethernet2","ip":"10.0.0.12/31","desc":"To leaf3"},
+        {"name":"Ethernet4","peer":"leaf4","peer_intf":"Ethernet2","ip":"10.0.0.14/31","desc":"To leaf4"},
+        {"name":"Management0","ip":"10.200.0..12/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "leaf1",
+      "hostname": "dc-leaf1",
+      "role": "leaf",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..21/24",
+      "loopback0": "10.255.0.11/32",
+      "loopback1_vtep": "10.255.1.11/32",
+      "bgp_asn": 65011,
+      "bgp_router_id": "10.255.0.11",
+      "vlans": [100,200,400,500],
+      "vxlan_vnis": [10001,10002,10004,10005],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"spine1","peer_intf":"Ethernet1","ip":"10.0.0.1/31","desc":"To spine1"},
+        {"name":"Ethernet2","peer":"spine2","peer_intf":"Ethernet1","ip":"10.0.0.9/31","desc":"To spine2"},
+        {"name":"Ethernet3","peer":"host_finance1","mode":"access","vlan":100,"desc":"Finance host 1"},
+        {"name":"Ethernet4","peer":"host_hr1","mode":"access","vlan":200,"desc":"HR host 1"},
+        {"name":"Ethernet5","peer":"host_guest1","mode":"access","vlan":400,"desc":"Guest host 1"},
+        {"name":"Management0","ip":"10.200.0..21/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "leaf2",
+      "hostname": "dc-leaf2",
+      "role": "leaf",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..22/24",
+      "loopback0": "10.255.0.12/32",
+      "loopback1_vtep": "10.255.1.12/32",
+      "bgp_asn": 65012,
+      "bgp_router_id": "10.255.0.12",
+      "vlans": [300,600,700,800],
+      "vxlan_vnis": [10003,10006,10007,10008],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"spine1","peer_intf":"Ethernet2","ip":"10.0.0.3/31","desc":"To spine1"},
+        {"name":"Ethernet2","peer":"spine2","peer_intf":"Ethernet2","ip":"10.0.0.11/31","desc":"To spine2"},
+        {"name":"Ethernet3","peer":"host_iot1","mode":"access","vlan":300,"desc":"IoT host 1"},
+        {"name":"Ethernet4","peer":"host_prod1","mode":"access","vlan":600,"desc":"Prod host 1"},
+        {"name":"Ethernet5","peer":"host_scada1","mode":"access","vlan":700,"desc":"SCADA host 1"},
+        {"name":"Management0","ip":"10.200.0..22/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "leaf3",
+      "hostname": "dc-leaf3",
+      "role": "leaf",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..23/24",
+      "loopback0": "10.255.0.13/32",
+      "loopback1_vtep": "10.255.1.13/32",
+      "bgp_asn": 65013,
+      "bgp_router_id": "10.255.0.13",
+      "vlans": [900,1000,1100,1200],
+      "vxlan_vnis": [10009,10010,10011,10012],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"spine1","peer_intf":"Ethernet3","ip":"10.0.0.5/31","desc":"To spine1"},
+        {"name":"Ethernet2","peer":"spine2","peer_intf":"Ethernet3","ip":"10.0.0.13/31","desc":"To spine2"},
+        {"name":"Ethernet3","peer":"host_voip1","mode":"access","vlan":900,"desc":"VoIP host 1"},
+        {"name":"Ethernet4","peer":"host_billing1","mode":"access","vlan":1200,"desc":"Billing host 1"},
+        {"name":"Ethernet5","peer":"host_cctv1","mode":"access","vlan":1100,"desc":"CCTV host 1"},
+        {"name":"Management0","ip":"10.200.0..23/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "leaf4",
+      "hostname": "dc-leaf4",
+      "role": "leaf",
+      "fabric": "spine_leaf",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..24/24",
+      "loopback0": "10.255.0.14/32",
+      "loopback1_vtep": "10.255.1.14/32",
+      "bgp_asn": 65014,
+      "bgp_router_id": "10.255.0.14",
+      "vlans": [1300,500,600,400],
+      "vxlan_vnis": [10013,10005,10006,10004],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"spine1","peer_intf":"Ethernet4","ip":"10.0.0.7/31","desc":"To spine1"},
+        {"name":"Ethernet2","peer":"spine2","peer_intf":"Ethernet4","ip":"10.0.0.15/31","desc":"To spine2"},
+        {"name":"Ethernet3","peer":"host_mgmt1","mode":"access","vlan":1300,"desc":"Management host 1"},
+        {"name":"Ethernet4","peer":"campus_core","peer_intf":"Ethernet1","mode":"trunk","vlans":"all","desc":"DC-Campus interconnect"},
+        {"name":"Management0","ip":"10.200.0..24/24","desc":"OOB Management"}
+      ]
+    },
+
+    {
+      "node_id": "campus_core",
+      "hostname": "campus-core1",
+      "role": "core",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..31/24",
+      "loopback0": "10.255.0.21/32",
+      "bgp_asn": 65001,
+      "bgp_router_id": "10.255.0.21",
+      "interfaces": [
+        {"name":"Ethernet1","peer":"leaf4","peer_intf":"Ethernet4","mode":"trunk","vlans":"all","desc":"DC-Campus interconnect"},
+        {"name":"Ethernet2","peer":"dist1","peer_intf":"Ethernet1","mode":"trunk","vlans":"all","desc":"To distribution1"},
+        {"name":"Ethernet3","peer":"dist2","peer_intf":"Ethernet1","mode":"trunk","vlans":"all","desc":"To distribution2"},
+        {"name":"Management0","ip":"10.200.0..31/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "dist1",
+      "hostname": "campus-dist1",
+      "role": "distribution",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..32/24",
+      "loopback0": "10.255.0.22/32",
+      "stp_root": true,
+      "interfaces": [
+        {"name":"Ethernet1","peer":"campus_core","peer_intf":"Ethernet2","mode":"trunk","vlans":"all","desc":"To core"},
+        {"name":"Ethernet2","peer":"access1","peer_intf":"Ethernet1","mode":"trunk","vlans":"100,200,400","desc":"To access1"},
+        {"name":"Ethernet3","peer":"access2","peer_intf":"Ethernet1","mode":"trunk","vlans":"300,500,800","desc":"To access2"},
+        {"name":"Management0","ip":"10.200.0..32/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "dist2",
+      "hostname": "campus-dist2",
+      "role": "distribution",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..33/24",
+      "loopback0": "10.255.0.23/32",
+      "interfaces": [
+        {"name":"Ethernet1","peer":"campus_core","peer_intf":"Ethernet3","mode":"trunk","vlans":"all","desc":"To core"},
+        {"name":"Ethernet2","peer":"access3","peer_intf":"Ethernet1","mode":"trunk","vlans":"600,700,900","desc":"To access3"},
+        {"name":"Ethernet3","peer":"access4","peer_intf":"Ethernet1","mode":"trunk","vlans":"1000,1100,1200,1300","desc":"To access4"},
+        {"name":"Management0","ip":"10.200.0..33/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "access1",
+      "hostname": "campus-access1",
+      "role": "access",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..41/24",
+      "vlans": [100,200,400],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"dist1","peer_intf":"Ethernet2","mode":"trunk","vlans":"100,200,400","desc":"Uplink to dist1"},
+        {"name":"Ethernet2","peer":"wkst_finance1","mode":"access","vlan":100,"desc":"Finance workstation"},
+        {"name":"Ethernet3","peer":"wkst_hr1","mode":"access","vlan":200,"desc":"HR workstation"},
+        {"name":"Ethernet4","peer":"wkst_guest1","mode":"access","vlan":400,"desc":"Guest endpoint"},
+        {"name":"Management0","ip":"10.200.0..41/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "access2",
+      "hostname": "campus-access2",
+      "role": "access",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..42/24",
+      "vlans": [300,500,800],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"dist1","peer_intf":"Ethernet3","mode":"trunk","vlans":"300,500,800","desc":"Uplink to dist1"},
+        {"name":"Ethernet2","peer":"iot_sensor1","mode":"access","vlan":300,"desc":"IoT sensor"},
+        {"name":"Ethernet3","peer":"wkst_dev1","mode":"access","vlan":500,"desc":"Dev workstation"},
+        {"name":"Ethernet4","peer":"phone1","mode":"access","vlan":800,"desc":"IP phone"},
+        {"name":"Management0","ip":"10.200.0..42/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "access3",
+      "hostname": "campus-access3",
+      "role": "access",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..43/24",
+      "vlans": [600,700,900],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"dist2","peer_intf":"Ethernet2","mode":"trunk","vlans":"600,700,900","desc":"Uplink to dist2"},
+        {"name":"Ethernet2","peer":"wkst_prod1","mode":"access","vlan":600,"desc":"Prod workstation"},
+        {"name":"Ethernet3","peer":"plc1","mode":"access","vlan":700,"desc":"PLC (SCADA)"},
+        {"name":"Ethernet4","peer":"ucm1","mode":"access","vlan":900,"desc":"UCM server"},
+        {"name":"Management0","ip":"10.200.0..43/24","desc":"OOB Management"}
+      ]
+    },
+    {
+      "node_id": "access4",
+      "hostname": "campus-access4",
+      "role": "access",
+      "fabric": "campus",
+      "platform": "cEOSLab",
+      "image": "ceos:4.31.0F",
+      "mgmt_ip": "10.200.0..44/24",
+      "vlans": [1000,1100,1200,1300],
+      "interfaces": [
+        {"name":"Ethernet1","peer":"dist2","peer_intf":"Ethernet3","mode":"trunk","vlans":"1000,1100,1200,1300","desc":"Uplink to dist2"},
+        {"name":"Ethernet2","peer":"printer1","mode":"access","vlan":1000,"desc":"Network printer"},
+        {"name":"Ethernet3","peer":"cctv_cam1","mode":"access","vlan":1100,"desc":"CCTV camera"},
+        {"name":"Ethernet4","peer":"billing_server1","mode":"access","vlan":1200,"desc":"Billing server"},
+        {"name":"Ethernet5","peer":"mgmt_server1","mode":"access","vlan":1300,"desc":"Management server"},
+        {"name":"Management0","ip":"10.200.0..44/24","desc":"OOB Management"}
+      ]
+    }
+  ],
+
+  "links": [
+    {"id":"lnk-001","src":"spine1","src_intf":"Ethernet1","dst":"leaf1","dst_intf":"Ethernet1","type":"p2p","speed":"100G"},
+    {"id":"lnk-002","src":"spine1","src_intf":"Ethernet2","dst":"leaf2","dst_intf":"Ethernet1","type":"p2p","speed":"100G"},
+    {"id":"lnk-003","src":"spine1","src_intf":"Ethernet3","dst":"leaf3","dst_intf":"Ethernet1","type":"p2p","speed":"100G"},
+    {"id":"lnk-004","src":"spine1","src_intf":"Ethernet4","dst":"leaf4","dst_intf":"Ethernet1","type":"p2p","speed":"100G"},
+    {"id":"lnk-005","src":"spine2","src_intf":"Ethernet1","dst":"leaf1","dst_intf":"Ethernet2","type":"p2p","speed":"100G"},
+    {"id":"lnk-006","src":"spine2","src_intf":"Ethernet2","dst":"leaf2","dst_intf":"Ethernet2","type":"p2p","speed":"100G"},
+    {"id":"lnk-007","src":"spine2","src_intf":"Ethernet3","dst":"leaf3","dst_intf":"Ethernet2","type":"p2p","speed":"100G"},
+    {"id":"lnk-008","src":"spine2","src_intf":"Ethernet4","dst":"leaf4","dst_intf":"Ethernet2","type":"p2p","speed":"100G"},
+    {"id":"lnk-009","src":"leaf4","src_intf":"Ethernet4","dst":"campus_core","dst_intf":"Ethernet1","type":"trunk","speed":"10G"},
+    {"id":"lnk-010","src":"campus_core","src_intf":"Ethernet2","dst":"dist1","dst_intf":"Ethernet1","type":"trunk","speed":"10G"},
+    {"id":"lnk-011","src":"campus_core","src_intf":"Ethernet3","dst":"dist2","dst_intf":"Ethernet1","type":"trunk","speed":"10G"},
+    {"id":"lnk-012","src":"dist1","src_intf":"Ethernet2","dst":"access1","dst_intf":"Ethernet1","type":"trunk","speed":"1G"},
+    {"id":"lnk-013","src":"dist1","src_intf":"Ethernet3","dst":"access2","dst_intf":"Ethernet1","type":"trunk","speed":"1G"},
+    {"id":"lnk-014","src":"dist2","src_intf":"Ethernet2","dst":"access3","dst_intf":"Ethernet1","type":"trunk","speed":"1G"},
+    {"id":"lnk-015","src":"dist2","src_intf":"Ethernet3","dst":"access4","dst_intf":"Ethernet1","type":"trunk","speed":"1G"}
+  ]
+}

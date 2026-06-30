@@ -1,0 +1,146 @@
+---
+# ContainerLab Digital Twin — Arista cEOS Spine-Leaf + Campus
+# Compatible with ODL Oxygen controller at 10.200.0..100:8181
+# Usage: sudo containerlab deploy -t digital_twin.yml
+
+name: ibn-digital-twin
+
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 10.200.0.0/24
+
+topology:
+  kinds:
+    ceos:
+      image: ceos:4.32.5.1M
+      env:
+        CEOS: 1
+        EOS_PLATFORM: ceoslab
+        INTFTYPE: eth
+        MAPETH0: 1
+        MGMT_INTF: Management0
+
+  nodes:
+    # ── Spine layer ──────────────────────────────────────────
+    spine1:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.11
+      startup-config: configs/spine1.cfg
+      labels:
+        role: spine
+        fabric: spine_leaf
+        ibn_node_id: "openflow:1"
+
+    spine2:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.12
+      startup-config: configs/spine2.cfg
+      labels:
+        role: spine
+        fabric: spine_leaf
+        ibn_node_id: "openflow:2"
+
+    # ── Leaf layer ────────────────────────────────────────────
+    leaf1:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.21
+      startup-config: configs/leaf1.cfg
+      labels:
+        role: leaf
+        fabric: spine_leaf
+        ibn_node_id: "openflow:3"
+
+    leaf2:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.22
+      startup-config: configs/leaf2.cfg
+      labels:
+        role: leaf
+        fabric: spine_leaf
+        ibn_node_id: "openflow:4"
+
+    leaf3:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.23
+      startup-config: configs/leaf3.cfg
+      labels:
+        role: leaf
+        fabric: spine_leaf
+        ibn_node_id: "openflow:5"
+
+    leaf4:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.24
+      startup-config: configs/leaf4.cfg
+      labels:
+        role: leaf
+        fabric: spine_leaf
+        ibn_node_id: "openflow:6"
+
+    # ── Campus layer ─────────────────────────────────────────
+    campus-core:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.31
+      startup-config: configs/campus_core.cfg
+      labels:
+        role: core
+        fabric: campus
+        ibn_node_id: "openflow:7"
+
+    dist1:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.32
+      startup-config: configs/dist1.cfg
+      labels:
+        role: distribution
+        fabric: campus
+        ibn_node_id: "openflow:8"
+
+    dist2:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.33
+      startup-config: configs/dist2.cfg
+      labels:
+        role: distribution
+        fabric: campus
+        ibn_node_id: "openflow:9"
+
+    access1:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.41
+      startup-config: configs/access1.cfg
+      labels:
+        role: access
+        fabric: campus
+        ibn_node_id: "openflow:10"
+
+    access2:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.42
+      startup-config: configs/access2.cfg
+      labels:
+        role: access
+        fabric: campus
+        ibn_node_id: "openflow:11"
+
+    access3:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.43
+      startup-config: configs/access3.cfg
+      labels:
+        role: access
+        fabric: campus
+        ibn_node_id: "openflow:12"
+
+    access4:
+      kind: ceos
+      mgmt-ipv4: 10.200.0.44
+      startup-config: configs/access4.cfg
+      labels:
+        role: access
+        fabric: campus
+        ibn_node_id: "openflow:13"
+
+    # ── ODL Oxygen controller ────────────────────────────────
+
+

@@ -1,0 +1,78 @@
+! Startup-config last modified at Wed May 13 12:04:44 2026 by admin
+! device: dc-leaf1 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$CoGN5AYuzPJUp2FN$j.gmgF0O0SvmcaOSDnb6AQ4Y6PMn3/xCe.j2UGCZl9VX31aayQHR0yxuU5pricGex8iCYu94ZlQuFDW8JQxTV1
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname dc-leaf1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 100,200,400,500
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet49
+   description To dc-spine1 uplink
+   no switchport
+   ip address 10.0.0.1/31
+!
+interface Ethernet50
+   description To dc-spine2 uplink
+   no switchport
+   ip address 10.0.0.9/31
+!
+interface Loopback0
+   ip address 10.255.0.11/32
+!
+interface Management0
+   ip address 10.201.0.21/24
+!
+ip access-list IBN-34022B66
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-4F735463
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-C09DB883
+   10 deny ip any any
+   20 permit ip any any
+!
+ip routing
+!
+router bgp 65011
+   router-id 10.255.0.11
+   maximum-paths 4
+   neighbor 10.0.0.0 remote-as 65000
+   neighbor 10.0.0.8 remote-as 65000
+   redistribute connected
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

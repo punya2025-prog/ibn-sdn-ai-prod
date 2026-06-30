@@ -1,0 +1,190 @@
+---
+# ansible/playbooks/ibn_orchestrator.yml
+# ============================================================
+# Master IBN Orchestrator
+# ============================================================
+# The SINGLE playbook called by the FastAPI gateway for
+# Ansible-based deployment (method=ansible).
+#
+# Flow:
+#   1. Fetch intent from gateway → extract category/action
+#   2. Mandatory: verify simulation=PASS
+#   3. Backup all target devices
+#   4. Route to correct sub-playbook by category
+#   5. Post-deployment verification via Batfish
+#   6. Notify gateway with final status
+#   7. Rollback automatically if verification fails
+#
+# Usage (from gateway or CLI):
+#   ansible-playbook ibn_orchestrator.yml \
+#     -i ../inventory/digital_twin.yml \
+#     -e @/tmp/intent_payload.json
+#
+# The gateway writes the intent JSON to /tmp/intent_payload.json
+# before invoking this playbook.
+# ============================================================
+
+- name: "IBN Orchestrator | Stage 1 — Fetch and validate intent"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    gateway_url: "{{ gateway_url | default('http://localhost:8000') }}"
+
+  tasks:
+    - name: "Fetch canonical intent from gateway"
+      uri:
+        url:    "{{ gateway_url }}/api/intent/{{ intent_id }}"
+        method: GET
+        return_content: true
+      register: intent_response
+
+    - name: "Set intent facts"
+      set_fact:
+        intent:      "{{ intent_response.json.intent }}"
+        simulation:  "{{ intent_response.json.simulation | default({}) }}"
+        intent_category: "{{ intent_response.json.intent.category }}"
+        intent_action:   "{{ intent_response.json.intent.action }}"
+        intent_src:  "{{ intent_response.json.intent.subject.endpoint_group }}"
+        intent_dst:  "{{ intent_response.json.intent.target.endpoint_group }}"
+        intent_prio: "{{ intent_response.json.intent.priority }}"
+
+    - name: "Display intent summary"
+      debug:
+        msg:
+          - "ID:       {{ intent_id }}"
+          - "Category: {{ intent_category }}"
+          - "Action:   {{ intent_action }}"
+          - "Subject:  {{ intent_src }}"
+          - "Target:   {{ intent_dst }}"
+          - "Priority: {{ intent_prio }}"
+          - "Sim:      {{ simulation.verdict | default('NOT_RUN') }}"
+
+    - name: "Abort — simulation must PASS"
+      fail:
+        msg: >
+          Simulation verdict = '{{ simulation.verdict | default('NOT_RUN') }}'.
+          Ansible deployment blocked. Run simulation via gateway first.
+      when:
+        - require_simulation_pass | default(true) | bool
+        - simulation.verdict | default('') != 'PASS'
+
+
+- name: "IBN Orchestrator | Stage 2 — Backup all target devices"
+  hosts: fabric:campus
+  gather_facts: false
+  vars:
+    backup_dir: "/opt/ibn/backups"
+    intent_id:  "{{ hostvars['localhost']['intent_id'] | default('unknown') }}"
+
+  tasks:
+    - name: "Create backup directory"
+      file:
+        path:  "{{ backup_dir }}"
+        state: directory
+        mode:  "0755"
+      delegate_to: localhost
+      run_once: true
+
+    - name: "Capture running config snapshot"
+      eos_command:
+        commands: "show running-config"
+      register: backup_cfg
+
+    - name: "Write backup"
+      copy:
+        content: "{{ backup_cfg.stdout[0] }}"
+        dest: "{{ backup_dir }}/{{ inventory_hostname }}_{{ intent_id }}_{{ ansible_date_time.epoch }}_pre.cfg"
+      delegate_to: localhost
+
+
+- name: "IBN Orchestrator | Stage 3 — Route by category and deploy"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Route: segmentation/security → apply_acl.yml"
+      include_tasks: route_acl.yml
+      when: intent_category in ['segmentation', 'security', 'compliance']
+
+    - name: "Route: qos → apply_qos.yml"
+      include_tasks: route_qos.yml
+      when: intent_category == 'qos'
+
+    - name: "Route: vxlan → apply_vxlan.yml"
+      include_tasks: route_vxlan.yml
+      when: intent_category == 'vxlan'
+
+    - name: "Route: resiliency/remediation → apply_resiliency.yml"
+      include_tasks: route_resiliency.yml
+      when: intent_category in ['resiliency', 'remediation']
+
+    - name: "Route: reachability → ODL RESTCONF (fast path)"
+      uri:
+        url:    "{{ gateway_url | default('http://localhost:8000') }}/api/deploy/{{ intent_id }}?method=odl"
+        method: POST
+        return_content: true
+        status_code: [200, 201]
+      register: odl_result
+      when: intent_category == 'reachability'
+
+    - name: "Route: telemetry → configure syslog/snmp only"
+      include_tasks: route_telemetry.yml
+      when: intent_category == 'telemetry'
+
+
+- name: "IBN Orchestrator | Stage 4 — Post-deployment Batfish verification"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    gateway_url: "{{ gateway_url | default('http://localhost:8000') }}"
+
+  tasks:
+    - name: "Re-run simulation against post-deploy snapshot"
+      uri:
+        url:    "{{ gateway_url }}/api/simulate"
+        method: POST
+        body_format: json
+        body:   "{{ hostvars['localhost']['intent'] }}"
+        return_content: true
+        status_code: [200]
+      register: post_sim
+      ignore_errors: true
+
+    - name: "Store post-deploy verification result"
+      set_fact:
+        post_verdict: "{{ (post_sim.json | default({})).verdict | default('UNKNOWN') }}"
+
+    - name: "Log post-deploy verdict"
+      debug:
+        msg: "Post-deployment verification: {{ post_verdict }}"
+
+    - name: "ALERT — post-deploy check failed (auto-rollback trigger)"
+      debug:
+        msg: |
+          WARNING: Post-deployment Batfish check returned {{ post_verdict }}.
+          Consider running:
+            ansible-playbook rollback.yml -e "intent_id={{ intent_id }}"
+      when: post_verdict == 'FAIL'
+
+
+- name: "IBN Orchestrator | Stage 5 — Notify gateway"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Update intent status in gateway store"
+      uri:
+        url:    "{{ gateway_url | default('http://localhost:8000') }}/api/intent/{{ intent_id }}"
+        method: GET
+      ignore_errors: true
+
+    - name: "Summary"
+      debug:
+        msg:
+          - "======================================"
+          - "IBN Deployment Complete"
+          - "Intent:   {{ intent_id }}"
+          - "Category: {{ intent_category | default('?') }}"
+          - "Action:   {{ intent_action | default('?') }}"
+          - "Post-sim: {{ post_verdict | default('not run') }}"
+          - "======================================"

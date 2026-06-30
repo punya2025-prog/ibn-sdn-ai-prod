@@ -1,0 +1,303 @@
+! Startup-config last modified at Wed May 13 12:04:47 2026 by admin
+! device: campus-access4 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$CthArambEcfHBqWU$P9GU4..gJFNuARlUt4Lk6B2wIkbk/tQeT8DP3yJ3YJrdl2bwybJERaiP3jnp5KqYUP8AshU61AxWeNhaZOamV.
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-access4
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 1100,1200,1300,1400,1500,1600,1700,1800
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description Billing-Server-Primary
+   switchport access vlan 1200
+   spanning-tree portfast
+!
+interface Ethernet2
+   description Billing-Server-Secondary
+   switchport access vlan 1200
+   spanning-tree portfast
+!
+interface Ethernet3
+   description Billing-Server-DR
+   switchport access vlan 1200
+   spanning-tree portfast
+!
+interface Ethernet4
+   description Billing-App-Server
+   switchport access vlan 1200
+   spanning-tree portfast
+!
+interface Ethernet5
+   description DB-Server-Primary
+   switchport access vlan 1400
+   spanning-tree portfast
+!
+interface Ethernet6
+   description DB-Server-Secondary
+   switchport access vlan 1400
+   spanning-tree portfast
+!
+interface Ethernet7
+   description DB-Server-Replica
+   switchport access vlan 1400
+   spanning-tree portfast
+!
+interface Ethernet8
+   description DB-Server-Analytics
+   switchport access vlan 1400
+   spanning-tree portfast
+!
+interface Ethernet9
+   description App-Server-Web-1
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet10
+   description App-Server-Web-2
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet11
+   description App-Server-API-1
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet12
+   description App-Server-API-2
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet13
+   description App-Server-Worker-1
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet14
+   description App-Server-Worker-2
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet15
+   description App-Server-Worker-3
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet16
+   description App-Server-Cache
+   switchport access vlan 1500
+   spanning-tree portfast
+!
+interface Ethernet17
+   description Storage-SAN-Controller-1
+   switchport access vlan 1600
+   spanning-tree portfast
+!
+interface Ethernet18
+   description Storage-SAN-Controller-2
+   switchport access vlan 1600
+   spanning-tree portfast
+!
+interface Ethernet19
+   description Storage-NAS-1
+   switchport access vlan 1600
+   spanning-tree portfast
+!
+interface Ethernet20
+   description Storage-NAS-2
+   switchport access vlan 1600
+   spanning-tree portfast
+!
+interface Ethernet21
+   description Backup-Server-Primary
+   switchport access vlan 1700
+   spanning-tree portfast
+!
+interface Ethernet22
+   description Backup-Server-Secondary
+   switchport access vlan 1700
+   spanning-tree portfast
+!
+interface Ethernet23
+   description Backup-Media-Server
+   switchport access vlan 1700
+   spanning-tree portfast
+!
+interface Ethernet24
+   description Backup-Proxy-Server
+   switchport access vlan 1700
+   spanning-tree portfast
+!
+interface Ethernet25
+   description Mgmt-Jump-Host-1
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet26
+   description Mgmt-Jump-Host-2
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet27
+   description Mgmt-Monitoring-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet28
+   description Mgmt-SIEM-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet29
+   description Mgmt-NTP-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet30
+   description Mgmt-DNS-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet31
+   description Mgmt-DHCP-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet32
+   description Mgmt-Syslog-Server
+   switchport access vlan 1300
+   spanning-tree portfast
+!
+interface Ethernet33
+   description CCTV-Camera-DC-1
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet34
+   description CCTV-Camera-DC-2
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet35
+   description CCTV-Camera-DC-3
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet36
+   description CCTV-Camera-DC-4
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet37
+   description CCTV-NVR-Primary
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet38
+   description CCTV-NVR-Secondary
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet39
+   description CCTV-Camera-DC-5
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet40
+   description CCTV-Camera-DC-6
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet41
+   description WiFi-AP-DC-1
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet42
+   description WiFi-AP-DC-2
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet43
+   description WiFi-AP-DC-3
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet44
+   description WiFi-AP-DC-4
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet45
+   description WiFi-AP-DC-5
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet46
+   description WiFi-AP-DC-6
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet47
+   description WiFi-AP-DC-7
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet48
+   description WiFi-AP-DC-8
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet49
+   description Uplink to campus-dist2
+   switchport trunk allowed vlan 1100,1200,1300,1400,1500,1600,1700,1800
+   switchport mode trunk
+!
+interface Management0
+   ip address 10.201.0.44/24
+!
+ip access-list IBN-34022B66
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-4F735463
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-C09DB883
+   10 deny ip any any
+   20 permit ip any any
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

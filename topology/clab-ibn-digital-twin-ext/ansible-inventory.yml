@@ -1,0 +1,39 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    ceos:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-ibn-digital-twin-ext-access1:
+          ansible_host: 10.201.0.41
+        clab-ibn-digital-twin-ext-access2:
+          ansible_host: 10.201.0.42
+        clab-ibn-digital-twin-ext-access3:
+          ansible_host: 10.201.0.43
+        clab-ibn-digital-twin-ext-access4:
+          ansible_host: 10.201.0.44
+        clab-ibn-digital-twin-ext-campus-core:
+          ansible_host: 10.201.0.31
+        clab-ibn-digital-twin-ext-dist1:
+          ansible_host: 10.201.0.32
+        clab-ibn-digital-twin-ext-dist2:
+          ansible_host: 10.201.0.33
+        clab-ibn-digital-twin-ext-leaf1:
+          ansible_host: 10.201.0.21
+        clab-ibn-digital-twin-ext-leaf2:
+          ansible_host: 10.201.0.22
+        clab-ibn-digital-twin-ext-leaf3:
+          ansible_host: 10.201.0.23
+        clab-ibn-digital-twin-ext-leaf4:
+          ansible_host: 10.201.0.24
+        clab-ibn-digital-twin-ext-spine1:
+          ansible_host: 10.201.0.11
+        clab-ibn-digital-twin-ext-spine2:
+          ansible_host: 10.201.0.12

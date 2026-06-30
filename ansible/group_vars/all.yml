@@ -1,0 +1,39 @@
+# ansible/group_vars/all.yml
+# Shared variables for all IBN Ansible playbooks
+
+# ── ACL prefix ────────────────────────────────────────────────────────────────
+ibn_acl_prefix: "IBN"        # All IBN-managed ACLs are named IBN-<intent_id>
+
+# ── VLAN zone map (matches canonical intent zones) ───────────────────────────
+vlan_zone_map:
+  finance:      100
+  hr:           200
+  iot:          300
+  guest:        400
+  dev:          500
+  prod:         600
+  scada:        700
+  voip:         800
+  ucm:          900
+  printers:     1000
+  cctv:         1100
+  billing:      1200
+  mgmt:         1300
+
+# ── DSCP map ──────────────────────────────────────────────────────────────────
+dscp_map:
+  EF:   46
+  AF41: 34
+  AF31: 26
+  AF21: 18
+  AF11: 10
+  CS6:  48
+  CS0:  0
+
+# ── Simulation gate ───────────────────────────────────────────────────────────
+# If true, all playbooks check the gateway simulation result before applying.
+require_simulation_pass: true
+
+# ── Backup before change ──────────────────────────────────────────────────────
+backup_before_change: true
+backup_dir: /opt/ibn/backups

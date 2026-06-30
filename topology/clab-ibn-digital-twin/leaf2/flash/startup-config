@@ -1,0 +1,126 @@
+! Startup-config last modified at Wed May 13 06:54:56 2026 by admin
+! device: dc-leaf2 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$8HIfVO2eJKLXenPI$BiiYxyc/BsVAn8HwAYoaAGoPHSMx4TxAQPGK3EdiGVyeUotKYdK1KWVVe5w9M7dMYs2i9PdeXaQsoNy4qRryB/
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname dc-leaf2
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 300,600,700,800
+!
+interface Ethernet1
+   description To dc-spine1
+   no switchport
+   ip address 10.0.0.3/31
+!
+interface Ethernet2
+   description To dc-spine2
+   no switchport
+   ip address 10.0.0.11/31
+!
+interface Ethernet3
+   description IoT host
+   switchport access vlan 300
+!
+interface Ethernet4
+   description Prod host
+   switchport access vlan 600
+!
+interface Ethernet5
+   description SCADA host
+   switchport access vlan 700
+!
+interface Ethernet510
+!
+interface Loopback0
+   ip address 10.255.0.12/32
+!
+interface Management0
+   ip address 10.200.0.22/24
+!
+ip access-list IBN-12D794FC
+   10 permit ip host 10.0.0.3 any
+!
+ip access-list IBN-2453C7B6
+   10 permit ip host 10.0.0.3 any
+!
+ip access-list IBN-2B06F793
+   10 deny ip host 10.10.3.7 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-2F671EAF
+   10 permit ip host 10.0.0.1 any
+!
+ip access-list IBN-3C526BA7
+   10 permit ip host 10.0.0.5 any
+!
+ip access-list IBN-4CD24837
+   10 permit ip host 10.0.0.3 any
+!
+ip access-list IBN-517D55BE
+   10 deny ip 10.10.3.0/24 10.10.0.0/16
+   20 permit ip any any
+!
+ip access-list IBN-6071BA1E
+   10 deny ip host 10.10.3.6 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-76C2FD60
+   10 deny ip host 10.10.3.5 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-83D0249C
+   10 deny ip host 10.10.3.5 host 10.10.0.1
+   20 permit ip any any
+!
+ip access-list IBN-97BC94A3
+   10 permit ip host 10.0.0.3 any
+!
+ip access-list IBN-C518735F
+!
+ip access-list IBN-DF35E789
+   10 deny ip any any
+   20 permit ip any any
+!
+ip access-list IBN-F5A3F5D3
+   10 permit ip host 10.0.0.3 any
+!
+ip access-list IBN-IOT-BLOCK
+   10 deny ip 10.10.3.0/24 10.10.0.0/16
+   20 permit ip any any
+!
+ip routing
+!
+router bgp 65012
+   router-id 10.255.0.12
+   neighbor 10.0.0.2 remote-as 65000
+   neighbor 10.0.0.10 remote-as 65000
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

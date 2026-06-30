@@ -1,0 +1,293 @@
+! Startup-config last modified at Wed May 13 12:04:46 2026 by admin
+! device: campus-access1 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$vXiICMRvIm/iyznY$bhPTobwDfYhZBclbNg3YA8/Vh0FMZfFutQl6oMMkwSOTMuR8xc3FVXP7oOQx9kSqyJdYOGZFONJ/QVzmffedS0
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-access1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 100,200,400,800,1000,1100,1800,1900
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description Finance-Workstation-01
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet2
+   description Finance-Workstation-02
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet3
+   description Finance-Workstation-03
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet4
+   description Finance-Workstation-04
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet5
+   description Finance-Workstation-05
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet6
+   description Finance-Workstation-06
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet7
+   description Finance-Workstation-07
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet8
+   description Finance-Workstation-08
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet9
+   description Finance-Workstation-09
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet10
+   description Finance-Workstation-10
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet11
+   description Finance-Workstation-11
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet12
+   description Finance-Workstation-12
+   switchport access vlan 100
+   spanning-tree portfast
+!
+interface Ethernet13
+   description HR-Workstation-01
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet14
+   description HR-Workstation-02
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet15
+   description HR-Workstation-03
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet16
+   description HR-Workstation-04
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet17
+   description HR-Workstation-05
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet18
+   description HR-Workstation-06
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet19
+   description HR-Workstation-07
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet20
+   description HR-Workstation-08
+   switchport access vlan 200
+   spanning-tree portfast
+!
+interface Ethernet21
+   description WiFi-AP-Corp-1
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet22
+   description WiFi-AP-Corp-2
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet23
+   description WiFi-AP-Corp-3
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet24
+   description WiFi-AP-Corp-4
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet25
+   description WiFi-AP-Guest-1
+   switchport access vlan 1900
+   spanning-tree portfast
+!
+interface Ethernet26
+   description WiFi-AP-Guest-2
+   switchport access vlan 1900
+   spanning-tree portfast
+!
+interface Ethernet29
+   description IP-Phone-01
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet30
+   description IP-Phone-02
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet31
+   description IP-Phone-03
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet32
+   description IP-Phone-04
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet33
+   description IP-Phone-05
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet34
+   description IP-Phone-06
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet35
+   description IP-Phone-07
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet36
+   description IP-Phone-08
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet37
+   description CCTV-Camera-Lobby-1
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet38
+   description CCTV-Camera-Lobby-2
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet39
+   description CCTV-Camera-Corridor-1
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet40
+   description CCTV-Camera-Corridor-2
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet41
+   description Printer-Color-1
+   switchport access vlan 1000
+   spanning-tree portfast
+!
+interface Ethernet42
+   description Printer-BW-1
+   switchport access vlan 1000
+   spanning-tree portfast
+!
+interface Ethernet43
+   description Printer-BW-2
+   switchport access vlan 1000
+   spanning-tree portfast
+!
+interface Ethernet44
+   description Printer-MFP-1
+   switchport access vlan 1000
+   spanning-tree portfast
+!
+interface Ethernet45
+   description Guest-Kiosk-1
+   switchport access vlan 400
+   spanning-tree portfast
+!
+interface Ethernet46
+   description Guest-Kiosk-2
+   switchport access vlan 400
+   spanning-tree portfast
+!
+interface Ethernet47
+   description Guest-Kiosk-3
+   switchport access vlan 400
+   spanning-tree portfast
+!
+interface Ethernet48
+   description Guest-Kiosk-4
+   switchport access vlan 400
+   spanning-tree portfast
+!
+interface Ethernet49
+   description Uplink to campus-dist1
+   switchport trunk allowed vlan 100,200,400,800,1000,1100,1800,1900
+   switchport mode trunk
+!
+interface Management0
+   ip address 10.201.0.41/24
+!
+ip access-list IBN-34022B66
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-4F735463
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-C09DB883
+   10 deny ip any any
+   20 permit ip any any
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

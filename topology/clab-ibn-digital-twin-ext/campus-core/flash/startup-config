@@ -1,0 +1,62 @@
+! Startup-config last modified at Wed May 13 09:44:58 2026 by root
+! device: campus-core (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$tqjGU2kKgCabgLhz$7ukbKsTGFQuf5d7EGyNFyPAdjboYtX6e6kFVAlpjPfSogc6zTDNyDYJUQ6gppTXmtv.UYIdPSO13L/P68ZSsN/
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-core1
+!
+spanning-tree mode rapid-pvst
+spanning-tree mst 0 priority 4096
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet49
+   description To dc-leaf4 Eth51
+   switchport trunk allowed vlan 100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900
+   switchport mode trunk
+!
+interface Ethernet50
+   description To campus-dist1 Eth49
+   switchport trunk allowed vlan 100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900
+   switchport mode trunk
+!
+interface Ethernet51
+   description To campus-dist2 Eth49
+   switchport trunk allowed vlan 100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900
+   switchport mode trunk
+!
+interface Management0
+   ip address 10.201.0.31/24
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

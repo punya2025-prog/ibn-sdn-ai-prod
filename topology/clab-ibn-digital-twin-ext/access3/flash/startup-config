@@ -1,0 +1,303 @@
+! Startup-config last modified at Wed May 13 12:04:47 2026 by admin
+! device: campus-access3 (cEOSLab, EOS-4.32.5.1M-41653252.43251M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$dCoxl0mjlwQFxu6M$EvqDYyaN68wM3svsvfr6P0Z/IV0DyhOPTj2zrIpkKPsRriJM.re3AWxC7JAITP83YbZ1f/Mc4kwO0stm0irfQ1
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname campus-access3
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 600,700,800,900,1100,1800
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description Prod-Workstation-01
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet2
+   description Prod-Workstation-02
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet3
+   description Prod-Workstation-03
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet4
+   description Prod-Workstation-04
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet5
+   description Prod-Workstation-05
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet6
+   description Prod-Workstation-06
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet7
+   description Prod-Workstation-07
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet8
+   description Prod-Workstation-08
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet9
+   description Prod-Workstation-09
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet10
+   description Prod-Workstation-10
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet11
+   description Prod-Workstation-11
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet12
+   description Prod-Workstation-12
+   switchport access vlan 600
+   spanning-tree portfast
+!
+interface Ethernet13
+   description SCADA-PLC-01
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet14
+   description SCADA-PLC-02
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet15
+   description SCADA-PLC-03
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet16
+   description SCADA-PLC-04
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet17
+   description SCADA-PLC-05
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet18
+   description SCADA-PLC-06
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet19
+   description SCADA-PLC-07
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet20
+   description SCADA-PLC-08
+   switchport access vlan 700
+   spanning-tree portfast
+!
+interface Ethernet21
+   description UCM-Server-Primary
+   switchport access vlan 900
+   spanning-tree portfast
+!
+interface Ethernet22
+   description UCM-Server-Secondary
+   switchport access vlan 900
+   spanning-tree portfast
+!
+interface Ethernet23
+   description UCM-Server-Standby
+   switchport access vlan 900
+   spanning-tree portfast
+!
+interface Ethernet24
+   description UCM-TFTP-Server
+   switchport access vlan 900
+   spanning-tree portfast
+!
+interface Ethernet25
+   description CCTV-Camera-Prod-1
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet26
+   description CCTV-Camera-Prod-2
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet27
+   description CCTV-Camera-Prod-3
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet28
+   description CCTV-Camera-Prod-4
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet29
+   description CCTV-Camera-SCADA-1
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet30
+   description CCTV-Camera-SCADA-2
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet31
+   description CCTV-Camera-SCADA-3
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet32
+   description CCTV-Camera-SCADA-4
+   switchport access vlan 1100
+   spanning-tree portfast
+!
+interface Ethernet33
+   description WiFi-AP-Prod-1
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet34
+   description WiFi-AP-Prod-2
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet35
+   description WiFi-AP-Prod-3
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet36
+   description WiFi-AP-Prod-4
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet37
+   description WiFi-AP-Prod-5
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet38
+   description WiFi-AP-Prod-6
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet39
+   description WiFi-AP-Prod-7
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet40
+   description WiFi-AP-Prod-8
+   switchport access vlan 1800
+   spanning-tree portfast
+!
+interface Ethernet41
+   description IP-Phone-Prod-01
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet42
+   description IP-Phone-Prod-02
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet43
+   description IP-Phone-Prod-03
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet44
+   description IP-Phone-Prod-04
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet45
+   description IP-Phone-Prod-05
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet46
+   description IP-Phone-Prod-06
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet47
+   description IP-Phone-Prod-07
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet48
+   description IP-Phone-Prod-08
+   switchport access vlan 800
+   spanning-tree portfast
+!
+interface Ethernet49
+   description Uplink to campus-dist2
+   switchport trunk allowed vlan 600,700,800,900,1100,1800
+   switchport mode trunk
+!
+interface Management0
+   ip address 10.201.0.43/24
+!
+ip access-list IBN-34022B66
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-4F735463
+   10 deny ip host 10.10.1.1 host 10.10.1.7
+   20 permit ip any any
+!
+ip access-list IBN-C09DB883
+   10 deny ip any any
+   20 permit ip any any
+!
+no ip routing
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+management ssh
+   authentication mode password
+!
+end

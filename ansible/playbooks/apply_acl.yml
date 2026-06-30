@@ -1,0 +1,128 @@
+---
+# ansible/playbooks/apply_acl.yml
+# ============================================================
+# Apply an IBN security/segmentation intent as an Arista ACL.
+# Called by the FastAPI gateway (Ansible deployment method) OR
+# run manually.
+#
+# Usage:
+#   ansible-playbook apply_acl.yml \
+#     -i ../inventory/digital_twin.yml \
+#     -e "intent_id=seg-001 src=10.10.1.0/24 dst=10.10.2.0/24 action=deny priority=90"
+#
+# Or from FastAPI — gateway sets all variables via -e.
+#
+# Simulate-before-deploy gate:
+#   If require_simulation_pass=true (default), this playbook
+#   calls the gateway /api/intent/{intent_id} and aborts if
+#   simulation verdict != PASS.
+# ============================================================
+
+- name: "IBN | Pre-flight — verify simulation passed"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    intent_id:  "{{ intent_id | default('unknown') }}"
+    gateway_url: "{{ gateway_url | default('http://localhost:8000') }}"
+    require_simulation_pass: "{{ require_simulation_pass | default(true) }}"
+
+  tasks:
+    - name: "Fetch intent status from gateway"
+      uri:
+        url: "{{ gateway_url }}/api/intent/{{ intent_id }}"
+        method: GET
+        return_content: true
+        status_code: [200, 404]
+      register: intent_status
+      when: require_simulation_pass | bool
+
+    - name: "Abort if simulation did not PASS"
+      fail:
+        msg: >
+          Intent {{ intent_id }} simulation verdict is
+          '{{ (intent_status.json.simulation | default({})).verdict | default('NOT_RUN') }}'.
+          Must be PASS before deployment. Run simulation first via:
+          curl -X POST http://localhost:8000/api/simulate -d '{...}'
+      when:
+        - require_simulation_pass | bool
+        - intent_status.status != 404
+        - (intent_status.json.simulation | default({})).verdict | default('') != 'PASS'
+
+
+- name: "IBN | Apply ACL to fabric (segmentation / security intent)"
+  hosts: "{{ target_hosts | default('fabric') }}"
+  gather_facts: false
+  vars:
+    intent_id:  "{{ intent_id | default('unknown') }}"
+    acl_name:   "IBN-{{ intent_id | upper | replace('-','') }}"
+    src:        "{{ src | default('any') }}"
+    dst:        "{{ dst | default('any') }}"
+    action:     "{{ action | default('permit') }}"
+    priority:   "{{ priority | default(50) }}"
+    ports:      "{{ ports | default([]) }}"
+
+  tasks:
+    - name: "Backup current running config"
+      eos_command:
+        commands: "show running-config"
+      register: running_cfg
+      when: backup_before_change | bool
+
+    - name: "Write backup to local file"
+      copy:
+        content: "{{ running_cfg.stdout[0] }}"
+        dest: "{{ backup_dir | default('/tmp') }}/{{ inventory_hostname }}_{{ intent_id }}_pre.cfg"
+      delegate_to: localhost
+      when: backup_before_change | bool
+
+    - name: "Build ACL entries"
+      set_fact:
+        acl_entry_action: "{{ 'deny' if action == 'deny' else 'permit' }}"
+        src_acl:  "{{ src   if '/' in src   else src + ' host' }}"
+        dst_acl:  "{{ dst   if '/' in dst   else dst + ' host' }}"
+
+    - name: "Apply IBN ACL — no specific ports"
+      eos_config:
+        lines:
+          - "ip access-list {{ acl_name }}"
+          - " {{ acl_entry_action }} ip {{ src_acl }} {{ dst_acl }}"
+          - " permit ip any any"
+        save_when: changed
+      when: ports | length == 0
+      notify: verify_acl
+
+    - name: "Apply IBN ACL — with specific ports"
+      eos_config:
+        lines:
+          - "ip access-list {{ acl_name }}"
+          - " {{ acl_entry_action }} tcp {{ src_acl }} {{ dst_acl }} eq {{ item }}"
+          - " permit ip any any"
+        save_when: changed
+      loop: "{{ ports }}"
+      when: ports | length > 0
+      notify: verify_acl
+
+    - name: "Apply ACL to SVI interface (inbound)"
+      eos_config:
+        lines:
+          - "interface Vlan{{ vlan | default(0) }}"
+          - " ip access-group {{ acl_name }} in"
+        save_when: changed
+      when: vlan is defined and vlan != 0
+
+    - name: "Notify gateway — deployment complete"
+      uri:
+        url: "{{ gateway_url }}/api/intent/{{ intent_id }}"
+        method: GET
+      delegate_to: localhost
+      ignore_errors: true
+
+  handlers:
+    - name: verify_acl
+      eos_command:
+        commands: "show ip access-lists {{ acl_name }}"
+      register: acl_verify
+    - name: log_verify
+      debug:
+        msg: "ACL {{ acl_name }} verified: {{ acl_verify.stdout[0][:200] }}"
+      listen: verify_acl

@@ -1,0 +1,18 @@
+[Unit]
+Description=IBN Email IMAP Watcher (Channel 2)
+After=network.target ibn-gateway.service
+Wants=ibn-gateway.service
+
+[Service]
+Type=simple
+User=ibn
+WorkingDirectory=/opt/ibn/email_watcher
+ExecStart=/usr/bin/python3 imap_watcher.py --config watcher_config.yml
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

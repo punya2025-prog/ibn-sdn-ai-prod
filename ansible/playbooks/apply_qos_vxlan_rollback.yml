@@ -1,0 +1,175 @@
+---
+# ansible/playbooks/apply_qos.yml
+# Apply QoS intent — DSCP marking + bandwidth guarantee on Arista EOS.
+#
+# Usage:
+#   ansible-playbook apply_qos.yml \
+#     -i ../inventory/digital_twin.yml \
+#     -e "intent_id=qos-001 src=10.10.8.0/24 dscp=EF bandwidth_mbps=50"
+
+- name: "IBN | Apply QoS intent"
+  hosts: "{{ target_hosts | default('leaf') }}"
+  gather_facts: false
+  vars:
+    intent_id:     "{{ intent_id | default('qos-unknown') }}"
+    policy_name:   "IBN-QOS-{{ intent_id | upper | replace('-','') }}"
+    class_name:    "IBN-CLASS-{{ intent_id | upper | replace('-','') }}"
+    src:           "{{ src | default('any') }}"
+    dscp:          "{{ dscp | default('AF21') }}"
+    dscp_val:      "{{ dscp_map[dscp] | default(18) }}"
+    bandwidth_mbps:"{{ bandwidth_mbps | default(0) | int }}"
+
+  tasks:
+    - name: "Create ACL for QoS match"
+      eos_config:
+        lines:
+          - "ip access-list {{ class_name }}-MATCH"
+          - " permit ip {{ src if '/' in src else src + ' host' }} any"
+        save_when: changed
+
+    - name: "Create class-map"
+      eos_config:
+        lines:
+          - "class-map match-any {{ class_name }}"
+          - " match ip access-group {{ class_name }}-MATCH"
+        save_when: changed
+
+    - name: "Create policy-map with DSCP marking"
+      eos_config:
+        lines:
+          - "policy-map {{ policy_name }}"
+          - " class {{ class_name }}"
+          - "  set dscp {{ dscp }}"
+        save_when: changed
+
+    - name: "Add bandwidth guarantee (if specified)"
+      eos_config:
+        lines:
+          - "policy-map {{ policy_name }}"
+          - " class {{ class_name }}"
+          - "  bandwidth {{ bandwidth_mbps * 1000 }}"
+        save_when: changed
+      when: bandwidth_mbps | int > 0
+
+    - name: "Apply policy-map to all uplink interfaces"
+      eos_config:
+        lines:
+          - "interface {{ item }}"
+          - " service-policy output {{ policy_name }}"
+        save_when: changed
+      loop:
+        - Ethernet1
+        - Ethernet2
+
+    - name: "Verify policy applied"
+      eos_command:
+        commands: "show policy-map interface | grep {{ policy_name }}"
+      register: policy_verify
+      ignore_errors: true
+
+
+---
+# ansible/playbooks/apply_vxlan_vni.yml
+# Configure VXLAN VNI mapping on Arista leaf switches.
+#
+# Usage:
+#   ansible-playbook apply_vxlan_vni.yml \
+#     -i ../inventory/digital_twin.yml \
+#     -e "intent_id=vxl-001 vlan=600 vni=10006 vrf=prod" \
+#     --limit dc-leaf2
+
+- name: "IBN | Apply VXLAN VNI mapping"
+  hosts: "{{ target_hosts | default('leaf') }}"
+  gather_facts: false
+  vars:
+    intent_id: "{{ intent_id | default('vxlan-unknown') }}"
+    vlan:      "{{ vlan | int }}"
+    vni:       "{{ vni  | int }}"
+    vrf:       "{{ vrf  | default('default') }}"
+
+  tasks:
+    - name: "Ensure VLAN exists"
+      eos_config:
+        lines:
+          - "vlan {{ vlan }}"
+          - " name IBN-{{ vrf | upper }}"
+        save_when: changed
+
+    - name: "Ensure VRF exists"
+      eos_config:
+        lines:
+          - "vrf instance {{ vrf }}"
+        save_when: changed
+      when: vrf != 'default'
+
+    - name: "Configure VXLAN interface VNI mapping"
+      eos_config:
+        lines:
+          - "interface Vxlan1"
+          - " vxlan vlan {{ vlan }} vni {{ vni }}"
+        save_when: changed
+
+    - name: "Configure SVI for this VLAN"
+      eos_config:
+        lines:
+          - "interface Vlan{{ vlan }}"
+          - " vrf {{ vrf }}"
+          - " ip address virtual 10.10.{{ (vlan | int) // 100 }}.1/24"
+        save_when: changed
+      when: vrf != 'default'
+
+    - name: "Verify VXLAN VNI"
+      eos_command:
+        commands: "show vxlan vni {{ vni }}"
+      register: vni_verify
+
+
+---
+# ansible/playbooks/rollback.yml
+# Emergency rollback — restore a device to a pre-intent backup config.
+#
+# Usage:
+#   ansible-playbook rollback.yml \
+#     -i ../inventory/digital_twin.yml \
+#     -e "intent_id=seg-001" \
+#     --limit dc-leaf1
+
+- name: "IBN | Emergency rollback to pre-intent config"
+  hosts: "{{ target_hosts | default('all') }}"
+  gather_facts: false
+  vars:
+    intent_id:  "{{ intent_id | default('unknown') }}"
+    backup_dir: "{{ backup_dir | default('/tmp') }}"
+
+  tasks:
+    - name: "Check backup file exists"
+      stat:
+        path: "{{ backup_dir }}/{{ inventory_hostname }}_{{ intent_id }}_pre.cfg"
+      register: backup_stat
+      delegate_to: localhost
+
+    - name: "Abort if no backup found"
+      fail:
+        msg: "No backup found for {{ inventory_hostname }} intent {{ intent_id }}"
+      when: not backup_stat.stat.exists
+
+    - name: "Read backup config"
+      slurp:
+        src: "{{ backup_dir }}/{{ inventory_hostname }}_{{ intent_id }}_pre.cfg"
+      register: backup_content
+      delegate_to: localhost
+
+    - name: "Apply backup config to device"
+      eos_config:
+        src: "{{ backup_dir }}/{{ inventory_hostname }}_{{ intent_id }}_pre.cfg"
+        replace: config
+        save_when: always
+
+    - name: "Verify device is up after rollback"
+      eos_command:
+        commands: "show version"
+      register: version_check
+
+    - name: "Report rollback complete"
+      debug:
+        msg: "Rollback complete on {{ inventory_hostname }} for intent {{ intent_id }}"

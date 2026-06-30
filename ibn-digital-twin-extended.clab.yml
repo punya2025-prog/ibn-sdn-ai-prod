@@ -1,0 +1,104 @@
+# ibn-digital-twin-extended.clab.yml
+# =====================================
+# Extended ContainerLab topology with:
+#   - 4 new server VLANs: 1400 DB, 1500 App, 1600 Storage, 1700 Backup
+#   - WiFi VLANs: 1800 Corp, 1900 Guest
+#   - CCTV VLAN: 1100 (existing, now with port labels)
+#   - Campus access switches with labelled ports (WiFi AP / CCTV / Server)
+#   - Same 13 nodes as original topology
+
+name: ibn-digital-twin-ext
+
+mgmt:
+  network: clab-mgmt-ext
+  ipv4-subnet: 10.200.0.0/24
+
+topology:
+
+  defaults:
+    kind: ceos
+    image: ceos:4.32.5.1F
+    startup-config: topology/configs/extended/
+
+  nodes:
+    spine1:
+      mgmt-ipv4: 10.200.0.11
+      startup-config: topology/configs/extended/spine1.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    spine2:
+      mgmt-ipv4: 10.200.0.12
+      startup-config: topology/configs/extended/spine2.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    leaf1:
+      mgmt-ipv4: 10.200.0.21
+      startup-config: topology/configs/extended/leaf1.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    leaf2:
+      mgmt-ipv4: 10.200.0.22
+      startup-config: topology/configs/extended/leaf2.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    leaf3:
+      mgmt-ipv4: 10.200.0.23
+      startup-config: topology/configs/extended/leaf3.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    leaf4:
+      mgmt-ipv4: 10.200.0.24
+      startup-config: topology/configs/extended/leaf4.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    campus-core:
+      mgmt-ipv4: 10.200.0.31
+      startup-config: topology/configs/extended/campus_core.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    dist1:
+      mgmt-ipv4: 10.200.0.32
+      startup-config: topology/configs/extended/dist1.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    dist2:
+      mgmt-ipv4: 10.200.0.33
+      startup-config: topology/configs/extended/dist2.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    access1:
+      mgmt-ipv4: 10.200.0.41
+      startup-config: topology/configs/extended/access1.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    access2:
+      mgmt-ipv4: 10.200.0.42
+      startup-config: topology/configs/extended/access2.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    access3:
+      mgmt-ipv4: 10.200.0.43
+      startup-config: topology/configs/extended/access3.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+    access4:
+      mgmt-ipv4: 10.200.0.44
+      startup-config: topology/configs/extended/access4.cfg
+      env: {INTFTYPE: et, ETBA: 1, CEOS: 1, EOS_PLATFORM: ceoslab, container: eos, SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1}
+
+  links:
+    - endpoints: ["spine1:et49", "leaf1:et49"]
+    - endpoints: ["spine1:et50", "leaf2:et49"]
+    - endpoints: ["spine1:et51", "leaf3:et49"]
+    - endpoints: ["spine1:et52", "leaf4:et49"]
+    - endpoints: ["spine2:et49", "leaf1:et50"]
+    - endpoints: ["spine2:et50", "leaf2:et50"]
+    - endpoints: ["spine2:et51", "leaf3:et50"]
+    - endpoints: ["spine2:et52", "leaf4:et50"]
+    - endpoints: ["leaf4:et51",      "campus-core:et49"]
+    - endpoints: ["campus-core:et50","dist1:et49"]
+    - endpoints: ["campus-core:et51","dist2:et49"]
+    - endpoints: ["dist1:et50", "access1:et49"]
+    - endpoints: ["dist1:et51", "access2:et49"]
+    - endpoints: ["dist2:et50", "access3:et49"]
+    - endpoints: ["dist2:et51", "access4:et49"]
